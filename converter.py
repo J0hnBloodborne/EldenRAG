@@ -96,7 +96,7 @@ file_map = {
 
 # 4. Engine
 def run_final_build(data_folder_path):
-    output_file = "elden_ring_full.ttl"
+    output_file = "rdf/elden_ring_full.ttl"
     print(f"Starting build -> {output_file}...")
     
     with open(output_file, "w", encoding="utf-8") as f:

@@ -14,5 +14,5 @@ except Exception as e:
 print(f"Loaded {len(g)} triples in {time.time() - start:.2f}s.")
 print("Converting to N-Triples (Fast Format)...")
 
-g.serialize(destination="elden_ring_fast_linked.nt", format="nt")
-print("Done. Use 'elden_ring_fast.nt' for validation.")
+g.serialize(destination="rdf/elden_ring_fast_linked.nt", format="nt")
+print("Done. Use 'rdf/elden_ring_fast_linked.nt' for validation.")

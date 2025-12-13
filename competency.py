@@ -5,7 +5,7 @@ print("Loading Fast Graph...")
 start = time.time()
 g = Graph()
 # LOAD THE FAST FILE
-g.parse("elden_ring_fast_linked.nt", format="nt") 
+g.parse("rdf/elden_ring_fast_linked.nt", format="nt") 
 print(f"Loaded {len(g)} triples in {time.time() - start:.4f} seconds.")
 
 # Queries (Same as before)

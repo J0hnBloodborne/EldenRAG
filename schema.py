@@ -93,5 +93,5 @@ g.add((ER.hasWeight, RDF.type, OWL.DatatypeProperty))
 g.add((ER.hasWeight, RDFS.range, XSD.float))
 
 # Output
-g.serialize(destination="elden_ring_schema.ttl", format='turtle')
+g.serialize(destination="rdf/elden_ring_schema.ttl", format='turtle')
 print("T-Box Generated.")
