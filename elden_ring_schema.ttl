@@ -1,0 +1,78 @@
+@prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+er: a owl:Ontology .
+
+er:Armor a owl:Class .
+
+er:Demigod a owl:Class ;
+    owl:intersectionOf ( er:Boss er:Shardbearer ) .
+
+er:MinorEnemy a owl:Class ;
+    owl:intersectionOf ( er:Creature [ owl:complementOf er:Boss ] ) .
+
+er:NPC a owl:Class ;
+    rdfs:subClassOf er:Agent .
+
+er:Talisman a owl:Class .
+
+er:droppedBy a owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain er:Remembrance ;
+    rdfs:range er:Boss .
+
+er:gameId a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+er:hasWeight a owl:DatatypeProperty ;
+    rdfs:range xsd:float .
+
+er:locatedIn a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Location .
+
+er:scalesWith a owl:ObjectProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range er:Attribute .
+
+er:unlocksAffinity a owl:ObjectProperty ;
+    rdfs:domain er:Whetblade ;
+    rdfs:range er:Affinity .
+
+er:unlocksRecipeFor a owl:ObjectProperty ;
+    rdfs:domain er:Cookbook ;
+    rdfs:range er:Item .
+
+er:Affinity a owl:Class ;
+    owl:oneOf ( er:Standard er:Heavy er:Keen er:Quality er:Magic er:Fire ) .
+
+er:Attribute a owl:Class .
+
+er:Cookbook a owl:Class .
+
+er:Creature a owl:Class ;
+    rdfs:subClassOf er:Agent .
+
+er:Location a owl:Class .
+
+er:Remembrance a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:Shardbearer a owl:Class .
+
+er:Weapon a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:Whetblade a owl:Class .
+
+er:Boss a owl:Class ;
+    rdfs:subClassOf er:Agent .
+
+er:Item a owl:Class .
+
+er:Agent a owl:Class .
+

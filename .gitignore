@@ -2,3 +2,4 @@ krr/
 .vscode/
 __pycache__/
 *.pyc
+*.nt

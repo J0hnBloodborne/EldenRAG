@@ -3,12 +3,11 @@ import ast
 import re
 import os
 
-# 1. Namespaces & Prefixes (Manual Definition)
+# 1. Namespaces
 PREFIXES = """@prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix weapon: <http://www.semanticweb.org/fall2025/eldenring/Weapon/> .
 @prefix shield: <http://www.semanticweb.org/fall2025/eldenring/Shield/> .
 @prefix armor: <http://www.semanticweb.org/fall2025/eldenring/Armor/> .
@@ -40,10 +39,9 @@ PREFIXES = """@prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix weaponupgrade: <http://www.semanticweb.org/fall2025/eldenring/WeaponUpgrade/> .
 @prefix shieldupgrade: <http://www.semanticweb.org/fall2025/eldenring/ShieldUpgrade/> .
 @prefix spiritash: <http://www.semanticweb.org/fall2025/eldenring/SpiritAsh/> .
-
 """
 
-# 2. Helpers (Optimized for String Operations)
+# 2. Helpers
 ALPHANUM_PATTERN = re.compile(r'[^a-zA-Z0-9]')
 
 def clean_uri_name(text):
@@ -52,7 +50,6 @@ def clean_uri_name(text):
     return ALPHANUM_PATTERN.sub('', text)
 
 def escape_literal(text):
-    """Escapes strings for Turtle format"""
     if pd.isna(text): return ""
     clean = str(text).replace('\\', '\\\\').replace('"', '\\"').replace('\n', ' ')
     return f'"{clean}"^^xsd:string'
@@ -62,16 +59,15 @@ def parse_complex_column(cell_value):
     try:
         if str(cell_value).strip().startswith(('[', '{')):
             return ast.literal_eval(str(cell_value))
-    except:
-        pass
+    except: pass
     return cell_value
 
-# 3. File Map
+# 3. Config Map
 file_map = {
-    'bosses.csv': {'prefix': 'boss', 'class': 'er:Boss', 'type_uri': 'foaf:Agent'},
-    'npcs.csv': {'prefix': 'npc', 'class': 'er:NPC', 'type_uri': 'foaf:Agent'},
-    'creatures.csv': {'prefix': 'creature', 'class': 'er:Creature', 'type_uri': 'foaf:Agent'},
-    'locations.csv': {'prefix': 'location', 'class': 'er:Location'}, # Special logic handled in loop
+    'bosses.csv': {'prefix': 'boss', 'class': 'er:Boss'},
+    'npcs.csv': {'prefix': 'npc', 'class': 'er:NPC'},
+    'creatures.csv': {'prefix': 'creature', 'class': 'er:Creature'},
+    'locations.csv': {'prefix': 'location', 'class': 'er:Location'}, 
     'weapons.csv': {'prefix': 'weapon', 'class': 'er:Weapon'},
     'shields.csv': {'prefix': 'shield', 'class': 'er:Shield'},
     'armors.csv': {'prefix': 'armor', 'class': 'er:Armor'},
@@ -98,113 +94,110 @@ file_map = {
     'shields_upgrades.csv': {'prefix': 'shieldupgrade', 'class': 'er:ShieldUpgrade', 'link_to_parent': 'shield'}
 }
 
-# 4. Main Direct Writer
-def run_fast_ingestion(data_folder_path):
+# 4. Engine
+def run_final_build(data_folder_path):
     output_file = "elden_ring_full.ttl"
-    print(f"Starting DIRECT WRITE to {output_file}...")
+    print(f"Starting build -> {output_file}...")
     
     with open(output_file, "w", encoding="utf-8") as f:
-        # Write Headers
         f.write(PREFIXES)
         
         for filename, config in file_map.items():
             file_path = os.path.join(data_folder_path, filename)
             if not os.path.exists(file_path):
                 file_path = os.path.join(data_folder_path, "items", filename)
-                if not os.path.exists(file_path):
-                    continue
+                if not os.path.exists(file_path): continue
             
             print(f"Processing {filename}...")
             try:
                 df = pd.read_csv(file_path, low_memory=False)
-            except Exception as e:
-                print(f"Error reading {filename}: {e}")
-                continue
+            except: continue
             
-            # Convert to dict for speed
             records = df.to_dict('records')
             prefix = config.get('prefix')
             class_uri = config.get('class')
-            
-            # Buffer for writing chunks
             chunk = []
             
             for row in records:
-                name = row.get('name') or row.get('weapon name') or row.get('shield name')
-                if pd.isna(name) or name == "": continue
+                # Name Logic
+                if filename in ['weapons_upgrades.csv', 'shields_upgrades.csv']:
+                    base = row.get('weapon name') or row.get('shield name')
+                    upg = row.get('upgrade')
+                    if pd.isna(base): continue
+                    subj = f"{prefix}:{clean_uri_name(base)}{clean_uri_name(upg)}"
+                    label = f"{base} ({upg})"
+                else:
+                    name = row.get('name') or row.get('weapon name') or row.get('shield name')
+                    if pd.isna(name) or name == "": continue
+                    subj = f"{prefix}:{clean_uri_name(name)}"
+                    label = name
+
+                # Triples
+                lines = [f"{subj} a {class_uri} ;", f"  rdfs:label {escape_literal(label)} ;"]
                 
-                clean_name = clean_uri_name(name)
-                subj = f"{prefix}:{clean_name}"
-                
-                # Start Triple Block
-                lines = []
-                lines.append(f"{subj} a {class_uri} ;")
-                
-                # Common Props
-                lines.append(f"  rdfs:label {escape_literal(name)} ;")
-                
-                if 'id' in row and pd.notna(row['id']):
-                    lines.append(f"  er:gameId {row['id']} ;")
-                if 'description' in row:
-                    lines.append(f"  rdfs:comment {escape_literal(row['description'])} ;")
-                if 'image' in row:
-                    lines.append(f"  foaf:depiction {escape_literal(row['image'])} ;")
+                if 'id' in row and pd.notna(row['id']): lines.append(f"  er:gameId {row['id']} ;")
+                if 'description' in row and pd.notna(row['description']): lines.append(f"  rdfs:comment {escape_literal(row['description'])} ;")
+                if 'image' in row and pd.notna(row['image']): lines.append(f"  foaf:depiction {escape_literal(row['image'])} ;")
                 if 'weight' in row and pd.notna(row['weight']):
-                    try:
-                        w = float(row['weight'])
-                        lines.append(f"  er:hasWeight \"{w}\"^^xsd:float ;")
+                    try: lines.append(f"  er:hasWeight \"{float(row['weight'])}\"^^xsd:float ;")
                     except: pass
 
-                # --- SPECIAL LOGIC: SCALING ---
+                # Scaling
                 scaling = parse_complex_column(row.get('stat scaling'))
                 if isinstance(scaling, dict):
                     for stat, grade in scaling.items():
-                        if grade.strip() != "-":
-                            stat_clean = clean_uri_name(stat)
-                            lines.append(f"  er:scalesWith attribute:{stat_clean} ;")
+                        if grade.strip() not in ["-", ""]:
+                            lines.append(f"  er:scalesWith attribute:{clean_uri_name(stat)} ;")
 
-                # --- SPECIAL LOGIC: LOCATIONS ---
+                # Locations
                 if filename == 'locations.csv':
-                    for col_name, predicate in [('bosses', 'hasBoss'), ('npcs', 'hasNPC'), ('creatures', 'hasCreature')]:
-                        items = parse_complex_column(row.get(col_name))
+                    col_map = {'bosses':('boss','hasBoss'), 'npcs':('npc','hasNPC'), 'creatures':('creature','hasCreature')}
+                    for col, (pfx, pred) in col_map.items():
+                        items = parse_complex_column(row.get(col))
                         if isinstance(items, list):
-                            for item in items:
-                                target_type = col_name.capitalize().rstrip('s')
-                                if target_type == "Bos": target_type = "Boss"
-                                t_prefix = target_type.lower()
-                                t_name = clean_uri_name(item)
-                                lines.append(f"  er:{predicate} {t_prefix}:{t_name} ;")
+                            for i in items:
+                                lines.append(f"  er:{pred} {pfx}:{clean_uri_name(i)} ;")
 
-                # --- SPECIAL LOGIC: REMEMBRANCES ---
-                if filename == 'remembrances.csv':
-                    if pd.notna(row.get('boss')):
-                        b_name = clean_uri_name(row['boss'])
-                        lines.append(f"  er:droppedBy boss:{b_name} ;")
+                # Remembrances
+                if filename == 'remembrances.csv' and pd.notna(row.get('boss')):
+                    lines.append(f"  er:droppedBy boss:{clean_uri_name(row['boss'])} ;")
 
-                # --- SPECIAL LOGIC: UPGRADES ---
+                # Cookbooks (FIXED COLUMN: 'required for')
+                if filename == 'cookbooks.csv':
+                    items = parse_complex_column(row.get('required for'))
+                    if isinstance(items, list):
+                        for i in items:
+                            clean_i = clean_uri_name(i)
+                            lines.append(f"  er:unlocksRecipeFor item:{clean_i} ;")
+                            # STUB
+                            chunk.append(f"item:{clean_i} a er:Item ; rdfs:label {escape_literal(i)} .\n")
+
+                # Whetblades
+                if filename == 'whetblades.csv':
+                    desc = str(row.get('description', '')).lower() + str(row.get('usage', '')).lower()
+                    affinities = ['heavy', 'keen', 'quality', 'magic', 'cold', 'fire', 'flame art', 'lightning', 'sacred', 'blood', 'poison', 'occult']
+                    for aff in affinities:
+                        if aff in desc:
+                            clean_aff = clean_uri_name(aff)
+                            lines.append(f"  er:unlocksAffinity affinity:{clean_aff} ;")
+                            chunk.append(f"affinity:{clean_aff} a er:Affinity ; rdfs:label {escape_literal(aff.title())} .\n")
+                
+                # Upgrades
                 if 'link_to_parent' in config:
                     p_prefix = config['link_to_parent']
-                    p_name_raw = row.get('weapon name') or row.get('shield name')
-                    if pd.notna(p_name_raw):
-                        p_name = clean_uri_name(p_name_raw)
-                        lines.append(f"  er:isUpgradeOf {p_prefix}:{p_name} ;")
+                    p_name = row.get('weapon name') or row.get('shield name')
+                    if pd.notna(p_name):
+                        lines.append(f"  er:isUpgradeOf {p_prefix}:{clean_uri_name(p_name)} ;")
 
-                # Close block
-                # Remove last semicolon, add dot
-                final_block = "\n".join(lines)
-                final_block = final_block[:-1] + " .\n"
-                chunk.append(final_block)
-                
-                # Write chunk every 5000 rows to save RAM
+                # Write Block
+                chunk.append("\n".join(lines)[:-1] + " .\n")
                 if len(chunk) >= 5000:
                     f.write("\n".join(chunk))
                     chunk = []
 
-            # Flush remaining
-            if chunk:
-                f.write("\n".join(chunk))
+            if chunk: f.write("\n".join(chunk))
 
-    print("Done. File written successfully.")
+    print("Full Graph Generated.")
 
 if __name__ == "__main__":
-    run_fast_ingestion('data')
+    run_final_build('data')

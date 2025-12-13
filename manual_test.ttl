@@ -1,0 +1,43 @@
+@prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# 1. Test Intersection: Demigod (Must be Boss AND Shardbearer)
+er:Malenia a er:Boss, er:Shardbearer ;
+    rdfs:label "Malenia, Blade of Miquella" ;
+    er:gameId 101 .
+
+er:Radahn a er:Boss, er:Shardbearer ;
+    rdfs:label "Starscourge Radahn" ;
+    er:gameId 102 .
+
+# 2. Test Standard Boss (Not Shardbearer, so NOT Demigod in our logic)
+er:Margit a er:Boss ;
+    rdfs:label "Margit the Fell Omen" .
+
+# 3. Test Complement: MinorEnemy (Creature AND NOT Boss)
+er:GodrickSoldier a er:Creature ;
+    rdfs:label "Godrick Soldier" .
+
+er:GiantBat a er:Creature ;
+    rdfs:label "Giant Bat" .
+
+# 4. Test Enumeration: Affinity
+er:HeavyAffinity a er:Affinity ;
+    rdfs:label "Heavy" .
+
+# 5. Test Inverse Functional: Remembrance
+er:RemembranceRot a er:Remembrance ;
+    rdfs:label "Remembrance of the Rot Goddess" ;
+    er:droppedBy er:Malenia .
+
+# 6. Test Functional: Location
+er:Malenia er:locatedIn er:Haligtree .
+er:Haligtree a er:Location ;
+    rdfs:label "Miquella's Haligtree" .
+
+# 7. Test Weapon Scaling
+er:HandOfMalenia a er:Weapon ;
+    rdfs:label "Hand of Malenia" ;
+    er:scalesWith er:Dexterity .
