@@ -44,7 +44,7 @@ links = {
 }
 
 # 1. Read Original
-input_file = "elden_ring_full.ttl"
+input_file = "rdf/elden_ring_full.ttl"
 output_file = "rdf/elden_ring_linked.ttl"
 
 print(f"Reading {input_file}...")
