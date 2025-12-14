@@ -190,6 +190,8 @@ class EldenRingConverter:
             self.process_talisman(uri, row)
         elif filename == 'bosses.csv':
             self.process_boss(uri, row)
+        elif filename == 'remembrances.csv':
+            self.process_remembrance(uri, row)
         elif filename == 'locations.csv':
             self.graph.add((uri, RDF.type, ER.Location))
         elif filename == 'creatures.csv':
@@ -363,6 +365,45 @@ class EldenRingConverter:
             except Exception as e:
                 # print(f"Error parsing drops for {row['name']}: {e}")
                 pass
+
+    def process_remembrance(self, uri, row):
+        self.graph.add((uri, RDF.type, ER.Remembrance))
+        
+        # Link to Boss
+        boss_name = row.get('boss')
+        if boss_name:
+            boss_uri = self.registry.get(boss_name.strip())
+            if boss_uri:
+                self.graph.add((uri, ER.droppedBy, boss_uri))
+                # Also inverse link if needed, but droppedBy is good
+        
+        # Rewards (Option 1 & 2)
+        for col in ['option 1', 'option 2']:
+            reward_str = row.get(col)
+            if not reward_str:
+                continue
+                
+            # Handle multiple rewards separated by '/'
+            rewards = reward_str.split('/')
+            for reward in rewards:
+                reward = reward.strip()
+                # Strip prefixes
+                # Regex would be cleaner but let's stick to simple string ops for now to avoid import issues if re not imported (it is imported though)
+                # "Weapon: ", "Sorcery: ", "Incantation: ", "Talisman: ", "Ash of War: "
+                clean_reward = re.sub(r'^(Weapon|Sorcery|Incantation|Talisman|Ash of War|Ash of War:)\s*:?\s*', '', reward, flags=re.IGNORECASE)
+                
+                reward_uri = self.registry.get(clean_reward)
+                if reward_uri:
+                    self.graph.add((uri, ER.grantsReward, reward_uri))
+                    # Also link the item back to the remembrance/boss?
+                    # "obtainedFrom"
+                    self.graph.add((reward_uri, ER.obtainedFrom, uri))
+                else:
+                    # Try fuzzy match or just log?
+                    # For now, just skip or create stub?
+                    # Let's create a stub if we can't find it, to ensure connectivity
+                    # But registry should have it if it's in other files.
+                    pass
 
 if __name__ == "__main__":
     converter = EldenRingConverter("data")
