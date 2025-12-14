@@ -14,15 +14,15 @@ from sentence_transformers import SentenceTransformer, CrossEncoder, util
 app = FastAPI(title="EldenRAG Final", description="Precision Reranking")
 
 # --- CONFIG ---
-GRAPH_FILE = "rdf/elden_ring_fast_linked.nt"
+GRAPH_FILE = "rdf/elden_ring_linked.ttl"
 INDEX_DIR = "rag_index"
 DOCS_PATH = os.path.join(INDEX_DIR, "docs.json")
 EMB_PATH = os.path.join(INDEX_DIR, "embeddings.pt")
 META_PATH = os.path.join(INDEX_DIR, "meta.json")
 
-RETRIEVER_ID = "all-MiniLM-L6-v2"
+RETRIEVER_ID = "BAAI/bge-base-en-v1.5"
 RERANKER_ID = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-LLM_ID = "microsoft/Phi-3-mini-4k-instruct"
+LLM_ID = "Qwen/Qwen2.5-7B-Instruct-GGUF" # Placeholder for GGUF path or model ID if using transformers
 
 templates = Jinja2Templates(directory="templates")
 
@@ -59,7 +59,8 @@ def _load_rdf_graph(graph_path: str) -> Graph:
         raise FileNotFoundError(f"RDF graph not found: {graph_path}")
     g = Graph()
     start = time.time()
-    g.parse(graph_path, format="nt")
+    # Use 'turtle' format for .ttl files
+    g.parse(graph_path, format="turtle")
     print(f"Loaded RDF graph ({len(g):,} triples) from {graph_path} in {time.time() - start:.2f}s")
     return g
 
@@ -74,6 +75,8 @@ docs, doc_texts, doc_subjects, corpus_embeddings_cpu = _load_index()
 rdf_graph = _load_rdf_graph(GRAPH_FILE)
 
 print(f"Loading Bi-Encoder ({RETRIEVER_ID}) on {_device()}...")
+# Use HuggingFaceEmbeddings wrapper if using LangChain, or SentenceTransformer directly
+# BAAI/bge-base-en-v1.5 works with SentenceTransformer
 bi_encoder = SentenceTransformer(RETRIEVER_ID, device=_device())
 
 print(f"Loading Cross-Encoder ({RERANKER_ID}) on {_device()}...")
@@ -82,22 +85,42 @@ cross_encoder = CrossEncoder(RERANKER_ID, device=_device())
 corpus_embeddings = corpus_embeddings_cpu.to(_device())
 print(f"Index ready: {len(doc_texts):,} docs, dim={corpus_embeddings.shape[1]}")
 
+# --- LLM SETUP (Qwen via Llama.cpp/GGUF or Transformers) ---
+# Note: For GGUF, you'd typically use llama-cpp-python. 
+# If using transformers with a GGUF model, it's tricky.
+# Assuming user will run a local server (Ollama/LM Studio) or we use a transformers-compatible model ID.
+# For this script, let's stick to transformers pipeline but warn about GGUF.
+# If you want to use GGUF directly in python, you need `llama_cpp`.
+# For now, let's assume we use the transformers version of Qwen2.5-7B-Instruct (non-GGUF) 
+# OR the user has a local OpenAI-compatible server running (e.g. LM Studio).
+# Let's try to load Qwen2.5-7B-Instruct via transformers (might be heavy for 8GB if not quantized).
+# To run 4-bit quantized in transformers, we need bitsandbytes.
+
 try:
-    tokenizer = AutoTokenizer.from_pretrained(LLM_ID)
+    # Fallback to a transformers-loadable model ID if GGUF path isn't valid for this pipeline
+    # "Qwen/Qwen2.5-7B-Instruct" is the repo.
+    # To load in 4-bit:
+    from transformers import BitsAndBytesConfig
+    
+    quantization_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_compute_dtype=torch.float16
+    )
+    
+    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
     model = AutoModelForCausalLM.from_pretrained(
-        LLM_ID,
+        "Qwen/Qwen2.5-7B-Instruct",
         device_map="auto",
-        torch_dtype=torch.float16,
+        quantization_config=quantization_config,
         trust_remote_code=True,
     )
-    # Work around occasional transformers/model cache API mismatches for Phi-3.
-    # Disabling cache is slower but avoids runtime errors like DynamicCache missing attributes.
-    try:
-        model.generation_config.use_cache = False
-    except Exception:
-        pass
-    llm_pipeline = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=256)
-    print("Phi-3 Ready.")
+
+    llm_pipeline = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=512)
+    print("Qwen2.5-7B Ready.")
+except Exception as e:
+    print(f"LLM Load Error: {e}")
+    print("Ensure bitsandbytes is installed: pip install bitsandbytes")
+    llm_pipeline = None
 except Exception as e:
     print(f"LLM Error: {e}")
     llm_pipeline = None
@@ -128,14 +151,14 @@ def structured_retrieve(user_query: str) -> str | None:
         if len(stats) >= 2:
             a, b = stats[0], stats[1]
             sparql = f"""
-            PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-            PREFIX attribute: <http://www.semanticweb.org/fall2025/eldenring/Attribute/>
+            PREFIX er: <http://example.org/elden_ring/>
             PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
             SELECT DISTINCT ?label WHERE {{
-              ?w a er:Weapon ;
-                 er:scalesWith attribute:{a} ;
-                 er:scalesWith attribute:{b} ;
-                 rdfs:label ?label .
+              ?w a ?type .
+              ?w er:scaling{a} ?valA .
+              ?w er:scaling{b} ?valB .
+              ?w rdfs:label ?label .
+              FILTER(?type != er:WeaponUpgrade)
             }}
             LIMIT 50
             """
@@ -173,15 +196,17 @@ def retrieve_and_rerank(user_query):
         print(f"   Detected Dual-Stat Request: {required_stats}")
         want_tokens = []
         for stat in required_stats:
-            want_tokens.append(f"attribute:{stat}")
+            # Updated to match new ontology predicates if needed, or just text match
+            want_tokens.append(f"scaling{stat}") 
             want_tokens.append(stat)
 
         filtered = []
         for hit in hits:
             text = doc_texts[hit['corpus_id']]
-            if all((tok in text) for tok in want_tokens[0:2:2]):
-                # Prefer the stricter attribute:Stat match if present
-                filtered.append(hit)
+            # Check if text contains scaling info for both stats
+            # Simple text check: "scalingStrength" and "scalingDexterity"
+            if all((f"scaling{stat}" in text) for stat in required_stats):
+                 filtered.append(hit)
             elif all((stat in text) for stat in required_stats):
                 filtered.append(hit)
 
@@ -237,19 +262,27 @@ def generate_answer(context, query):
     if not llm_pipeline: return "LLM not loaded."
     
     messages = [
-        {"role": "user", "content": f"You are Melina. Use the Data Context to answer. Be concise. If listing items, use bullet points.\n\nData Context:\n{context}\n\nQuestion: {query}"}
+        {"role": "system", "content": "You are Melina, a helpful guide in Elden Ring. Use the provided Data Context to answer the user's question accurately. If the context contains stats or lists, format them clearly. If the answer is not in the context, say so."},
+        {"role": "user", "content": f"Data Context:\n{context}\n\nQuestion: {query}"}
     ]
     prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
     try:
         outputs = llm_pipeline(
             prompt,
             do_sample=True,
-            temperature=0.1,
+            temperature=0.3, # Lower temp for more factual answers
             top_p=0.9,
-            # Avoid Phi-3 cache API mismatch errors on some transformers versions.
-            use_cache=False,
+            # use_cache=True is usually fine for Qwen
         )
-        return outputs[0]["generated_text"].split("<|assistant|>")[-1].strip()
+        # Qwen chat template usually ends with <|im_start|>assistant
+        # But pipeline output includes the prompt. We need to strip it.
+        generated_text = outputs[0]["generated_text"]
+        # Simple split for standard chat templates
+        if "<|im_start|>assistant" in generated_text:
+             return generated_text.split("<|im_start|>assistant")[-1].strip()
+        # Fallback
+        return generated_text[len(prompt):].strip()
+
     except Exception as e:
         # Never hard-fail the API route on generation; return grounded context instead.
         print(f"LLM Generation Error: {e}")
