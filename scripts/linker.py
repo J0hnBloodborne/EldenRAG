@@ -64,9 +64,9 @@ with open(output_file, "w", encoding="utf-8") as f_out:
     f_out.write("@prefix owl: <http://www.w3.org/2002/07/owl#> .\n")
     
     for local, remote in links.items():
-        # Clean local ID to ensure it matches your graph's specific URI style
-        # e.g., 'boss:MaleniaBladeOfMiquella'
-        line = f"er:{local.split(':')[1]} owl:sameAs <{remote}> .\n"
+        # IMPORTANT: Use the exact prefixed subject used in the graph (e.g., boss:..., npc:...)
+        # so the owl:sameAs statement attaches to an existing entity instead of creating a new URI.
+        line = f"{local} owl:sameAs <{remote}> .\n"
         f_out.write(line)
 
 print(f"Success! Saved to '{output_file}'.")

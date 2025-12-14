@@ -6,7 +6,7 @@ start = time.time()
 
 g = Graph()
 try:
-    g.parse("elden_ring_linked.ttl", format="turtle")
+    g.parse("rdf/elden_ring_linked.ttl", format="turtle")
 except Exception as e:
     print(f"Error: {e}")
     exit()

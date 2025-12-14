@@ -3,3 +3,5 @@ krr/
 __pycache__/
 *.pyc
 *.nt
+rag_index/
+*.pt
