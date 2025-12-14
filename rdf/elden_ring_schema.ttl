@@ -6,10 +6,23 @@
 
 er: a owl:Ontology .
 
-er:Armor a owl:Class .
+er:Armor a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:Consumable a owl:Class ;
+    rdfs:subClassOf er:Item .
 
 er:Demigod a owl:Class ;
     owl:intersectionOf ( er:Boss er:Shardbearer ) .
+
+er:GreatRune a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:KeyItem a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:Material a owl:Class ;
+    rdfs:subClassOf er:Item .
 
 er:MinorEnemy a owl:Class ;
     owl:intersectionOf ( er:Creature [ owl:complementOf er:Boss ] ) .
@@ -17,7 +30,11 @@ er:MinorEnemy a owl:Class ;
 er:NPC a owl:Class ;
     rdfs:subClassOf er:Agent .
 
-er:Talisman a owl:Class .
+er:Shield a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:description a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
 
 er:droppedBy a owl:InverseFunctionalProperty,
         owl:ObjectProperty ;
@@ -27,13 +44,24 @@ er:droppedBy a owl:InverseFunctionalProperty,
 er:gameId a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
+er:hasEffect a owl:ObjectProperty ;
+    rdfs:domain er:Talisman ;
+    rdfs:range xsd:string .
+
 er:hasWeight a owl:DatatypeProperty ;
     rdfs:range xsd:float .
 
+er:image a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
 er:locatedIn a owl:FunctionalProperty,
         owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
+    rdfs:domain ( er:Agent er:SiteOfGrace ) ;
     rdfs:range er:Location .
+
+er:requiresStat a owl:ObjectProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range er:Attribute .
 
 er:scalesWith a owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
@@ -50,12 +78,14 @@ er:unlocksRecipeFor a owl:ObjectProperty ;
 er:Affinity a owl:Class ;
     owl:oneOf ( er:Standard er:Heavy er:Keen er:Quality er:Magic er:Fire ) .
 
-er:Attribute a owl:Class .
-
-er:Cookbook a owl:Class .
+er:Cookbook a owl:Class ;
+    rdfs:subClassOf er:Item .
 
 er:Creature a owl:Class ;
     rdfs:subClassOf er:Agent .
+
+er:Incantation a owl:Class ;
+    rdfs:subClassOf er:Magic .
 
 er:Location a owl:Class .
 
@@ -64,15 +94,29 @@ er:Remembrance a owl:Class ;
 
 er:Shardbearer a owl:Class .
 
-er:Weapon a owl:Class ;
+er:SiteOfGrace a owl:Class .
+
+er:Sorcery a owl:Class ;
+    rdfs:subClassOf er:Magic .
+
+er:Talisman a owl:Class ;
     rdfs:subClassOf er:Item .
 
-er:Whetblade a owl:Class .
+er:Whetblade a owl:Class ;
+    rdfs:subClassOf er:Item .
+
+er:Attribute a owl:Class .
+
+er:Weapon a owl:Class ;
+    rdfs:subClassOf er:Item .
 
 er:Boss a owl:Class ;
     rdfs:subClassOf er:Agent .
 
-er:Item a owl:Class .
+er:Magic a owl:Class ;
+    owl:unionOf ( er:Sorcery er:Incantation ) .
 
 er:Agent a owl:Class .
+
+er:Item a owl:Class .
 
