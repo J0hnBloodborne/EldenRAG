@@ -1,64 +1,120 @@
 import time
 from rdflib import Graph, Namespace
 
-print("Loading Fast Graph...")
-start = time.time()
-g = Graph()
-# LOAD THE FAST FILE
-g.parse("rdf/elden_ring_fast_linked.nt", format="nt") 
-print(f"Loaded {len(g)} triples in {time.time() - start:.4f} seconds.")
+# --- CONFIGURATION ---
+INPUT_FILE = "rdf/elden_ring_optimized.ttl"
 
-# Queries (Same as before)
-queries = {
-    "1. INT Weapons": """
-        PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        PREFIX attribute: <http://www.semanticweb.org/fall2025/eldenring/Attribute/>
-        SELECT DISTINCT ?weaponName ?weight WHERE {
-            ?w a er:Weapon ; rdfs:label ?weaponName ; er:hasWeight ?weight .
-            ?u er:isUpgradeOf ?w ; er:scalesWith attribute:Int .
-            FILTER(STRENDS(STR(?u), "Standard")) FILTER (?weight < 3.0)
-        } ORDER BY ?weight LIMIT 10
-    """,
-    "2. Remembrances": """
-        PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?bossName ?remName WHERE {
-            ?rem a er:Remembrance ; rdfs:label ?remName ; er:droppedBy ?boss .
-            ?boss rdfs:label ?bossName .
-        } ORDER BY ?bossName LIMIT 10
-    """,
-    "3. Location Counts": """
-        PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?locName (COUNT(?boss) as ?bossCount) WHERE {
-            ?loc a er:Location ; rdfs:label ?locName ; er:hasBoss ?boss .
-        } GROUP BY ?locName ORDER BY DESC(?bossCount) LIMIT 5
-    """,
-    "4. Cookbooks": """
-        PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?bookName ?itemName WHERE {
-            ?book a er:Cookbook ; rdfs:label ?bookName ; er:unlocksRecipeFor ?item .
-            ?item rdfs:label ?itemName .
-        } LIMIT 5
-    """,
-    "5. Whetblades": """
-        PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-        SELECT ?bladeName ?affinityName WHERE {
-            ?w a er:Whetblade ; rdfs:label ?bladeName ; er:unlocksAffinity ?a .
-            ?a rdfs:label ?affinityName .
-        } LIMIT 5
-    """
-}
+ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
+RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
+OWL = Namespace("http://www.w3.org/2002/07/owl#")
+WD = Namespace("http://www.wikidata.org/entity/")
 
-for title, q in queries.items():
-    print(f"\n{title}")
+def run_query(g, name, query):
+    print(f"\n--- TEST: {name} ---")
+    start = time.time()
     try:
-        results = g.query(q)
-        if len(results) == 0: print("No results.")
-        else:
-            for row in results:
-                print(f"{', '.join([str(i).split('/')[-1] for i in row])}")
-    except Exception as e: print(f"Error: {e}")
+        results = g.query(query)
+        count = 0
+        for row in results:
+            # Clean up output for display
+            clean_row = []
+            for item in row:
+                if item:
+                    val = str(item).split("/")[-1] # Show just the name/fragment
+                    clean_row.append(val)
+                else:
+                    clean_row.append("-")
+            print(f"   found: {clean_row}")
+            count += 1
+            if count >= 10: # Limit output
+                print("   ... (more results hidden)")
+                break
+        
+        print(f"   [Success] Returned {len(results)} rows in {time.time() - start:.4f}s.")
+        return len(results) > 0
+    except Exception as e:
+        print(f"   [FAILED] Error: {e}")
+        return False
+
+def main():
+    print(f"Loading {INPUT_FILE}...")
+    g = Graph()
+    g.parse(INPUT_FILE, format="turtle")
+    print(f"Graph loaded. {len(g)} triples.")
+
+    # 1. THE "META BUILD" CHECK
+    # "Find me a weapon that causes Hemorrhage (Bleed) AND has 'A' or 'B' Arcane scaling at Max Level."
+    # Tests: Shadow Nodes, Status Effects, Complex Path Traversal
+    q1 = """
+    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+    SELECT DISTINCT ?weapon ?scaling ?path
+    WHERE {
+        ?weapon a er:Weapon .
+        ?weapon er:causesEffect er:Hemorrhage .
+        
+        ?weapon er:hasMaxStats ?stats .
+        ?stats er:upgradePath ?path .
+        ?stats er:scalingArcane ?scaling .
+        
+        FILTER (?scaling IN ("S", "A", "B"))
+    }
+    LIMIT 20
+    """
+    run_query(g, "High Arcane Bleed Weapons", q1)
+
+    # 2. THE "LORE DETECTIVE"
+    # "Find things that mention Malenia but are NOT dropped by her."
+    # Tests: Lore Scanner, Inverse Relations, Negation
+    q2 = """
+    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+    SELECT DISTINCT ?thing
+    WHERE {
+        ?thing er:mentions er:MaleniaBladeOfMiquella .
+        FILTER NOT EXISTS { ?thing er:droppedBy er:MaleniaBladeOfMiquella }
+        FILTER (?thing != er:MaleniaBladeOfMiquella)
+    }
+    """
+    run_query(g, "References to Malenia (Non-Drop)", q2)
+
+    # 3. THE "BOSS RUSH"
+    # "List bosses with > 100,000 HP or that drop > 200,000 Runes."
+    # Tests: Integer Parsing, Union, Comparison
+    q3 = """
+    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+    SELECT ?boss ?hp ?runes
+    WHERE {
+        ?boss a er:Boss .
+        OPTIONAL { ?boss er:healthPoints ?hp }
+        OPTIONAL { ?boss er:runesDropped ?runes }
+        FILTER (?hp > 50000 || ?runes > 200000)
+    }
+    ORDER BY DESC(?hp)
+    """
+    run_query(g, "Major Bosses (High HP/Runes)", q3)
+
+    # 4. THE "EXTERNAL KNOWLEDGE"
+    # "Find entities linked to Wikidata."
+    # Tests: Linker Script
+    q4 = """
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    SELECT ?local ?wikidata
+    WHERE {
+        ?local owl:sameAs ?wikidata .
+    }
+    """
+    run_query(g, "Wikidata Links", q4)
+
+    # 5. THE "TAXONOMY CHECK"
+    # "Find all Katanas."
+    # Tests: Optimize.py (Inference of SubClasses)
+    q5 = """
+    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+    SELECT ?weapon
+    WHERE {
+        ?weapon a er:Katana .
+    }
+    """
+    run_query(g, "Class Inference (Katanas)", q5)
+
+if __name__ == "__main__":
+    main()
