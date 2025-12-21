@@ -1,120 +1,147 @@
-import time
-from rdflib import Graph, Namespace
+import os
+import torch
+import uvicorn
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
+
+# Retrieval Imports (Using the Chroma index we built)
+from langchain_community.vectorstores import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
 
 # --- CONFIGURATION ---
-INPUT_FILE = "rdf/elden_ring_optimized.ttl"
+# 1. THE INDEX WE BUILT
+DB_DIR = "data/chroma_db"
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
-ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
-RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
-OWL = Namespace("http://www.w3.org/2002/07/owl#")
-WD = Namespace("http://www.wikidata.org/entity/")
+# 2. THE MODEL YOU ALREADY HAVE (Standard Transformers)
+# This matches the ID in your old script's logic
+MODEL_ID = "Qwen/Qwen2.5-7B-Instruct" 
 
-def run_query(g, name, query):
-    print(f"\n--- TEST: {name} ---")
-    start = time.time()
+# --- GLOBAL STATE ---
+state = {
+    "db": None,
+    "pipe": None, # The HF Pipeline
+    "retriever": None
+}
+
+# --- LIFECYCLE MANAGER ---
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    print("--- SYSTEM STARTUP ---")
+    
+    # 1. LOAD LLM (Transformers + 4-bit Quantization)
+    print(f"1. Loading Model: {MODEL_ID} (4-bit)...")
     try:
-        results = g.query(query)
-        count = 0
-        for row in results:
-            # Clean up output for display
-            clean_row = []
-            for item in row:
-                if item:
-                    val = str(item).split("/")[-1] # Show just the name/fragment
-                    clean_row.append(val)
-                else:
-                    clean_row.append("-")
-            print(f"   found: {clean_row}")
-            count += 1
-            if count >= 10: # Limit output
-                print("   ... (more results hidden)")
-                break
+        # 4-Bit Config (Fits 7B in 8GB VRAM)
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_use_double_quant=True,
+        )
         
-        print(f"   [Success] Returned {len(results)} rows in {time.time() - start:.4f}s.")
-        return len(results) > 0
+        tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
+        model = AutoModelForCausalLM.from_pretrained(
+            MODEL_ID,
+            quantization_config=bnb_config,
+            device_map="auto",
+            trust_remote_code=True
+        )
+        
+        # Create Raw Pipeline
+        state["pipe"] = pipeline(
+            "text-generation",
+            model=model,
+            tokenizer=tokenizer,
+            max_new_tokens=512,
+            temperature=0.3,
+            repetition_penalty=1.1
+        )
+        print("   [OK] Model Loaded (Transformers).")
     except Exception as e:
-        print(f"   [FAILED] Error: {e}")
-        return False
+        print(f"   [CRITICAL] LLM Load Failed: {e}")
+        print("   Did you install bitsandbytes? (pip install bitsandbytes accelerate)")
 
-def main():
-    print(f"Loading {INPUT_FILE}...")
-    g = Graph()
-    g.parse(INPUT_FILE, format="turtle")
-    print(f"Graph loaded. {len(g)} triples.")
+    # 2. LOAD RETRIEVER
+    print(f"2. Loading Index: {DB_DIR}...")
+    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+    if os.path.exists(DB_DIR):
+        state["db"] = Chroma(persist_directory=DB_DIR, embedding_function=embeddings)
+        state["retriever"] = state["db"].as_retriever(search_kwargs={"k": 5})
+        print("   [OK] Database Loaded.")
+    else:
+        print("   [CRITICAL] Index not found. Run build_rag_index.py first.")
+    
+    yield
+    print("--- SYSTEM SHUTDOWN ---")
 
-    # 1. THE "META BUILD" CHECK
-    # "Find me a weapon that causes Hemorrhage (Bleed) AND has 'A' or 'B' Arcane scaling at Max Level."
-    # Tests: Shadow Nodes, Status Effects, Complex Path Traversal
-    q1 = """
-    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-    SELECT DISTINCT ?weapon ?scaling ?path
-    WHERE {
-        ?weapon a er:Weapon .
-        ?weapon er:causesEffect er:Hemorrhage .
-        
-        ?weapon er:hasMaxStats ?stats .
-        ?stats er:upgradePath ?path .
-        ?stats er:scalingArcane ?scaling .
-        
-        FILTER (?scaling IN ("S", "A", "B"))
-    }
-    LIMIT 20
-    """
-    run_query(g, "High Arcane Bleed Weapons", q1)
+# --- APP SETUP ---
+app = FastAPI(title="Elden Ring RAG", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
+)
+templates = Jinja2Templates(directory="templates")
 
-    # 2. THE "LORE DETECTIVE"
-    # "Find things that mention Malenia but are NOT dropped by her."
-    # Tests: Lore Scanner, Inverse Relations, Negation
-    q2 = """
-    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-    SELECT DISTINCT ?thing
-    WHERE {
-        ?thing er:mentions er:MaleniaBladeOfMiquella .
-        FILTER NOT EXISTS { ?thing er:droppedBy er:MaleniaBladeOfMiquella }
-        FILTER (?thing != er:MaleniaBladeOfMiquella)
-    }
-    """
-    run_query(g, "References to Malenia (Non-Drop)", q2)
+# --- DATA MODELS ---
+class ChatRequest(BaseModel):
+    message: str | None = None
+    query: str | None = None
 
-    # 3. THE "BOSS RUSH"
-    # "List bosses with > 100,000 HP or that drop > 200,000 Runes."
-    # Tests: Integer Parsing, Union, Comparison
-    q3 = """
-    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-    SELECT ?boss ?hp ?runes
-    WHERE {
-        ?boss a er:Boss .
-        OPTIONAL { ?boss er:healthPoints ?hp }
-        OPTIONAL { ?boss er:runesDropped ?runes }
-        FILTER (?hp > 50000 || ?runes > 200000)
-    }
-    ORDER BY DESC(?hp)
-    """
-    run_query(g, "Major Bosses (High HP/Runes)", q3)
+# --- ROUTES ---
+@app.get("/")
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-    # 4. THE "EXTERNAL KNOWLEDGE"
-    # "Find entities linked to Wikidata."
-    # Tests: Linker Script
-    q4 = """
-    PREFIX owl: <http://www.w3.org/2002/07/owl#>
-    SELECT ?local ?wikidata
-    WHERE {
-        ?local owl:sameAs ?wikidata .
-    }
-    """
-    run_query(g, "Wikidata Links", q4)
+@app.post("/api/chat")
+async def chat_endpoint(request: ChatRequest):
+    user_input = request.message or request.query
+    print(f"\n--- QUERY: {user_input} ---")
 
-    # 5. THE "TAXONOMY CHECK"
-    # "Find all Katanas."
-    # Tests: Optimize.py (Inference of SubClasses)
-    q5 = """
-    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
-    SELECT ?weapon
-    WHERE {
-        ?weapon a er:Katana .
-    }
-    """
-    run_query(g, "Class Inference (Katanas)", q5)
+    if not state["pipe"]:
+        return JSONResponse({"response": "Model failed to load."}, status_code=500)
+
+    # 1. RETRIEVE (Chroma)
+    docs = state["retriever"].invoke(user_input)
+    print(f"   [Retrieval] Found {len(docs)} cards.")
+
+    # 2. FORMAT CONTEXT
+    context_text = ""
+    for i, doc in enumerate(docs):
+        name = doc.metadata.get('name', 'Unknown')
+        content = doc.page_content.replace('\n', ' ')
+        context_text += f"[Entity {i+1}: {name}] {content}\n"
+
+    # 3. GENERATE (Raw Transformers)
+    # ChatML Format
+    messages = [
+        {"role": "system", "content": (
+            "You are Melina, the Kindling Maiden. Guide the Tarnished.\n"
+            "Answer using ONLY the Context below.\n"
+            "If the answer is missing, say 'The Golden Order is silent.'\n\n"
+            f"CONTEXT:\n{context_text}"
+        )},
+        {"role": "user", "content": user_input}
+    ]
+    
+    print("   [Inference] Generating...")
+    prompt = state["pipe"].tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True
+    )
+    
+    outputs = state["pipe"](prompt)
+    generated = outputs[0]["generated_text"]
+    
+    # Strip prompt to get just the answer
+    if "<|im_start|>assistant" in generated:
+        response_text = generated.split("<|im_start|>assistant")[-1].strip()
+    else:
+        response_text = generated[len(prompt):].strip()
+
+    return {"response": response_text}
 
 if __name__ == "__main__":
-    main()
+    uvicorn.run("web_server:app", host="127.0.0.1", port=5000)

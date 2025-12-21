@@ -5,3 +5,4 @@ __pycache__/
 *.nt
 rag_index/
 *.pt
+/data/chroma_db/
