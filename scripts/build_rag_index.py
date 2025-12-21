@@ -1,149 +1,128 @@
 import os
-import re
-import shutil
-from rdflib import Graph, URIRef, Literal, Namespace, RDF  # <--- Added RDF here
-from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_core.documents import Document 
-from tqdm import tqdm
+import json
+import torch
+import time
+from rdflib import Graph, Namespace, URIRef
+from sentence_transformers import SentenceTransformer
 
 # --- CONFIGURATION ---
-INPUT_FILE = "rdf/elden_ring_optimized.ttl"
-DB_DIR = "data/chroma_db"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2" 
+GRAPH_FILE = "rdf/elden_ring_optimized.ttl"  # Input Graph
+OUTPUT_DIR = "rag_index"                     # Output Folder
+MODEL_ID = "BAAI/bge-base-en-v1.5"           # Embedding Model
 
+# Define Namespaces
 ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
 RDFS = Namespace("http://www.w3.org/2000/01/rdf-schema#")
-SCHEMA = Namespace("http://schema.org/")
 
-def format_name(uri_or_str):
-    """Clean up URI fragments like 'scalingIntelligence' -> 'Scaling Intelligence'"""
-    s = str(uri_or_str).split("/")[-1]
-    # Split camelCase
-    s = re.sub('(.)([A-Z][a-z]+)', r'\1 \2', s)
-    s = re.sub('([a-z0-9])([A-Z])', r'\1 \2', s)
-    return s
+def ensure_dir(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
 
-def build_entity_cards(g):
-    print("   [Indexer] Transforming Graph into Rich Entity Cards (With Deep Stats)...")
-    documents = []
-    
-    # Only index main entities (things with a Label)
-    subjects = list(g.subjects(RDFS.label, None))
-    
-    for subj in tqdm(subjects, desc="Processing Entities"):
-        content_parts = []
-        metadata = {"id": str(subj)}
-        
-        # 1. HEADER (Name & Type)
-        name = g.value(subj, RDFS.label)
-        if not name: continue
-        content_parts.append(f"Entity: {name}")
-        metadata["name"] = str(name)
-        
-        types = [str(g.value(o, RDFS.label)) if g.value(o, RDFS.label) else o.split("/")[-1] 
-                 for o in g.objects(subj,  URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"))]
-        if types:
-            content_parts.append(f"Type: {', '.join(types)}")
-            metadata["type"] = types[0]
-
-        # 2. DESCRIPTION
-        desc = g.value(subj, RDFS.comment) or g.value(subj, SCHEMA.description)
-        if desc:
-            content_parts.append(f"Description: {desc}")
-
-        # 3. PROPERTIES & DEEP STATS
-        stats = []
-        lore_mentions = []
-        
-        # Iterate all properties of the main subject
-        for p, o in g.predicate_objects(subj):
-            # FIX: RDF is now imported so RDF.type works
-            if p in [RDFS.label, RDFS.comment, SCHEMA.description, SCHEMA.image, RDF.type]: continue
-            
-            p_name = format_name(p)
-            
-            # A. HANDLE SHADOW NODES (Recursion)
-            if "hasMaxStats" in str(p):
-                # The object 'o' is the Shadow Node (e.g., Moonveil_MaxStandard)
-                path = g.value(o, ER.upgradePath)
-                if not path: path = "Standard"
-                
-                shadow_stats = []
-                for sp, so in g.predicate_objects(o):
-                    if sp == ER.upgradePath or sp == RDF.type: continue
-                    sp_name = format_name(sp)
-                    shadow_stats.append(f"{sp_name}: {so}")
-                
-                # Inline this block into the main card
-                stats.append(f"Max Upgrade Stats ({path} Path): {', '.join(shadow_stats)}")
-                continue
-
-            # B. HANDLE LORE MENTIONS
-            if "mentions" in str(p).lower():
-                mentioned_name = g.value(o, RDFS.label)
-                if mentioned_name: lore_mentions.append(str(mentioned_name))
-                continue
-
-            # C. STANDARD PROPERTIES
-            val = str(o)
-            if isinstance(o, URIRef):
-                label = g.value(o, RDFS.label)
-                val = str(label) if label else format_name(o)
-            
-            stats.append(f"{p_name}: {val}")
-            
-        if stats:
-            content_parts.append("Properties & Stats:\n- " + "\n- ".join(stats))
-        if lore_mentions:
-            content_parts.append(f"Lore Connections: Mentions {', '.join(lore_mentions)}")
-
-        # 4. CONTEXT (Incoming Links)
-        incoming = []
-        for s, p in g.subject_predicates(subj):
-            s_name = g.value(s, RDFS.label)
-            if s_name:
-                p_name = format_name(p)
-                incoming.append(f"{s_name} ({p_name} this)")
-        
-        if incoming:
-            if len(incoming) > 15: # Cap context to prevent noise
-                content_parts.append(f"World Context: Linked to {len(incoming)} entities including {', '.join(incoming[:10])}...")
-            else:
-                content_parts.append(f"World Context: {'; '.join(incoming)}")
-
-        # Create Document
-        documents.append(Document(page_content="\n".join(content_parts), metadata=metadata))
-
-    return documents
-
-def main():
-    if not os.path.exists(INPUT_FILE):
-        print(f"Error: {INPUT_FILE} not found.")
-        return
-
+def build_flat_index():
+    print(f"1. Loading Graph from {GRAPH_FILE}...")
     g = Graph()
-    g.parse(INPUT_FILE, format="turtle")
-    print(f"Graph loaded: {len(g)} triples.")
+    start = time.time()
+    g.parse(GRAPH_FILE, format="turtle")
+    print(f"   [OK] Loaded {len(g)} triples in {time.time() - start:.2f}s.")
 
-    docs = build_entity_cards(g)
-    print(f"Generated {len(docs)} Rich Entity Cards.")
+    documents = []
 
-    print(f"Ingesting into ChromaDB ({EMBEDDING_MODEL})...")
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    
-    # Clear old DB if exists to avoid duplicates
-    if os.path.exists(DB_DIR):
-        shutil.rmtree(DB_DIR)
+    # --- SPARQL: THE DATA SMASH ---
+    # We select the Entity, its Label, and Description.
+    # We intentionally DO NOT select the max stats here; we handle them in Python for flexibility.
+    query = """
+    PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    PREFIX schema: <http://schema.org/>
+
+    SELECT DISTINCT ?entity ?label ?desc ?maxNode WHERE {
+        ?entity rdfs:label ?label .
+        OPTIONAL { ?entity rdfs:comment ?desc } .
+        OPTIONAL { ?entity schema:description ?desc } .
         
-    # Batch Ingest
-    batch_size = 500
-    for i in range(0, len(docs), batch_size):
-        batch = docs[i : i + batch_size]
-        Chroma.from_documents(batch, embeddings, persist_directory=DB_DIR)
-        print(f"   Indexed {min(i + batch_size, len(docs))}/{len(docs)}...")
+        # KEY CHANGE: Check if this entity has a shadow stats node
+        OPTIONAL { ?entity er:hasMaxStats ?maxNode } .
+    }
+    """
+    
+    print("2. Flattening Data (Joining Max Stats to Weapons)...")
+    results = g.query(query)
+    
+    # Track processed entities to merge duplicates (since SPARQL might return rows per desc)
+    processed = {}
 
-    print("Done. The Brain is fully operational.")
+    for row in results:
+        uri = str(row.entity)
+        label = str(row.label)
+        desc = str(row.desc) if row.desc else ""
+        max_node_uri = row.maxNode
+
+        if uri not in processed:
+            processed[uri] = {
+                "subject": uri,
+                "title": label,
+                "text_parts": [label, f"Type: Entity", desc],
+                "max_node": max_node_uri
+            }
+        else:
+            # Append description if new
+            if desc and desc not in processed[uri]["text_parts"]:
+                processed[uri]["text_parts"].append(desc)
+
+    # --- PROCESS SHADOW NODES ---
+    print("3. Inlining Max Stats...")
+    final_docs = []
+    
+    for uri, data in processed.items():
+        # If we found a Max Stats Node earlier, go fetch its details now
+        if data["max_node"]:
+            max_stats_text = []
+            # Query all properties of the shadow node
+            # We skip generic RDF types to keep it clean
+            for p, o in g.predicate_objects(data["max_node"]):
+                prop_name = str(p).split("/")[-1]
+                val = str(o).split("/")[-1]
+                
+                # Filter out boring stuff
+                if "type" in prop_name or "label" in prop_name: continue
+                
+                # Format: "scalingArcane: S" -> "Scaling Arcane: S"
+                readable_prop = prop_name.replace("scaling", "Scaling ").replace("requires", "Requires ")
+                max_stats_text.append(f"{readable_prop} {val}")
+            
+            if max_stats_text:
+                full_stat_block = "MAX LEVEL UPGRADE STATS: " + ", ".join(max_stats_text)
+                data["text_parts"].append(full_stat_block)
+
+        # Final Text Construction
+        # We join everything into one big string. The Semantic Search will now "see" the stats.
+        full_text = ". ".join(data["text_parts"])
+        final_docs.append({
+            "subject": data["subject"],
+            "title": data["title"],
+            "text": full_text
+        })
+
+    print(f"   [OK] Created {len(final_docs)} flattened documents.")
+
+    # --- EMBEDDING ---
+    print(f"4. Generating Embeddings ({MODEL_ID})...")
+    model = SentenceTransformer(MODEL_ID, device="cuda" if torch.cuda.is_available() else "cpu")
+    
+    texts = [d["text"] for d in final_docs]
+    embeddings = model.encode(texts, convert_to_tensor=True, show_progress_bar=True)
+
+    # --- SAVE ---
+    ensure_dir(OUTPUT_DIR)
+    
+    # Save Docs
+    with open(os.path.join(OUTPUT_DIR, "docs.json"), "w", encoding="utf-8") as f:
+        json.dump(final_docs, f, indent=2)
+    
+    # Save Embeddings
+    torch.save(embeddings, os.path.join(OUTPUT_DIR, "embeddings.pt"))
+    
+    print(f"5. Done! Saved index to {OUTPUT_DIR}/")
 
 if __name__ == "__main__":
-    main()
+    build_flat_index()

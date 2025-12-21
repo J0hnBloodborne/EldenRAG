@@ -2,244 +2,228 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>EldenRAG | Knowledge Engine</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elden Ring RAG</title>
     <style>
         :root {
-            --gold: #C9A050;
-            --gold-dim: #8a6d3b;
-            --dark: #080808;
-            --panel-bg: rgba(20, 20, 20, 0.95);
-            --border: 1px solid rgba(201, 160, 80, 0.4);
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --text-gold: #d4af37;
+            --text-dim: #a0a0a0;
+            --border: #333;
         }
-
         body {
-            background-color: var(--dark);
-            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #000 100%);
-            color: #d0d0d0;
-            font-family: 'Cormorant Garamond', serif; /* Body Text */
-            font-size: 18px;
+            background-color: var(--bg-color);
+            color: white;
+            font-family: 'Cinzel', serif; /* Or Times New Roman */
             margin: 0;
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent body scroll */
+        }
+        #app-container {
+            width: 1000px;
+            max-width: 95%;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-        }
-
-        /* HEADER */
-        header {
-            padding: 25px 40px;
-            border-bottom: var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.8);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            font-family: 'Cinzel Decorative', serif; /* TITLE FONT */
-            color: var(--gold);
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(201, 160, 80, 0.4);
-        }
-
-        /* MAIN LAYOUT */
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            padding: 40px;
-            flex: 1;
-            overflow: hidden;
-        }
-
-        .panel {
-            background: var(--panel-bg);
-            border: var(--border);
-            border-radius: 2px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        /* The little corner decorations */
-        .panel::after {
-            content: '';
-            position: absolute;
-            bottom: -1px; right: -1px;
-            width: 20px; height: 20px;
-            border-bottom: 2px solid var(--gold);
-            border-right: 2px solid var(--gold);
-        }
-
-        .panel-header {
-            font-family: 'Cinzel Decorative', serif;
-            color: var(--gold-dim);
-            background: rgba(0,0,0,0.6);
-            padding: 15px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .content-area {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            line-height: 1.6;
-            color: #ccc;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            border-left: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+            background: var(--card-bg);
         }
         
-        /* Custom Scrollbar */
-        .content-area::-webkit-scrollbar { width: 6px; }
-        .content-area::-webkit-scrollbar-thumb { background: var(--gold-dim); }
+        /* HEADER */
+        header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid var(--text-gold);
+            color: var(--text-gold);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* CHAT AREA (The Scrolling Part) */
+        #chat-window {
+            flex: 1; /* Fills remaining space */
+            overflow-y: auto; /* Enables scroll */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+
+        /* MESSAGE BUBBLES */
+        .message {
+            max-width: 80%;
+            padding: 15px;
+            border-radius: 4px;
+            line-height: 1.5;
+        }
+        .user {
+            align-self: flex-end;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: #fff;
+        }
+        .bot {
+            align-self: flex-start;
+            border-left: 3px solid var(--text-gold);
+            background: transparent;
+            padding-left: 15px;
+            color: #e0e0e0;
+        }
+        .bot strong { color: var(--text-gold); }
 
         /* INPUT AREA */
-        .input-area {
-            padding: 30px;
+        #input-area {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background: #111;
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            background: rgba(0,0,0,0.9);
-            border-top: var(--border);
+            gap: 10px;
         }
-
         input {
-            background: rgba(20,20,20,0.8);
-            border: 1px solid #444;
-            color: var(--gold);
-            padding: 15px 25px;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            width: 50%;
-            outline: none;
-            transition: 0.3s;
+            flex: 1;
+            padding: 15px;
+            background: #000;
+            border: 1px solid var(--text-gold);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
         }
-
-        input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px rgba(201, 160, 80, 0.1);
-        }
-
         button {
-            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dim) 100%);
-            border: 1px solid var(--gold);
-            color: #000;
-            font-family: 'Cinzel Decorative', serif;
-            font-weight: 700;
-            font-size: 16px;
-            padding: 0 40px;
+            padding: 0 30px;
+            background: var(--text-gold);
+            color: black;
+            border: none;
+            font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: inherit;
         }
+        button:hover { background: #b59226; }
+        button:disabled { background: #555; cursor: not-allowed; }
 
-        button:hover {
-            filter: brightness(1.2);
-            box-shadow: 0 0 15px rgba(201, 160, 80, 0.4);
+        /* CONTEXT BOX (Debug) */
+        .context-toggle {
+            font-size: 0.8rem;
+            color: #555;
+            cursor: pointer;
+            margin-top: 5px;
+            text-decoration: underline;
         }
-
-        button:disabled {
-            background: #333;
-            color: #666;
-            border-color: #444;
-            cursor: wait;
+        .context-box {
+            display: none;
+            font-family: monospace;
+            background: #000;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            border: 1px dashed #333;
         }
-
-        /* Highlight Keys in Text */
-        strong { color: var(--gold); font-weight: 600; }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Elden RAG</h1>
-        <div style="font-family: 'Cinzel Decorative'; color: var(--gold-dim); font-size: 14px;">
-            VER. 1.0 // CONNECTED TO GRACE
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="panel">
-            <div class="panel-header">The Archives (Graph Retrieval)</div>
-            <div class="content-area" id="context-box">
-                <span style="color: #666; font-style: italic;">
-                    "Knowledge begins with the recognition of one's own ignorance..."
-                </span>
+    <div id="app-container">
+        <header>Guidance of Grace</header>
+        
+        <div id="chat-window">
+            <div class="message bot">
+                Greetings, Tarnished. The archives are open. Ask me of weapons, lore, or stats.
             </div>
         </div>
 
-        <div class="panel">
-            <div class="panel-header">Guidance of Grace (Generation)</div>
-            <div class="content-area" id="answer-box">
-                <span style="color: #666; font-style: italic;">
-                    Waiting for your query, Tarnished.
-                </span>
-            </div>
+        <div id="input-area">
+            <input type="text" id="user-input" placeholder="Find a weapon with Bleed and S Scaling..." onkeypress="handleEnter(event)">
+            <button id="send-btn" onclick="sendMessage()">Consult</button>
         </div>
-    </div>
-
-    <div class="input-area">
-        <input type="text" id="query" placeholder="Ask the Greater Will..." autocomplete="off">
-        <button onclick="ask()" id="btn">Consult</button>
     </div>
 
     <script>
-        // Allow Enter key to submit
-        document.getElementById('query').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') ask();
-        });
+        async function sendMessage() {
+            const input = document.getElementById("user-input");
+            const btn = document.getElementById("send-btn");
+            const chat = document.getElementById("chat-window");
+            const text = input.value.trim();
 
-        async function ask() {
-            const q = document.getElementById('query').value;
-            if(!q) return;
-            
-            // UI Loading State
-            const btn = document.getElementById('btn');
-            const ctxBox = document.getElementById('context-box');
-            const ansBox = document.getElementById('answer-box');
-            
+            if (!text) return;
+
+            // 1. Add User Message
+            addMessage(text, 'user');
+            input.value = "";
             btn.disabled = true;
-            btn.innerText = "Communing...";
-            ctxBox.innerHTML = '<span style="color: #888;">Searching the Golden Order...</span>';
-            ansBox.innerHTML = '<span style="color: #888;">Interpreting the stars...</span>';
-            
-            try {
-                const res = await fetch('/api/chat', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({query: q})
-                });
-                const data = await res.json();
-                
-                // Format the Graph Context nicely
-                let formattedContext = data.context
-                    .replace(/Subject:/g, '<strong style="font-size: 1.1em;">Subject:</strong>')
-                    .replace(/Drops:/g, '<br><strong style="color: #fff;">Drops:</strong>')
-                    .replace(/->/g, '<span style="color: var(--gold-dim);">↳</span>');
 
-                ctxBox.innerHTML = formattedContext;
-                ansBox.innerText = data.response;
+            // 2. Add Loading Indicator
+            const loadingId = addMessage("Consulting the Golden Order...", 'bot', true);
+
+            try {
+                // 3. API Call
+                const response = await fetch("/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query: text })
+                });
+                const data = await response.json();
+
+                // 4. Remove Loading & Add Bot Message
+                document.getElementById(loadingId).remove();
                 
-            } catch(e) {
-                ansBox.innerText = "Connection Severed: " + e;
+                let botHtml = formatResponse(data.response);
+                
+                // Optional: Append Debug Context
+                if (data.context) {
+                    const ctxId = "ctx-" + Date.now();
+                    botHtml += `
+                        <div class="context-toggle" onclick="document.getElementById('${ctxId}').style.display = 'block'">View Source Records</div>
+                        <div id="${ctxId}" class="context-box">${formatResponse(data.context)}</div>
+                    `;
+                }
+                
+                addMessage(botHtml, 'bot', false, true);
+
+            } catch (e) {
+                document.getElementById(loadingId).innerText = "Connection Severed.";
             }
-            
-            // UI Reset
+
             btn.disabled = false;
-            btn.innerText = "CONSULT";
+            // Focus back on input
+            input.focus();
+        }
+
+        function addMessage(content, type, isId = false, isHtml = false) {
+            const chat = document.getElementById("chat-window");
+            const div = document.createElement("div");
+            div.className = `message ${type}`;
+            
+            if (isHtml) div.innerHTML = content;
+            else div.innerText = content;
+
+            if (isId) div.id = "msg-" + Date.now();
+            
+            chat.appendChild(div);
+            scrollToBottom();
+            return div.id;
+        }
+
+        function scrollToBottom() {
+            const chat = document.getElementById("chat-window");
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        function formatResponse(text) {
+            // Simple markdown-like formatter
+            return text
+                .replace(/\n/g, "<br>")
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+                .replace(/- /g, "• ");
+        }
+
+        function handleEnter(e) {
+            if (e.key === "Enter") sendMessage();
         }
     </script>
 </body>
