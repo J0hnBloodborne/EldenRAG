@@ -1,122 +1,275 @@
 @prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-er: a owl:Ontology .
+er: a owl:Ontology ;
+    rdfs:comment "The Official Elden Ring Knowledge Graph Ontology (DLC Updated)"@en .
 
-er:Armor a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:Ammo rdfs:subClassOf er:Item .
 
-er:Consumable a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:AshOfWar rdfs:subClassOf er:Item .
 
-er:Demigod a owl:Class ;
-    owl:intersectionOf ( er:Boss er:Shardbearer ) .
+er:Axe rdfs:subClassOf er:Weapon .
 
-er:GreatRune a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:BackhandBlade rdfs:subClassOf er:Weapon .
 
-er:KeyItem a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:Ballista rdfs:subClassOf er:Weapon .
 
-er:Material a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:BeastClaw rdfs:subClassOf er:Weapon .
 
-er:MinorEnemy a owl:Class ;
-    owl:intersectionOf ( er:Creature [ owl:complementOf er:Boss ] ) .
+er:BellBearing rdfs:subClassOf er:Item .
 
-er:NPC a owl:Class ;
-    rdfs:subClassOf er:Agent .
+er:Bow rdfs:subClassOf er:Weapon .
 
-er:Shield a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:ChestArmor rdfs:subClassOf er:Armor .
+
+er:Claw rdfs:subClassOf er:Weapon .
+
+er:ColossalSword rdfs:subClassOf er:Weapon .
+
+er:Concept a owl:Class .
+
+er:Consumable rdfs:subClassOf er:Item .
+
+er:Cookbook rdfs:subClassOf er:Item .
+
+er:Crossbow rdfs:subClassOf er:Weapon .
+
+er:CurvedGreatsword rdfs:subClassOf er:Weapon .
+
+er:CurvedSword rdfs:subClassOf er:Weapon .
+
+er:Dagger rdfs:subClassOf er:Weapon .
+
+er:Event a owl:Class .
+
+er:Fist rdfs:subClassOf er:Weapon .
+
+er:Flail rdfs:subClassOf er:Weapon .
+
+er:Gauntlets rdfs:subClassOf er:Armor .
+
+er:GlintstoneStaff rdfs:subClassOf er:Weapon .
+
+er:GreatHammer rdfs:subClassOf er:Weapon .
+
+er:GreatKatana rdfs:subClassOf er:Weapon .
+
+er:GreatRune rdfs:subClassOf er:Item .
+
+er:GreatSpear rdfs:subClassOf er:Weapon .
+
+er:Greataxe rdfs:subClassOf er:Weapon .
+
+er:Greatbow rdfs:subClassOf er:Weapon .
+
+er:Greatsword rdfs:subClassOf er:Weapon .
+
+er:Halberd rdfs:subClassOf er:Weapon .
+
+er:Hammer rdfs:subClassOf er:Weapon .
+
+er:HandToHandArt rdfs:subClassOf er:Weapon .
+
+er:HeavyThrustingSword rdfs:subClassOf er:Weapon .
+
+er:Helm rdfs:subClassOf er:Armor .
+
+er:Incantation rdfs:subClassOf er:Item,
+        er:Magic .
+
+er:Katana rdfs:subClassOf er:Weapon .
+
+er:KeyItem rdfs:subClassOf er:Item .
+
+er:LegArmor rdfs:subClassOf er:Armor .
+
+er:LightBow rdfs:subClassOf er:Weapon .
+
+er:LightGreatsword rdfs:subClassOf er:Weapon .
+
+er:Material rdfs:subClassOf er:Item .
+
+er:PerfumeBottle rdfs:subClassOf er:Weapon .
+
+er:Reaper rdfs:subClassOf er:Weapon .
+
+er:SacredSeal rdfs:subClassOf er:Weapon .
+
+er:Shield rdfs:subClassOf er:Item .
+
+er:Sorcery rdfs:subClassOf er:Item,
+        er:Magic .
+
+er:Spear rdfs:subClassOf er:Weapon .
+
+er:SpiritAsh rdfs:subClassOf er:Item .
+
+er:StraightSword rdfs:subClassOf er:Weapon .
+
+er:Talisman rdfs:subClassOf er:Item .
+
+er:ThrowingBlade rdfs:subClassOf er:Weapon .
+
+er:ThrustingSword rdfs:subClassOf er:Weapon .
+
+er:Tool rdfs:subClassOf er:Item .
+
+er:Torch rdfs:subClassOf er:Weapon .
+
+er:Twinblade rdfs:subClassOf er:Weapon .
+
+er:Whetblade rdfs:subClassOf er:Item .
+
+er:Whip rdfs:subClassOf er:Weapon .
+
+er:attackFire a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:attackHoly a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:attackLightning a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:attackMagic a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:attackPhysical a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:attackStamina a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:float .
+
+er:causesEffect a owl:ObjectProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range er:StatusEffect .
 
 er:description a owl:DatatypeProperty ;
     rdfs:range xsd:string .
 
-er:droppedBy a owl:InverseFunctionalProperty,
-        owl:ObjectProperty ;
-    rdfs:domain er:Remembrance ;
-    rdfs:range er:Boss .
+er:drops a owl:ObjectProperty ;
+    rdfs:comment "What an agent drops on death." ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Item ;
+    owl:inverseOf er:droppedBy .
 
-er:gameId a owl:DatatypeProperty ;
-    rdfs:range xsd:integer .
-
-er:hasEffect a owl:ObjectProperty ;
-    rdfs:domain er:Talisman ;
-    rdfs:range xsd:string .
-
-er:hasWeight a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
-
-er:image a owl:DatatypeProperty ;
-    rdfs:range xsd:string .
-
-er:locatedIn a owl:FunctionalProperty,
-        owl:ObjectProperty ;
-    rdfs:domain ( er:Agent er:SiteOfGrace ) ;
+er:foundIn a owl:ObjectProperty ;
+    rdfs:comment "Where an item can be looted." ;
+    rdfs:domain er:Item ;
     rdfs:range er:Location .
 
-er:requiresStat a owl:ObjectProperty ;
+er:hasMaxStats a owl:ObjectProperty ;
+    rdfs:comment "Links a Weapon to its stats at Max Upgrade level." ;
     rdfs:domain er:Weapon ;
-    rdfs:range er:Attribute .
+    rdfs:range er:WeaponStats .
 
-er:scalesWith a owl:ObjectProperty ;
+er:hasSkill a owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
-    rdfs:range er:Attribute .
+    rdfs:range er:Skill .
 
-er:unlocksAffinity a owl:ObjectProperty ;
-    rdfs:domain er:Whetblade ;
-    rdfs:range er:Affinity .
+er:healthPoints a owl:DatatypeProperty ;
+    rdfs:domain er:Agent ;
+    rdfs:range xsd:integer .
 
-er:unlocksRecipeFor a owl:ObjectProperty ;
-    rdfs:domain er:Cookbook ;
+er:locatedIn a owl:ObjectProperty ;
+    rdfs:comment "Where an entity can be found." ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Location .
+
+er:mentions a owl:ObjectProperty ;
+    rdfs:comment "Generic lore connection found in text descriptions." .
+
+er:requiresArcane a owl:DatatypeProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range xsd:integer .
+
+er:requiresDexterity a owl:DatatypeProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range xsd:integer .
+
+er:requiresFaith a owl:DatatypeProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range xsd:integer .
+
+er:requiresIntelligence a owl:DatatypeProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range xsd:integer .
+
+er:requiresStrength a owl:DatatypeProperty ;
+    rdfs:domain er:Weapon ;
+    rdfs:range xsd:integer .
+
+er:runesDropped a owl:DatatypeProperty ;
+    rdfs:domain er:Boss ;
+    rdfs:range xsd:integer .
+
+er:scalingArcane a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:string .
+
+er:scalingDexterity a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:string .
+
+er:scalingFaith a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:string .
+
+er:scalingIntelligence a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:string .
+
+er:scalingStrength a owl:DatatypeProperty ;
+    rdfs:domain er:WeaponStats ;
+    rdfs:range xsd:string .
+
+er:sells a owl:ObjectProperty ;
+    rdfs:domain er:Merchant ;
     rdfs:range er:Item .
 
-er:Affinity a owl:Class ;
-    owl:oneOf ( er:Standard er:Heavy er:Keen er:Quality er:Magic er:Fire ) .
+er:unlocksReward a owl:ObjectProperty ;
+    rdfs:domain er:Remembrance ;
+    rdfs:range er:Item .
 
-er:Cookbook a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:weight a owl:DatatypeProperty ;
+    rdfs:domain er:Item ;
+    rdfs:range xsd:float .
 
-er:Creature a owl:Class ;
-    rdfs:subClassOf er:Agent .
+er:Boss rdfs:subClassOf er:Agent .
 
-er:Incantation a owl:Class ;
-    rdfs:subClassOf er:Magic .
+er:Merchant rdfs:subClassOf er:NPC .
+
+er:NPC rdfs:subClassOf er:Agent .
+
+er:Remembrance rdfs:subClassOf er:Item .
+
+er:StatusEffect a owl:Class .
+
+er:droppedBy a owl:ObjectProperty ;
+    rdfs:comment "Inverse of drops." ;
+    rdfs:domain er:Item ;
+    rdfs:range er:Agent .
 
 er:Location a owl:Class .
 
-er:Remembrance a owl:Class ;
-    rdfs:subClassOf er:Item .
+er:Magic a owl:Class .
 
-er:Shardbearer a owl:Class .
-
-er:SiteOfGrace a owl:Class .
-
-er:Sorcery a owl:Class ;
-    rdfs:subClassOf er:Magic .
-
-er:Talisman a owl:Class ;
-    rdfs:subClassOf er:Item .
-
-er:Whetblade a owl:Class ;
-    rdfs:subClassOf er:Item .
-
-er:Attribute a owl:Class .
-
-er:Weapon a owl:Class ;
-    rdfs:subClassOf er:Item .
-
-er:Boss a owl:Class ;
-    rdfs:subClassOf er:Agent .
-
-er:Magic a owl:Class ;
-    owl:unionOf ( er:Sorcery er:Incantation ) .
+er:Armor rdfs:subClassOf er:Item .
 
 er:Agent a owl:Class .
 
+er:WeaponStats a owl:Class ;
+    rdfs:comment "A helper node containing the stats of a weapon at a specific upgrade level." .
+
 er:Item a owl:Class .
+
+er:Weapon rdfs:subClassOf er:Item .
 
