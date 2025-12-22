@@ -2607,7 +2607,8 @@ er:EldenRemembrance a er:Consumable,
 
 er:EldenRing a er:Concept ;
     rdfs:label "Elden Ring" ;
-    owl:sameAs wd:Q64826862 .
+    owl:sameAs wd:Q64826862 ;
+    owl:sameAs https://dbpedia.org/page/Elden_Ring .
 
 er:EldenStars a er:Incantation,
         er:Spell ;
