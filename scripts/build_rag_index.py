@@ -53,6 +53,26 @@ def build_flat_index():
             # e.g., "Located In: Limgrave" or "Dropped By: Magma Wyrm"
             master_index[uri]["text"].append(f"{row.propLabel}: {row.objLabel}")
 
+
+    # STEP C: Reverse Inlining (Entities in Locations)
+    print("3b. Reverse Inlining: Entities in Locations...")
+    reverse_query = """
+    PREFIX er: <http://eldenring.db/ontology/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    SELECT ?locationLabel ?entityLabel WHERE {
+        ?entity er:locatedIn ?location .
+        ?entity rdfs:label ?entityLabel .
+        ?location rdfs:label ?locationLabel .
+    }
+    """
+    for row in g.query(reverse_query):
+        location_label = str(row.locationLabel)
+        entity_label = str(row.entityLabel)
+        # Find the place in master_index by label and add the entity name
+        for rec in master_index.values():
+            if rec["title"] == location_label:
+                rec["text"].append(f"Contains: {entity_label}")
+
     # Finalize documents
     final_docs = []
     for uri, data in master_index.items():

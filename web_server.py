@@ -124,6 +124,23 @@ def hybrid_retrieve(query: str):
     found_entities = set()
     q_lower = query.lower()
     
+
+    # Location match: if query contains a location, add all entities located there
+    for s, p, o in state["graph"].triples((None, URIRef(NS["er"] + "locatedIn"), None)):
+        loc_label = state["graph"].value(o, URIRef(NS["rdfs"] + "label"))
+        if loc_label and str(loc_label).lower() in q_lower:
+            item_label = state["graph"].value(s, URIRef(NS["rdfs"] + "label"))
+            if item_label: found_entities.add(str(item_label).lower())
+
+    # NEW: If the query is "List some [Category]", find all entities with that RDF type label
+    from rdflib.namespace import RDF, RDFS
+    for s, p, o in state["graph"].triples((None, RDF.type, None)):
+        type_label = state["graph"].value(o, RDFS.label)
+        if type_label and str(type_label).lower() in q_lower:
+            item_label = state["graph"].value(s, RDFS.label)
+            if item_label:
+                found_entities.add(str(item_label).lower())
+
     # 1. Property Keyword Match (e.g., "arcane", "intelligence")
     for attr in state["property_index"]:
         if attr in q_lower:
@@ -218,23 +235,44 @@ async def chat(request: ChatRequest):
 
     # 2. PROMPT (Chain of Thought)
     system_prompt = f"""
-    You are an Elden Ring Logical Assistant. Answer using ONLY the RECORDS below.
-    
-    INSTRUCTIONS:
-    1. Analyze the RECORDS provided.
-    2. THINK STEP-BY-STEP:
-       - Identify the entities involved.
-       - Extract values (Scaling, Requirements, Locations).
-       - Compare stats if the user asks for a comparison.
-    3. Be precise with names and numbers.
-    
-    RECORDS:
+    You are the "Guidance of Grace," a high-fidelity Elden Ring Knowledge Agent. 
+    Your goal is to provide 100% factual answers based ONLY on the provided ARCHIVE RECORDS.
+
+    ### 1. DATA PARSING RULES
+    - Every block starts with "### RECORD: [Name] ###". 
+    - "STATS (At Max Upgrade)" refers to the weapon's peak performance.
+    - "OBTAINED FROM" and "LOCATED IN" are your primary links for finding where items are.
+    - If a record mentions another entity (e.g., "Dropped by Magma Wyrm"), and that entity has its own RECORD below, you MUST combine that info.
+
+    ### 2. BUILD & ATTRIBUTE LOGIC (CRITICAL)
+    - If a user asks for a specific build (e.g., "Arcane", "Faith", "Intelligence"):
+        a) Look at the "Scaling" section of each weapon.
+        b) If the requested attribute has a letter grade (S, A, B, C, D, E), it is a VALID recommendation.
+        c) If the attribute is "-" or "None", the weapon DOES NOT scale with that stat. 
+        d) NEVER recommend a weapon for a build if it has no scaling for that stat, even if it has high base damage.
+
+    ### 3. LOCATION & DISCOVERY LOGIC
+    - When asked "What is in [Location]?", scan all RECORDS for "LOCATED IN: [Location]" or "OBTAINED FROM: [Boss] (Location: [Location])".
+    - List every item, NPC, and Boss that matches that location string.
+
+    ### 4. COMPARISON PROTOCOL
+    - When comparing two items, use this step-by-step approach:
+        - Compare Weight (Lower is usually better for carry load).
+        - Compare Requirements (Which one is easier to pick up?).
+        - Compare Scaling (S > A > B > C > D > E).
+        - State a clear winner for the specific user's context.
+
+    ### 5. HANDLING UNCERTAINTY
+    - If the records provided do not contain the answer, say: "My current archives do not have the specific data for [X], but I can tell you about [Related Item] instead."
+    - Do not hallucinate stats or locations that are not in the provided text.
+
+    ### ARCHIVE RECORDS:
     {context_text}
     """
     
     messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": q}
+    {"role": "system", "content": system_prompt},
+    {"role": "user", "content": f"Answer this query using step-by-step reasoning: {q}"}
     ]
     
     prompt = state["pipe"].tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
