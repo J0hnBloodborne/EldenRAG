@@ -48,6 +48,7 @@ er:AcademyGlintstoneStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresIntelligence 28 ;
     er:requiresStrength 6 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Staff of the Academy of Raya Lucaria,embedded with a turquoise glintstone. Only a recognized sorcerer is permitted to wield this staff." .
 
 er:AcademyScroll a er:KeyItem ;
@@ -123,6 +124,7 @@ er:AlabasterLordsSword a er:Greatsword,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 16 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Greatsword forged from a blue-white meteoric ore.The blade conceals gravity-manipulating magic. A weapon unique to the Alabaster Lords, a race of ancients withskin of stone who were said to have risen to life when a meteorstruck long ago." .
 
 er:AlberichsBracers a er:Armor,
@@ -200,6 +202,7 @@ er:AlbinauricBow a er:Bow,
     er:mentions er:Longbow ;
     er:requiresDexterity 18 ;
     er:requiresStrength 7 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Longbow featuring delicate silverwork. Wielded by Albinauric wolfback archers. This bow requires dexterity over strength to master." .
 
 er:AlbinauricMask a er:Armor,
@@ -250,6 +253,7 @@ er:AlbinauricStaff a er:GlintstoneStaff,
     er:requiresArcane 12 ;
     er:requiresIntelligence 10 ;
     er:requiresStrength 6 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Short staff with a blue glintstone embedded. Wielded by the albinaurics of old. The albinaurics harbor a secret; they cast sorcery with their innate arcaneness." .
 
 er:AlbinauricVillageSpirit a er:NPC ;
@@ -433,6 +437,7 @@ er:AncientMeteoricOreGreatsword a er:ColossalSword,
     er:requiresArcane 19 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 35 ;
+    er:weight "22.0"^^xsd:float ;
     rdfs:comment "One of the treasures of the ruined forges. Greatsword of ancient meteoric ore, ending in a sharp point. Fashioned from an excavated shard of an arrowhead that once was a part of the old gods' arsenal. A capable piercing weapon that excels at thrusting attacks." .
 
 er:AnsbachsAttire a er:Armor,
@@ -470,6 +475,7 @@ er:AnsbachsLongbow a er:Bow,
     er:mentions er:SirAnsbach ;
     er:requiresDexterity 43 ;
     er:requiresStrength 9 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Weapon of Sir Ansbach. A longbow consisting of two bow bodies and two strings. Unusually for a longbow, it can be wielded similarly to a light bowprovided that the wielder has the extraordinary dexterity demanded." .
 
 er:AnsbachsManchettes a er:Armor,
@@ -522,6 +528,7 @@ er:AntspurRapier a er:ThrustingSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Spur of a giant ant which has been fashioned into a rapier. The blade drips with scarlet rot. Scarlet rot is an old legend, of which Maleigh Marais of the Shaded Castle was a private believer. And indeed, he eventually found his own personal goddess." .
 
 er:AnvilHammer a er:Weapon ;
@@ -535,6 +542,7 @@ er:AnvilHammer a er:Weapon ;
     er:requiresFaith 20 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 39 ;
+    er:weight "22.0"^^xsd:float ;
     rdfs:comment "One of the treasures of the ruined forges. A tremendous hammer that incorporates as its head the red-hot anvil of the forge. It is said that the anvil's shape is inspired by that of an altar, and that long ago, it was indeed used as such in rite and ritual." .
 
 er:Arbalest a er:Crossbow,
@@ -547,6 +555,7 @@ er:Arbalest a er:Crossbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 18 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Large crossbow made from composite materials. One of the largest of all bolt firing devices. Its limbs are more pliable than metallic ones, allowing bolts fired from this weapon to pierce even forged of steel." .
 
 er:ArcherAshes a er:SpiritAsh ;
@@ -1379,6 +1388,7 @@ er:AstrologersStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 7 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Staff of the astrologers. A glintsone is embedded in the tip, enabling it to be used as a catalyst for sorceries. Sorceries must be memorized first at a site of lost grace, and a staff must be equipped to cast them." .
 
 er:AvionetteSoldier rdfs:label "Avionette Soldier" ;
@@ -1398,6 +1408,7 @@ er:AxeOfGodfrey a er:Weapon ;
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 42 ;
+    er:weight "18.0"^^xsd:float ;
     rdfs:comment "Weapon of Godfrey, Elden Lord. It was broken in a battle fought as leader of the Tarnished during the Long March. This weapon is symbolic of Godfrey's vow to conduct himself as a lord, later becoming an emblem of the golden lineage. In the days of the past, a crown was warranted with strength." .
 
 er:AxeOfGodrick a er:Greataxe,
@@ -1413,6 +1424,7 @@ er:AxeOfGodrick a er:Greataxe,
         er:Greataxe ;
     er:requiresDexterity 22 ;
     er:requiresStrength 34 ;
+    er:weight "11.0"^^xsd:float ;
     rdfs:comment "Greataxe wielded by Godrick the Grafted. This golden battleaxe is emblazoned with the figure of a beast, representing the strength of Godfrey, First Elden Lord and patriarch of the golden lineage. \"I command thee kneel! For I am the lord of all that is golden!\"" .
 
 er:AxeTalisman a er:Talisman ;
@@ -1453,6 +1465,7 @@ er:AzursGlintstoneStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 10 ;
     er:requiresIntelligence 52 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Staff of the primeval glintstone sorcerer Azur. Only those who have glimpsed what lies beyond the wisdom of stone may wield it. Reduces casting time of all sorceries, but consumes additional FP." .
 
 er:AzursManchettes a er:Armor,
@@ -1526,6 +1539,7 @@ er:BanditsCurvedSword a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 11 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Curved sword with a light, crescent-shaped blade. Used by the bandits who ran rampant in the wake of the Shattering. Most of the blade is now darkened and covered in rust, but with enough dexterity this weapon may still stand up to some use." .
 
 er:BanishedKnight rdfs:label "Banished Knight" ;
@@ -1599,6 +1613,7 @@ er:BanishedKnightsGreatsword a er:Greatsword,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 17 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "A finely-crafted greatsword intricately engraved with an ancient motif. G iven to knights who, whether by misfortune or misdeed, were forced to abandon their homes. Most of these knights were sent to the fringes, where they were forced to start anew with only despair for company." .
 
 er:BanishedKnightsHalberd a er:Halberd,
@@ -1623,6 +1638,7 @@ er:BanishedKnightsHalberd a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 14 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "A finely-crafted halberd intricately engraved with an ancient motif. Given to knights who, whether by misfortune or misdeed, were forced to abandon their homes. Most of these knights were sent to the fringes, where they were forced to start anew with only despair for company." .
 
 er:BanishedKnightsShield a er:Shield ;
@@ -1678,6 +1694,7 @@ er:BastardSword a er:Greatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 16 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "A large sword with a straight blade.This heavy sword is normally wielded with two hands, but those with sufficient strength can wield it in one alone.The hefty blade can be swung into multiple foes at once thanks to the broad, sweeping attack, making fending off crowds all the easier." .
 
 er:BastardsStars a er:Flail,
@@ -1692,6 +1709,7 @@ er:BastardsStars a er:Flail,
     er:requiresDexterity 22 ;
     er:requiresIntelligence 22 ;
     er:requiresStrength 8 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Flail which deals magic damage, having been imbued with power by the remembrance of Astel. Formed of the same many-colored star debris that comprised the form of the Naturalborn of the Void." .
 
 er:BattleAxe a er:Axe,
@@ -1716,6 +1734,7 @@ er:BattleAxe a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "A thick, heavy blade attached to a handle. A versatile, standard weaponCapable of powerful attacks thanks to the weighty blade, these weapons are also regarded for their powerful charge attacks." .
 
 er:BattleHammer a er:GreatHammer,
@@ -1740,6 +1759,7 @@ er:BattleHammer a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 26 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Large iron great hammer designed for gladiatorial combat. Used by duelists who were exiled from the colosseum. Weighty enough to crush armor and its wearer alike." .
 
 er:BattlefieldPriestsCookbook1 a er:Cookbook ;
@@ -1859,6 +1879,7 @@ er:BeastClawWeapon a er:BeastClaw,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 13 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Weapon in the form of a carnivorous beast's vicious claws. Used to perform bestial slashing attacks uncanny to humankind. An imitation of the esoteric technique of the horned warriors. Those who carry this weapon wield it as though they have been possessed by a savage beast." .
 
 er:BeastCrestHeaterShield a er:Shield ;
@@ -1908,6 +1929,7 @@ er:BeastRepellentTorch a er:Torch,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "A torch which burns oil infused with a special incense. The aroma pacifies wild beasts. Torches such as these were used to keep unwelcome beasts away from treasure troves hidden in caves." .
 
 er:BeastclawGreathammer a er:GreatHammer,
@@ -1921,6 +1943,7 @@ er:BeastclawGreathammer a er:GreatHammer,
     er:requiresDexterity 10 ;
     er:requiresFaith 18 ;
     er:requiresStrength 20 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Greathammer with a striking end modelled to resemble five beastly claws. The black nails protruding from golden fur are said to represent Serosh, Lord of Beasts, who went to become King Godfrey's Regent." .
 
 er:BeastlurePot a er:Consumable ;
@@ -1954,6 +1977,7 @@ er:BeastmansCleaver a er:CurvedGreatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 25 ;
+    er:weight "16.5"^^xsd:float ;
     rdfs:comment "Curved greatsword of colossal size forged of dull iron and wielded by the beastmen of Farum Azula.The blade is incredibly heavy, but well-balanced. Comparatively easy to wield for the damage it delivers. It's clear the beastmen possess knowledge beyond human ken." .
 
 er:BeastmansCurvedSword a er:CurvedSword,
@@ -1978,6 +2002,7 @@ er:BeastmansCurvedSword a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 13 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Curved sword forged of dull iron wielded by the beastmen of Farum Azula. The blade is heavy but well-balanced. Comparatively easy to wield for the damage it delivers." .
 
 er:BeastmansJarShield a er:Shield ;
@@ -2072,6 +2097,7 @@ er:BlackBow a er:Bow,
     er:mentions er:Longbow ;
     er:requiresDexterity 20 ;
     er:requiresStrength 9 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Longbow carved from black wood to resemble a blade. One of the most difficult bows to master. The blade-like body of the bow is light and cuts through the air.Though a longbow, it can be wielded similarly to a shortbow." .
 
 er:BlackDumpling a er:Armor,
@@ -2242,6 +2268,7 @@ er:BlackSteelGreathammer a er:GreatHammer,
     er:requiresDexterity 11 ;
     er:requiresFaith 17 ;
     er:requiresStrength 25 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Weapon of the Black Knights, servants of Messmer the Impaler. Greathammer of black steel with decorative embellishments in gold. Blessed with an Erdtree incantation. Further holy imbuement will amplify the effect and greatly increase the armament's power. Guard Counters cause a burst of power." .
 
 er:BlackSteelTwinblade a er:Twinblade,
@@ -2269,6 +2296,7 @@ er:BlackSteelTwinblade a er:Twinblade,
     er:requiresDexterity 15 ;
     er:requiresFaith 13 ;
     er:requiresStrength 18 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Weapon of the Black Knights, servants of Messmer the Impaler. Twinblade of black steel with decorative embellishments in gold. Blessed with an Erdtree incantation. Further holy imbuement will amplify the effect and greatly increase the armament's power." .
 
 er:BlackSyrup a er:KeyItem ;
@@ -2355,6 +2383,7 @@ er:BladeOfCalling a er:Dagger,
     er:requiresDexterity 13 ;
     er:requiresFaith 15 ;
     er:requiresStrength 6 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Dagger given to one who set out on a journey to fulfill her duty long ago. The power of its former owner, the kindling maiden, is still apparent. The one who walks alongside flame, Shall one day meet the road of Destined Death." .
 
 er:BladeOfMercy a er:Talisman ;
@@ -2410,6 +2439,7 @@ er:BlasphemousBlade a er:Greatsword,
     er:requiresDexterity 15 ;
     er:requiresFaith 21 ;
     er:requiresStrength 22 ;
+    er:weight "13.5"^^xsd:float ;
     rdfs:comment "Sacred sword of Rykard, Lord of Blasphemy.Remains of the countless heroes he has devoured writhe upon the surface of this blade. Now they share the same blood, bound together as family.Some HP is restored upon defeating an enemy." .
 
 er:BlasphemousClaw a er:Consumable,
@@ -2513,6 +2543,7 @@ er:BloodfiendsArm a er:Weapon ;
     er:requiresArcane 16 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 28 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Weapon used by the bloodfiends. An arm pulled from the corpse of one of their kin, and wielded as a makeshift weapon. Having been sanctified by a blood ritual, this armament is capable of spraying blood stored within when executing a strong attack." .
 
 er:BloodfiendsFork a er:Spear,
@@ -2538,6 +2569,7 @@ er:BloodfiendsFork a er:Spear,
     er:requiresArcane 13 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 14 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Weapon used by the bloodfiends. Three tines of carved bone spear the victim to provoke blood loss. A ritual implement for blood offerings to the Formless Mother. At times, the bloodfiends will spill even their own blood using these forks." .
 
 er:BloodfiendsSacredSpear a er:GreatSpear,
@@ -2551,6 +2583,7 @@ er:BloodfiendsSacredSpear a er:GreatSpear,
     er:requiresArcane 13 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 22 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Greatspear of the bloodfiend hexers. One of the most significant implements used in their blood rituals. Sacred spears of blood are the instruments of communion with an outer god. The mother of truth desires a wound." .
 
 er:BloodflameBlade a er:Incantation ;
@@ -2580,6 +2613,7 @@ er:BloodhoundClaws a er:Claw,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Large curved claws used by Bloodhound Knights. The curve allows the weapon to slip through an enemy's guard." .
 
 er:BloodhoundKnightArmor a er:Armor,
@@ -2666,6 +2700,7 @@ er:BloodstainedDagger a er:Dagger,
     er:mentions er:Dagger ;
     er:requiresDexterity 12 ;
     er:requiresStrength 9 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Dagger with a bloodstained blade. Afflicts targets with blood loss. As blood darkened the dagger through repeated slashing and stabbing, its blade only grew sharper and harder." .
 
 er:BloodsuckingCrackedTear a er:CrystalTear ;
@@ -2691,6 +2726,7 @@ er:BloodyHelice a er:HeavyThrustingSword,
     er:requiresArcane 17 ;
     er:requiresDexterity 19 ;
     er:requiresStrength 16 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Ominous piercing sword with a winding blade. Carried by the noble servants of the Lord of Blood. Designed to bore into flesh, causing severe blood loss at the wound. The extracted blood trickles gracefully down the length of the blade." .
 
 er:BloodySlash rdfs:label "Bloody Slash" ;
@@ -2857,6 +2893,7 @@ er:BoltOfGransax a er:Spear,
     er:mentions er:Spear ;
     er:requiresDexterity 40 ;
     er:requiresStrength 20 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Spear whittled from the weapon wielded by Gransax.One of the legendary armaments. A great ancient dragon, Gransax once rained calamity upon the Royal Capital - the only time in historical record that Leyndell's walls have fallen. This marked the dawn of the war against dragons." .
 
 er:BoltdrakeTalisman a er:Talisman ;
@@ -2918,6 +2955,7 @@ er:BoneBow a er:Bow,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 8 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "A crude shortbow fashioned from sickly bone. A medium for spirit-calling, and a product of the ancient hexing arts of the tower." .
 
 er:BoneDart a er:Consumable ;
@@ -2946,6 +2984,7 @@ er:BonnyButcheringKnife a er:Greataxe,
     er:mentions er:BonnyVillage ;
     er:requiresDexterity 20 ;
     er:requiresStrength 16 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Weapon of the greater potentates of Bonny Village. An outsize butcher's cleaver used to dismember human bodies in the making of the great jars stored in the gaols. Restores a very small amount of HP when it squarely strikes an enemy." .
 
 er:BorealissMist a er:Incantation ;
@@ -3106,6 +3145,7 @@ er:BrickHammer a er:GreatHammer,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 31 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "Weapon made from an ordinary stone brick. Wielded by a laborer who lead a rebellion, and later become a champion himself. Even among other bludgeons of its size, this weapon is especially weighty. The strength of a giant is required to wield it." .
 
 er:Broadsword a er:StraightSword,
@@ -3130,6 +3170,7 @@ er:Broadsword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "A straight sword with a wide blade, suited to slashing attacks. Horizontal swings boast wide attack range, making it easier to connect with foes." .
 
 er:BrokenStatue rdfs:label "Broken Statue" ;
@@ -3237,6 +3278,7 @@ er:ButcheringKnife a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 16 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Huge carving knife made to cleanly butcher the human body.Signature weapon of the Ogress Anastasia, known to have eatencountless Tarnished while disguised as a Finger Maiden. Restores a very small amount of HP when it squarely strikes an enemy." .
 
 er:CaelemRuins a er:Location ;
@@ -3302,6 +3344,7 @@ er:CaneSword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Beloved sword of an aged knight whose last quest was long behindhim, repurposed into a walking stick. The tip is rather worn. Though bent of back and without the brawn required even toraise the sword aloft, still he wished to meet his end with weaponin hand." .
 
 er:CannonOfHaima a er:Sorcery ;
@@ -3326,6 +3369,7 @@ er:CarianGlintbladeStaff a er:GlintstoneStaff,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 22 ;
     er:requiresStrength 6 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Staff embedded with a blue glintstone. One of two types of Carian staff. Gifted to enchanted knights, it enhances Glintblade sorceries." .
 
 er:CarianGlintstoneStaff a er:GlintstoneStaff,
@@ -3339,6 +3383,7 @@ er:CarianGlintstoneStaff a er:GlintstoneStaff,
     er:requiresDexterity 8 ;
     er:requiresIntelligence 24 ;
     er:requiresStrength 6 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Staff embedded with a blue glintstone. One of two types of Carian staff. Given to sorcerers that they might enact the role of knight. Enhances Carian sword sorceries." .
 
 er:CarianGreatsword a er:Sorcery ;
@@ -3415,6 +3460,7 @@ er:CarianKnightsSword a er:StraightSword,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Straight sword embedded with a blue glintstone. Weapon of knights sworn to Carian royalty. These knights' swords could serve as catalysts, letting them wield sorcerous battle skills. Despite numbering fewer than twenty, this power made them a match for even the champions of gold in battle." .
 
 er:CarianManorSpirit a er:NPC ;
@@ -3447,6 +3493,7 @@ er:CarianRegalScepter a er:GlintstoneStaff,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 60 ;
     er:requiresStrength 8 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Magic scepter of Rennala, Queen of the Full Moon. The glintstone is known as a Carian Blue, enhancing full moon sorceries. Only those of the highest intelligence may wield this, the finest of all glintstone staves." .
 
 er:CarianRetaliation a er:Sorcery ;
@@ -3471,6 +3518,7 @@ er:CarianSorcerySword a er:ThrustingSword,
     er:requiresDexterity 19 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 10 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "One of the Carian royal family's glintstone swords. A smaller piercing sword with a slender blade. Formerly used by the Carian knights of old before the full refinement of their sorcerous combat techniques, this armament functions as a catalyst for glintstone sorcery when executing strong attacks." .
 
 er:CarianSovereignty rdfs:label "Carian Sovereignty" ;
@@ -3499,6 +3547,7 @@ er:CarianThrustingShield a er:Shield,
     er:requiresDexterity 13 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 17 ;
+    er:weight "10.5"^^xsd:float ;
     rdfs:comment "Silver thrusting shield embedded with glintstones. Enables the wielder to attack and guard simultaneously. Once wielded by Rellana, the Twin Moon Knight, during her sole entry into ritual combata demonstration of fidelity to the Erdtree." .
 
 er:CatchFlame a er:Incantation ;
@@ -3550,6 +3599,7 @@ er:CelebrantsCleaver a er:Axe,
     er:mentions er:DominulaWindmillVillage ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Cleaver decorated with many-colored fabrics. Ceremonial tool used by dancers during the festivities of Dominula, Windmill Village. Crafted from human bone. Grants trace amounts of runes upon landing attacks." .
 
 er:CelebrantsRibRake a er:Spear,
@@ -3575,6 +3625,7 @@ er:CelebrantsRibRake a er:Spear,
     er:mentions er:DominulaWindmillVillage ;
     er:requiresDexterity 14 ;
     er:requiresStrength 8 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Rake decorated with many-colored fabrics. Ceremonial tool used by dancers during the festivities of Dominula, Windmill Village. Crafted from human bone. Grants trace amounts of runes upon landing attacks." .
 
 er:CelebrantsSickle a er:Dagger,
@@ -3599,6 +3650,7 @@ er:CelebrantsSickle a er:Dagger,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 6 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sickle decorated with flowers and many-coloured fabrics. Ceremonial tool used by dancers during the festivities of Dominula. Its attacks can slip through an enemy's guard.Crafted from human bone. Grants trace amounts of runes on landing attacks." .
 
 er:CelebrantsSkull a er:GreatHammer,
@@ -3624,6 +3676,7 @@ er:CelebrantsSkull a er:GreatHammer,
     er:mentions er:DominulaWindmillVillage ;
     er:requiresDexterity 12 ;
     er:requiresStrength 18 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Large bludgeon decorated with flowers and many-colored fabrics. Ceremonial tool used by dancers during the festivities of Dominula, Windmill Village. The striking end is a skull too large in size to be human. Grants trace amounts of runes on landing attacks." .
 
 er:CelestialDew a er:KeyItem ;
@@ -3724,6 +3777,7 @@ er:ChainlinkFlail a er:Flail,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 18 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "A spiked iron tube attached by a chain wielded by Mad Pumpkin Heads. Especially large for a flail, wielding it requires more strength than it does dexterity." .
 
 er:ChampionBracers a er:Armor,
@@ -3795,6 +3849,7 @@ er:ChillingPerfumeBottle a er:PerfumeBottle,
     er:requiresDexterity 13 ;
     er:requiresIntelligence 13 ;
     er:requiresStrength 3 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "Perfume bottle remade into a weapon by perfumers of the realm of shadow. Attacks release perfumed powder, producing an icy chill. From time to time, perfumers set out on journeys to pursue new aromatics and flower gardens." .
 
 er:ChrysalidsMemento a er:KeyItem ;
@@ -3851,6 +3906,7 @@ er:Cinquedea a er:Dagger,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Short sword given to high ranking clergymen of Farum Azula. Raises potency of bestial incantations. The design celebrates a beast's five fingers, symbolic of the intelligence once granted upon their kind." .
 
 er:CipherPata a er:Fist,
@@ -3863,6 +3919,7 @@ er:CipherPata a er:Fist,
     er:maxUpgradeLevel 10 ;
     er:mentions er:TwoFingers ;
     er:requiresFaith 30 ;
+    er:weight "0.0"^^xsd:float ;
     rdfs:comment "One of the weapons originating from the Two Fingers. A formless sequence of ciphers comprise its blade, and as such no shield can repel it. Deals holy damage. The furtive inscription appears to hang in the air; the language of light spoken by the Two Fingers." .
 
 er:CircletOfLight a er:Armor,
@@ -3922,6 +3979,7 @@ er:ClawmarkSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 10 ;
     er:requiresStrength 4 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "A sacred seal given by Gurranq, the BeastClergyman. A rare trinket which allows incantations to be scaled with strength. The claw mark represents Gurranq's wrath. Enhances bestial incantations learned from Gurranq." .
 
 er:ClawsOfNight a er:Claw,
@@ -3934,6 +3992,7 @@ er:ClawsOfNight a er:Claw,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 8 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Claws of a bottomless black from which no light can escape. Wielded by Anna, Swordhand of Night. Engraved with a smithscript enabling strong attack to launch all three claws at a target. The blades are only semicorporeal, and cannot be fully guarded against." .
 
 er:Clayman rdfs:label "Clayman" ;
@@ -3967,6 +4026,7 @@ er:ClaymansHarpoon a er:Spear,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 12 ;
     er:requiresStrength 12 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Harpoon with a tip made from a sharpened meteorite shard. Wielded by the claymen who infest dynastic remains. The blade emits a faint light and deals magic damage." .
 
 er:Claymore a er:Greatsword,
@@ -3991,6 +4051,7 @@ er:Claymore a er:Greatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 16 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "A large sword with a long, straight blade. This heavy sword is usually wielded with two hands, but for those with enough strength, one is sufficient. In addition to the heavy sweeping attacks, it can also make a heavy piercing thrust making this a versatile weapon." .
 
 er:CleanrotArmor a er:Armor,
@@ -4054,6 +4115,7 @@ er:CleanrotSpear a er:Spear,
     er:requiresDexterity 16 ;
     er:requiresFaith 14 ;
     er:requiresStrength 16 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Spear of the Cleanrot Knights who fought alongside Malenia, Blade of Miquella. The winged golden blade deals holy damage. The diminutive shield is blessed with an incantation that wards off rot." .
 
 er:CliffbottomCatacombs a er:Location ;
@@ -4073,6 +4135,7 @@ er:ClingingBone a er:Fist,
     er:requiresArcane 16 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 8 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Horrific weapon made of a hardened skeletal arm. Wielded by Ensha of the Royal Remains. Fitted by placing one's hands into the fists' grips until they dig in. \"\"O clinging creature. A king relinquishes not the hand.\"\"" .
 
 er:ClothGarb a er:Armor,
@@ -4110,6 +4173,7 @@ er:Club a er:Hammer,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A thick, solid lump of wood.Wielding this striking weapon requires no skill. A simple, primitive weapon that requires only brute strength and persistence to hammer your foe into the ground." .
 
 er:CodedSword a er:StraightSword,
@@ -4123,6 +4187,7 @@ er:CodedSword a er:StraightSword,
     er:mentions er:RoundtableHold,
         er:TwoFingers ;
     er:requiresFaith 20 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Hidden sword once granted to the Tarnished of the Roundtable by the Two Fingers. A formless cipher comprises its blade, which deals holy damage no shield can repel. Champions would gather at the Roundtable Hold in days long past, when the Two Fingers were masters of oration, their flesh yet full of vigor." .
 
 er:CoilShield a er:Shield ;
@@ -4262,6 +4327,7 @@ er:CompositeBow a er:LightBow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 15 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Bow composited from a mix of Materials. Demands high attributes, and is tricky to wield, but is a fearsome tool when mastered." .
 
 er:ConcealingVeil a er:Talisman ;
@@ -4427,6 +4493,7 @@ er:CranialVesselCandlestand a er:GreatHammer,
     er:requiresDexterity 8 ;
     er:requiresFaith 22 ;
     er:requiresStrength 26 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "Candlestand used in worship of Birac, the most hallowed MonkPrelate of the Giants' Flame. Concerned over the lazy arrogancewith which the monks treated the Flame, Birac severed his ownhead as a lesson to the others, intending it be used as a candlestand. His faith yet smolders from within the cranial vessel." .
 
 er:CrepussBlackKeyCrossbow a er:Crossbow,
@@ -4440,6 +4507,7 @@ er:CrepussBlackKeyCrossbow a er:Crossbow,
     er:mentions er:TwoFingers ;
     er:requiresDexterity 16 ;
     er:requiresStrength 14 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Black crossbow featuring a long stock. Used for sniping, it has a very long range. Weapon of Crepus, who served the Two Fingers from the shadows of the Roundtable as the head confessor." .
 
 er:CrepussVial a er:Talisman ;
@@ -4472,6 +4540,7 @@ er:CrescentMoonAxe a er:Greataxe,
     er:mentions er:Greataxe ;
     er:requiresDexterity 15 ;
     er:requiresStrength 25 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "Greataxe with a large, arcing blade and long handle. The \"Crescent Moon\" of its name is said to have been spurred by nostalgia. Specializes in sweeping through foes by making use of its long handle." .
 
 er:CrimsonAmberMedallion a er:Talisman ;
@@ -4573,6 +4642,7 @@ er:CrossNaginata a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 16 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Weapon consisting of a three-pronged blade affixed to a long pole. The long central blade closely resembles a katana. A weapon of the Land of Reeds, known for its ability to be wielded as a spear while still being capable of performing slashing attacks." .
 
 er:CrossedTreeTowershield a er:Shield ;
@@ -4698,6 +4768,7 @@ er:CrystalKnife a er:Dagger,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 9 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "A knife made by sharpening hard crystal.Signature weapon of glintstone miners. Used as a tool to extract glintstone from broken rock, and as such a faint magic enwreathes the blade." .
 
 er:CrystalSnail rdfs:label "Crystal Snail" ;
@@ -4715,6 +4786,7 @@ er:CrystalSpear a er:Spear,
     er:requiresDexterity 16 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 10 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Spear fashioned from pure crystal; a deed impossible for a human. Enwreathed with powerful magic, its attack scales with intelligence. The inscrutable Crystalians have but one clear purpose; to safeguard their crystals unto the end. One theory posits that they yearn for the return of their creator who will carve for them new brethren." .
 
 er:CrystalStaff a er:GlintstoneStaff,
@@ -4728,6 +4800,7 @@ er:CrystalStaff a er:GlintstoneStaff,
     er:mentions er:Crystalian ;
     er:requiresIntelligence 48 ;
     er:requiresStrength 8 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Staff fashioned from pure crystal; a deed impossible for a human. Enhances Crystalian sorceris. The Crystalian's faint cognition is know as the \"wisdom of stone.\" This staff can only be weilded by those of intellect high enough to grasp such wisdom." .
 
 er:CrystalSword a er:StraightSword,
@@ -4741,6 +4814,7 @@ er:CrystalSword a er:StraightSword,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 13 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Sword fashioned from pure crystal; a deed impossible for a human. Enwreathed with powerful magic, its attack scales with intelligence. The inscrutable Crystalians have but one clear purpose; to safeguard their crystals unto the end. One theory posits that they yearn for the return of their creator who will carve for them new brethren." .
 
 er:CrystalTorrent a er:Sorcery ;
@@ -4862,6 +4936,7 @@ er:CursebladesCirque a er:BackhandBlade,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 9 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Weapon of the masked Curseblades. Circular backhand blade with wave-like cutting edges, sharpened into points that incite blood loss. Long ago, this was employed by the ascetics who strove to become tutelary deities as a ritualistic object in their self-flagellating dances." .
 
 er:CursedBloodPot a er:Consumable ;
@@ -4896,6 +4971,7 @@ er:CurvedClub a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 7 ;
     er:requiresStrength 11 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Hard, curved club, shaped like a crescent moon. Wielded instead of a curved sword by Albinaurics lacking dexterity. The only point of similarity between the two is the shape." .
 
 er:CurvedGreatClub a er:GreatHammer,
@@ -4920,6 +4996,7 @@ er:CurvedGreatClub a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 24 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Large curved club of hard wood, shaped like a crescent moon. Wielded by Albinaurics lacking the dexterity demanded by a curved sword, and who prefer the added weight and destructive force." .
 
 er:CurvedSwordTalisman a er:Talisman ;
@@ -5013,6 +5090,7 @@ er:DanesFootwork a er:HandToHandArt,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 8 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "A technique for hand-to-hand combat without the aid of a weapon. This martial art focuses on kicking techniques. This kick-based martial art is unique to Dane, a Dryleaf and sworn ally of Leda. He acquired these skills by training with the aid of a waterfall; letting the water beat his body, and throwing himself into its basin." .
 
 er:DappledCuredMeat a er:Consumable ;
@@ -5039,6 +5117,7 @@ er:DarkMoonGreatsword a er:Greatsword,
     er:requiresDexterity 11 ;
     er:requiresIntelligence 38 ;
     er:requiresStrength 16 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "A Moon Greatsword, bestowed by a Carian queen upon herspouse to honor long-standing tradition.One of the legendary armaments. Ranni's sigil is a full moon, cold and leaden, and this sword is but a beam of its light." ;
     owl:sameAs wd:Q111174245 .
 
@@ -5066,6 +5145,7 @@ er:DeadlyPoisonPerfumeBottle a er:PerfumeBottle,
     er:requiresArcane 18 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 3 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "Perfume bottle customized by Thiollier. Attacks release perfumed powder, producing deadly poison. There are some techniques of the perfuming arts that employ poison. Upon learning of this, Thiollier threw himself into mastering those techniques, and he made them his own." .
 
 er:DeathKnightArmor a er:Armor,
@@ -5252,6 +5332,7 @@ er:DevoniasHammer a er:Weapon ;
     er:requiresDexterity 13 ;
     er:requiresFaith 19 ;
     er:requiresStrength 30 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Great hammer wielded by Devonia, longest-serving of the Crucible Knights. Weapon forged of primordial gold, marked by its reddish hue and inhabited by ancient holiness. A torrent of life is engraved upon the striking face." .
 
 er:DevourersScepter a er:GreatHammer,
@@ -5265,6 +5346,7 @@ er:DevourersScepter a er:GreatHammer,
     er:requiresDexterity 20 ;
     er:requiresFaith 25 ;
     er:requiresStrength 24 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Scepter in the shape of a serpent devouring the world. Thisweapon will one day become the very symbol of the Lord of Blasphemy.One of the legendary armaments. A vision of the future briefly seen by Rykard in his final momentsbefore being devoured by the great serpent." .
 
 er:Dewgem a er:CraftingMaterial ;
@@ -5299,6 +5381,7 @@ er:DiggersStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresIntelligence 12 ;
     er:requiresStrength 8 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Staff of a sorcerer-miner who extracts glintstone from crystal tunnels. The staff itself is a tool used to mine, and the ferrule is also embedded with a glintstone. Boosts the power of Stonedigger sorceries" .
 
 er:Direwolf rdfs:label "Direwolf" ;
@@ -5347,6 +5430,7 @@ er:Dismounter a er:CurvedGreatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 19 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "This curved greatsword wielded by the brawny sellswords of Kaiden combines the blades of a scimitar with the heft of a hatchet. A difficult to handle weapon that demands much of the wielder's strength and dexterity, but with practice and ability, it can serve as a versatile weapon even on horseback." .
 
 er:DistinguishedGreatshield a er:Shield ;
@@ -5492,6 +5576,7 @@ er:DragonCommunionSeal a er:SacredSeal,
     er:maxUpgradeLevel 10 ;
     er:requiresArcane 10 ;
     er:requiresFaith 10 ;
+    er:weight "0.0"^^xsd:float ;
     rdfs:comment "Formless drakeblood seal with a dragon communion crest. Enhances Dragon Communion incantations. The sacrificial devouring of the heart gives power. Indeed, Dragon Communion is too primal in nature for the term \"incantation\" to be appropriate. This seal scales incantations with one's arcane attribute." .
 
 er:DragonCultPrayerbook a er:KeyItem ;
@@ -5510,6 +5595,7 @@ er:DragonKingsCragblade a er:HeavyThrustingSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 37 ;
     er:requiresStrength 18 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Piercing Gravel Stone sword containing primeval lightning. A portion of the Dragonlord's power, gained from a remembrance. This weapon commands great power over the paltry, mortal dragons of today." .
 
 er:DragonTowershield a er:Shield ;
@@ -5760,6 +5846,7 @@ er:DryleafSeal a er:SacredSeal,
     er:mentions er:Miquella ;
     er:requiresFaith 27 ;
     er:requiresStrength 8 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal of the spiritual seekers known as the Dryleaf Sect. Enhances incantations of Miquella. Those who saw the decline of the Erdtree in the fallen leaves long ago braced themselves for the weakening of Order, and embraced a strict faith. And then, they made to serve a new god." .
 
 er:DryleafWhirlwind rdfs:label "Dryleaf Whirlwind" ;
@@ -5794,6 +5881,7 @@ er:DuelingShield a er:Shield,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 15 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "A \"thrusting shield,\" or combined weapon and shield. Enables the wielder to attack and guard simultaneously. An armament once used in ritual combat performed to honor the Erdtreea custom that had somehow remained within the realm of shadow." .
 
 er:Duelist rdfs:label "Duelist" ;
@@ -5821,6 +5909,7 @@ er:DuelistGreataxe a er:Weapon ;
     er:mentions er:Greataxe ;
     er:requiresDexterity 10 ;
     er:requiresStrength 30 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Greataxe designed for gladiatorial combat. Used by duelists who were exiled from the colosseum.A weapon reserved for duelist champions, the charge attack is particularly ferocious." .
 
 er:DuelistGreaves a er:Armor,
@@ -5951,6 +6040,7 @@ er:EclipseShotel a er:CurvedSword,
     er:requiresDexterity 25 ;
     er:requiresFaith 30 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Storied sword and treasure of Castle Sol that depicts an eclipsed sun drained of color. One of the legendary armaments. In Sol, the sight of an eclipse inspires a dreadful awe, preventing an onlooker from averting his gaze." .
 
 er:EclipseSpirit a er:NPC ;
@@ -6053,6 +6143,7 @@ er:EleonorasPoleblade a er:Twinblade,
     er:requiresArcane 19 ;
     er:requiresDexterity 21 ;
     er:requiresStrength 12 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Twinned naginata forged in the Land of Reeds. Chosen weapon of Eleonora, Violet Bloody Finger. Her mastery of the sword was such that her onslaught was likened to a whirlwind, but now her legacy is stained by accursed blood." .
 
 er:EllacGreatbridge a er:Location ;
@@ -6109,6 +6200,7 @@ er:EnvoysGreathorn a er:Weapon ;
     er:requiresDexterity 12 ;
     er:requiresFaith 24 ;
     er:requiresStrength 28 ;
+    er:weight "19.5"^^xsd:float ;
     rdfs:comment "Fanned golden horn of the Oracle Envoys. Profoundly weighty, its blows are sure to be felt. Originally an instrument, but one that cannot be sounded by a mere human. Or perhaps it is too early to sound the call." .
 
 er:EnvoysHorn a er:Hammer,
@@ -6122,6 +6214,7 @@ er:EnvoysHorn a er:Hammer,
     er:requiresDexterity 12 ;
     er:requiresFaith 16 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Golden horn of the Oracle Envoys. Profoundly weighty, its blows are sure to be felt. Originally an instrument, but one that cannot be sounded by a mere human. Or perhaps it is too early to sound the call." .
 
 er:EnvoysLongHorn a er:GreatHammer,
@@ -6135,6 +6228,7 @@ er:EnvoysLongHorn a er:GreatHammer,
     er:requiresDexterity 11 ;
     er:requiresFaith 18 ;
     er:requiresStrength 23 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "Long golden horn of the Oracle Envoys. Profoundly weighty, its blows are sure to be felt. Originally an instrument, but one that cannot be sounded by a mere human. Or perhaps it is too early to sound the call." .
 
 er:ErdleafFlower a er:CraftingMaterial ;
@@ -6165,6 +6259,7 @@ er:ErdsteelDagger a er:Dagger,
     er:requiresDexterity 12 ;
     er:requiresFaith 14 ;
     er:requiresStrength 7 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "An erdsteel dagger with a grass crest engraved upon its blade. Carried by the Erdtree royalty for self-defense in times of peace. Though forged to a high standard, the weapon is difficult to wield. Attack power also scales with faith." .
 
 er:ErdtreeBurialWatchdog a er:Boss ;
@@ -6193,6 +6288,7 @@ er:ErdtreeSeal a er:SacredSeal,
     er:isSomber true ;
     er:maxUpgradeLevel 10 ;
     er:requiresFaith 40 ;
+    er:weight "0.0"^^xsd:float ;
     rdfs:comment "A formless sacred seal decorated with an Erdtree crest, once the focus of religion in the Lands Between.Even though the Elden Ring is shattered, and the Erdtree has dulled from its former radiance, earnest faith continues to hold the answers." .
 
 er:ErdtreeSurcoat a er:Armor,
@@ -6285,6 +6381,7 @@ er:Euporia a er:Twinblade,
     er:requiresDexterity 16 ;
     er:requiresFaith 24 ;
     er:requiresStrength 16 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Twinblade symbolizing abundance. The secret treasure of the tower. Though the blades, fashioned from golden shoots, are largely wilted and darkened, their luster can be restored by dealing damage to foes. However, damage dealt to Those Who Live in Death will have no such effect." .
 
 er:ExaltedFlesh a er:Consumable ;
@@ -6314,6 +6411,7 @@ er:ExecutionersGreataxe a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 34 ;
+    er:weight "15.0"^^xsd:float ;
     rdfs:comment "Bulky cleaver welded to a long haft. Said to have been used to dispatch the remnants of defeated armies, felling them like timber. Perhaps that is the reason it excels at critical hits." .
 
 er:ExileArmor a er:Armor,
@@ -6412,6 +6510,7 @@ er:Falchion a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A curved sword with a single-sided blade. Delivers slashing attacks with its sharp blade, but is ineffective against thick armor and hides covered in tough scales. Wielders of the weapon employ a unique style that enhances attacks with spinning motions." .
 
 er:FallenHawksSoldier rdfs:label "Fallen Hawks Soldier" ;
@@ -6427,6 +6526,7 @@ er:Falx a er:CurvedSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 12 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Curved swords with long, sickle-like blades. A pair of weapons made to be wielded in both hands. Forged by a hornsent in the name of revenge. \"In vengeance for the flames, my blade I wield...\"" .
 
 er:FanDaggers a er:Consumable ;
@@ -6624,6 +6724,7 @@ er:FingerSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 10 ;
     er:requiresStrength 4 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "A sacred seal bestowed by a Finger Maiden which serves as a catalyst for casting sacred incantations. Incantations must be memorized first at a site of grace, and a sacred seal must be equipped to cast them." .
 
 er:FingerSeverer rdfs:label "Finger Severer" ;
@@ -6832,6 +6933,7 @@ er:FireKnightsGreatsword a er:ColossalSword,
     er:requiresDexterity 18 ;
     er:requiresFaith 12 ;
     er:requiresStrength 22 ;
+    er:weight "16.0"^^xsd:float ;
     rdfs:comment "Greatsword of the Fire Knights. A long, slender blade that undulates like fire. Blessed with a flame incantation. Further flame imbuement will amplify the effect and greatly increase the armament's power." .
 
 er:FireKnightsSeal a er:SacredSeal,
@@ -6845,6 +6947,7 @@ er:FireKnightsSeal a er:SacredSeal,
     er:mentions er:MessmerTheImpaler ;
     er:requiresFaith 23 ;
     er:requiresStrength 8 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal of the Fire Knights, who answer directly to Messmer the Impaler. Enhances fire incantations of Messmer. The emblem of Messmer's army depicts a golden ring and the fire of his sacred seal." .
 
 er:FireKnightsShortsword a er:Dagger,
@@ -6870,6 +6973,7 @@ er:FireKnightsShortsword a er:Dagger,
     er:requiresDexterity 13 ;
     er:requiresFaith 12 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Shortsword used by the Fire Knights. A slender blade that undulates like fire. Blessed with a flame incantation. Further flame imbuement will amplify the effect and greatly increase the armament's power." .
 
 er:FireMonk rdfs:label "Fire Monk" ;
@@ -7013,6 +7117,7 @@ er:FiresparkPerfumeBottle a er:PerfumeBottle,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 3 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "Perfume bottle remade into a weapon by perfumers of the realm of shadow. Attacks release perfumed powder, producing sparks of fire. The crusade was a violent purge, and the perfumers were not called there to heal." .
 
 er:FirstChurchOfMarika a er:Location ;
@@ -7044,6 +7149,7 @@ er:Flamberge a er:Greatsword,
         er:RedmaneCastle ;
     er:requiresDexterity 14 ;
     er:requiresStrength 15 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Greatsword featuring a flame-like undulation.Shreds enemy flesh, inducing blood loss. Scarlet rot is kept at bay with flame at Redmane Castle, and as such, this beloved sword of Jerren's eventually became the symbol of the castle itself." .
 
 er:FlameChariot rdfs:label "Flame Chariot" ;
@@ -7201,6 +7307,7 @@ er:FlowingCurvedSword a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Legends speak of a master of the sword garbed in blue, and his curved blade that was patterned after flowing water. Strong attack unleashes a series of strikes akin to a dance, offering a glimpse into the legend. Skill: Spinning Slash Skill favored by dexterous warriors. Slash foes as your body spins. Additional input allows for a follow-up attack." .
 
 er:FlyMold a er:CraftingMaterial ;
@@ -7329,6 +7436,7 @@ er:ForkedGreatsword a er:Greatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 14 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Oddly shaped greatsword wielded by imps. The gently undulating forked blade is known as an \"imp's tongue\" and causes blood loss." .
 
 er:ForkedHatchet a er:Axe,
@@ -7353,6 +7461,7 @@ er:ForkedHatchet a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 9 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Peculiar hatchet wielded by imps. The gently undulating forked blade is known as an \"imp's tongue\" and causes blood loss." .
 
 er:ForkedTongueHatchet a er:Axe,
@@ -7365,6 +7474,7 @@ er:ForkedTongueHatchet a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "A peculiar weapon wielded by imps. Hatchet smithed in the shape of a fork-tongued dragon. The gently undulating forked blade is known as an \"imp's tongue\" and causes blood loss." .
 
 er:FormicRock a er:CraftingMaterial ;
@@ -7441,6 +7551,7 @@ er:FrenziedFlameSeal a er:SacredSeal,
     er:isSomber true ;
     er:maxUpgradeLevel 10 ;
     er:mentions er:ThreeFingers ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Formless sacred seal bestowed by the maiden of the Three Fingers. Enhances incantations of the frenzied flame. This seal is the mark of the Lord of Frenzied Flame. Scales incantations using strength, dexterity, intelligence, and faith all together." .
 
 er:FrenziedFlameVillage a er:Location ;
@@ -7489,6 +7600,7 @@ er:FrenzyflamePerfumeBottle a er:PerfumeBottle,
     er:requiresFaith 12 ;
     er:requiresIntelligence 12 ;
     er:requiresStrength 3 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "Perfume bottle remade into a weapon by perfumers of the realm of shadow. Attacks release perfumed powder, producing frenzied flame. From time to time, perfumers set out on journeys to pursue new aromatics and flower gardens." .
 
 er:FrenzyflameStone a er:Consumable ;
@@ -7544,6 +7656,7 @@ er:FreyjasGreatsword a er:CurvedGreatsword,
     er:mentions er:Greatsword ;
     er:requiresDexterity 14 ;
     er:requiresStrength 25 ;
+    er:weight "14.0"^^xsd:float ;
     rdfs:comment "Weapon of Freyja, a Redmane. Greatsword decorated with a mane, much like the weapons used by her liege. The spirit of Freyja's training lingers in this sword, enhancing the power of Redmane battle skills." .
 
 er:FreyjasGreaves a er:Armor,
@@ -7585,6 +7698,7 @@ er:FrozenNeedle a er:ThrustingSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 11 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "A razor-thin piercing blade of ice.Forged by Ijii, the carian Royal Blackmith. Can inflict frost upon enemies, and launch its blade with a strong attack. The blade immediately regenerates." .
 
 er:FrozenRaisin a er:Consumable ;
@@ -7711,6 +7825,7 @@ er:GargoylesGreatAxe a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 24 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Bronze greataxe wielded by Valiant Gargoyles. Just like the wielder, the missing parts have been mended with corpse wax; a patchwork of champions." .
 
 er:GasStone a er:CraftingMaterial ;
@@ -7753,6 +7868,7 @@ er:GazingFinger a er:Weapon ;
     er:requiresFaith 14 ;
     er:requiresIntelligence 20 ;
     er:requiresStrength 20 ;
+    er:weight "15.0"^^xsd:float ;
     rdfs:comment "The head of Metyr, the finger-mother, wielded as a weapon without modification. From within the center of the fingerprint that wrinkles the creature's foremost protrusion, a tiny wart-like eye gazes vacantly into the beyond." .
 
 er:GelmirGlintstoneStaff a er:GlintstoneStaff,
@@ -7766,6 +7882,7 @@ er:GelmirGlintstoneStaff a er:GlintstoneStaff,
     er:requiresFaith 14 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 6 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Staff with a forked tip, embedded with red glintstones. Enhances lava sorceries. The Man-Serpents of Mt. Gelmir draw from faith in addition to intelligence to enhance the potency of their sorcery." .
 
 er:GelmirKnightArmor a er:Armor,
@@ -7817,6 +7934,7 @@ er:GhizasWheel a er:Weapon ;
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 28 ;
+    er:weight "19.0"^^xsd:float ;
     rdfs:comment "Great iron wheel lined with flesh-flaying blades. Device of torture used by Inquisitor Ghiza. As the wheel spins it causes severe pain and blood loss. The design was adopted for use as the iconic weapon wielded by Iron Virgins." .
 
 er:GhostGlovewort1 a er:UpgradeMaterial ;
@@ -7904,6 +8022,7 @@ er:GhostflameTorch a er:Torch,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 10 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Metal torch that burns with cold ghostflame. Tool of the Fallen Hawks who prowl the underground rivers. When the band's last embers were used up in their long search, they began to burn the bones of their fellows, acquiring the cold ghostflame, but sealing their fate as dwellers of the underground for all eternity." .
 
 er:GiantAnt rdfs:label "Giant Ant" ;
@@ -7941,6 +8060,7 @@ er:GiantCrusher a er:Weapon ;
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 60 ;
+    er:weight "26.5"^^xsd:float ;
     rdfs:comment "A hammer made from a boulder, used in the War against the Giants.One of the heftiest weapons in the entire Lands Between. After the giants were quelled, and man turned against man in violence, this weapon was all but forgotten. Man has grown feeble in comparison to his forebears." .
 
 er:GiantDragonfly rdfs:label "Giant Dragonfly" ;
@@ -7991,6 +8111,7 @@ er:GiantsRedBraid a er:Weapon,
     er:requiresDexterity 12 ;
     er:requiresFaith 21 ;
     er:requiresStrength 18 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Hefty whip woven from the flame-red hair of a Fire Giant. Every giant is red of hair, and Radagon was said to have despised his own red locks. Perhaps that was a curse of their kind." .
 
 er:GiantsSeal a er:SacredSeal,
@@ -8003,6 +8124,7 @@ er:GiantsSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 14 ;
     er:requiresStrength 4 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal depicting the one eyed god of the Fire Giants, adorned with braids of red hair. Sacred seal wielded by Fire Monks and Prelates, this catalyst enhances Giants' Flame incantations." .
 
 er:GiantsflameFirePot a er:Consumable ;
@@ -8167,6 +8289,7 @@ er:GlintstoneKris a er:Dagger,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 5 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Ritual blade once presented to Leyndell by the Academy of Raya Lucaria to celebrate their newfound peace. Though the weapon is embedded with precious glintstones and features Erdtree ornamentation, the undulating blade is symbolic of an ancient ritual." .
 
 er:GlintstoneMiner rdfs:label "Glintstone Miner" ;
@@ -8398,6 +8521,7 @@ er:GodslayersGreatsword a er:ColossalSword,
     er:requiresDexterity 22 ;
     er:requiresFaith 20 ;
     er:requiresStrength 20 ;
+    er:weight "17.5"^^xsd:float ;
     rdfs:comment "Sacred sword of the Gloam-Eyed Queen who controlled the Godskin Apostles before her defeat at the hands of Maliketh. The black flames wielded by the apostles are channeled from this sword." .
 
 er:GodslayersSeal a er:SacredSeal,
@@ -8410,6 +8534,7 @@ er:GodslayersSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 27 ;
     er:requiresStrength 4 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal of the Godskin Apostles, inlaid with obsidian. Said to represent the manipulation of black flame, this catalyst enhances godslayer incantations." .
 
 er:GoldBracelets a er:Armor,
@@ -8488,6 +8613,7 @@ er:GoldenEpitaph a er:StraightSword,
     er:requiresDexterity 10 ;
     er:requiresFaith 14 ;
     er:requiresStrength 12 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A sword made to commemorate the death of Godwyn the Golden, first of the demigods to die. Infused with the humble prayer of a young boy; \"O brother, lord brother, please die a true death.\"" .
 
 er:GoldenGrease a er:Consumable ;
@@ -8554,6 +8680,7 @@ er:GoldenOrderSeal a er:SacredSeal,
     er:maxUpgradeLevel 10 ;
     er:requiresFaith 17 ;
     er:requiresIntelligence 17 ;
+    er:weight "0.0"^^xsd:float ;
     rdfs:comment "A formless sacred seal depicting the ceremonial observation of Order. Enhances Golden Fundamentalist incantations. Fundamentalism is scholarship in all but name. Scales incantation using both intelligence and faith." .
 
 er:GoldenParry rdfs:label "Golden Parry" ;
@@ -8671,6 +8798,7 @@ er:GolemFist a er:Fist,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 24 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "A giant fist of fractured rock. Taken from the body of a golem of the ruined forges. Carved with a smithscript enabling strong attacks to launch the entire fist straight ahead." .
 
 er:GolemGreatbow a er:Greatbow,
@@ -8685,6 +8813,7 @@ er:GolemGreatbow a er:Greatbow,
         er:GuardianGolem ;
     er:requiresDexterity 18 ;
     er:requiresStrength 24 ;
+    er:weight "14.5"^^xsd:float ;
     rdfs:comment "Greatbow of black stone crafted by a civilization now gone to ruin. Weapon of the Guardian Golem.Extremely heavy, this greatbow requires enormous strength just to draw, suggesting it was not designed for human use." .
 
 er:GolemSmith rdfs:label "Golem Smith" ;
@@ -8718,6 +8847,7 @@ er:GolemsHalberd a er:Weapon ;
     er:mentions er:GuardianGolem ;
     er:requiresDexterity 14 ;
     er:requiresStrength 36 ;
+    er:weight "21.5"^^xsd:float ;
     rdfs:comment "A great halberd of black stone crafted by a civilization now gone to ruin. Wielded by the Guardian Golem." .
 
 er:GolemsMagicArrow a er:Ammo ;
@@ -8773,6 +8903,7 @@ er:GraftedDragon a er:Fist,
     er:requiresDexterity 14 ;
     er:requiresFaith 16 ;
     er:requiresStrength 20 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "The embodiment of the power that still remained in the dragon's head that was grafted to Godrick's left arm. The wielder's arm will take the form of a small dragon, sprouting sharp dragon fangs at the fist.This weapon cannot be two-handed." .
 
 er:GrapeSpirit a er:NPC ;
@@ -8876,6 +9007,7 @@ er:GraveScythe a er:Reaper,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 17 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "Greatscythe comprised of a large blade affixed to a crooked stick. Weapon wielded by the aged grave keepers who tend the forgotten graveyards throughout the Lands Between. This weapon is said to have served as a charm against evil spirits in times of old." .
 
 er:GraveViolet a er:CraftingMaterial ;
@@ -8956,6 +9088,7 @@ er:GravelStoneSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 18 ;
     er:requiresStrength 4 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal made from Gravel Stone thought to be an ancient dragon scale. Enhances Dragon Cult incantations of the Royal Capital. The worship of the ancient dragons does not conflict with belief in the Erdtree. After all, this seal, and lightning itself, are both imbued with gold." .
 
 er:GravenMassTalisman a er:Talisman ;
@@ -9052,6 +9185,7 @@ er:GreatKnife a er:Dagger,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 6 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Large knife with a broad, curved blade. This weapon is designed to slash and rend, inflicting blood loss upon the recipient." .
 
 er:GreatMace a er:GreatHammer,
@@ -9075,6 +9209,7 @@ er:GreatMace a er:GreatHammer,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 28 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Huge bludgeon with sharp protrusions. An enlarged version of its smaller cousin. Maintains all the advantages of smaller bludgeons, boasting few deficiencies while being very capable at breaking enemy guards and stances. A shrewd choice for simple slugging matches." .
 
 er:GreatOmenkillerCleaver a er:Greataxe,
@@ -9099,6 +9234,7 @@ er:GreatOmenkillerCleaver a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 23 ;
+    er:weight "11.0"^^xsd:float ;
     rdfs:comment "The blade of this huge, loathsome cleaver comprises a row of amputated Omen horns. Weapon of slaughter wielded by Omen killers. The hideous horns cause blood loss, adding vibrant colors to the ongoing mayhem." .
 
 er:GreatOracularBubbleSkill rdfs:label "Great Oracular Bubble Skill" ;
@@ -9142,6 +9278,7 @@ er:GreatStars a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 22 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Huge bludgeon with three stars at the striking end. Though primarily a striking weapon, the stars' spikes cause blood loss.A blood-stained star is an ill omen, a fact not lost upon those against whom this weapon is brought to bear. Landing attacks slightly restores HP." .
 
 er:GreatTurtleShell a er:Shield ;
@@ -9275,6 +9412,7 @@ er:GreathornHammer a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 22 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Huge thick horn carved with tree ring-like markings adapted into a bludgeoning weapon. Wielded by ancestral follower warriors. The ancient horn is imbued with the power of ancestral spirits. A small amount of HP is restored upon defeating an enemy." .
 
 er:Greatjar a er:Armor,
@@ -9306,6 +9444,7 @@ er:GreatswordOfDamnation a er:Greatsword,
     er:requiresDexterity 15 ;
     er:requiresFaith 20 ;
     er:requiresStrength 20 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Golden greatsword that once pierced the body of Midra, master of the manse. Used by the hornsent in the execution of a damnation like no other. The barbs that pierce the victim from within wind gently around the blade." .
 
 er:GreatswordOfRadahnLight a er:ColossalSword,
@@ -9319,6 +9458,7 @@ er:GreatswordOfRadahnLight a er:ColossalSword,
     er:requiresDexterity 24 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 32 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Greatswords of black steel wielded by Radahn in his youth. A pair of weapons decorated with a lion mane motif. These were in his possession immediately before his triumph over the starsthe swords of a lord who does not rely on physical strength and gravity alone." .
 
 er:GreatswordOfRadahnLord a er:ColossalSword,
@@ -9332,6 +9472,7 @@ er:GreatswordOfRadahnLord a er:ColossalSword,
     er:requiresDexterity 24 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 32 ;
+    er:weight "19.0"^^xsd:float ;
     rdfs:comment "Greatswords of black steel wielded by Radahn in his youth. A pair of weapons decorated with a lion mane motif. These were in his possession immediately before his triumph over the starsthe swords of a lord who does not rely on physical strength and gravity alone." .
 
 er:GreavesOfNight a er:Armor,
@@ -9386,6 +9527,7 @@ er:Grossmesser a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 14 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Curved sword boasting a large blade. This weapon is designed to make use of its weight in combination with its sharp cutting edge. A thoroughly reliable choice of weapon for those who can master its particulars." .
 
 er:GroundSlam rdfs:label "Ground Slam" ;
@@ -9461,6 +9603,7 @@ er:GuardiansSwordspear a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 17 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Weapon comprising a long handle and broad blade sharpened from the hard wood of old trees. Wielded by guardians of the Minor Erdtrees, known as experts in the arts of combat. The power of this weapon scales greatly with dexterity." .
 
 er:Guillemot rdfs:label "Guillemot" ;
@@ -9651,6 +9794,7 @@ er:HaloScythe a er:Reaper,
     er:requiresDexterity 16 ;
     er:requiresFaith 15 ;
     er:requiresStrength 13 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "War scythe of the Cleanrot Knights who fought alongside Malenia, Blade of Miquella. This was the weapon of commanders in Malenia's army, and the half-halo blade deals holy damage." .
 
 er:HammerTalisman a er:Talisman ;
@@ -9681,6 +9825,7 @@ er:HandAxe a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Commonly known as a hatchet, this smaller variety of axe is an everyday work tool. Despite its short reach, it is easy to handle, exceling in successive attacks." .
 
 er:HandOfMalenia a er:Katana,
@@ -9693,6 +9838,7 @@ er:HandOfMalenia a er:Katana,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 48 ;
     er:requiresStrength 16 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "Blade built into Malenia's prosthetic arm. Through consecration it is resistant to rot. Malenia's war prosthesis symbolized her victories. Some claim to have seen wings when the weapon was raised aloft; wings of fierce determination that have never known defeat." .
 
 er:HarpBow a er:LightBow,
@@ -9705,6 +9851,7 @@ er:HarpBow a er:LightBow,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 9 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Bow fashioned from a minstrel's harp. Sonorous tones still resound when firing arrows. Troubadours sing tales of champions, both in the honorable service of the Erdtree, and the one who spurns honor for blasphemy." .
 
 er:HawkCrestWoodenShield a er:Shield ;
@@ -9769,6 +9916,7 @@ er:HeavyCrossbow a er:Crossbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 14 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Heavy crossbow with iron limbs, increasing damage dealt. Commonly employed in the Shattering." .
 
 er:HeavyMeteoriteFragment a er:Consumable ;
@@ -10018,6 +10166,7 @@ er:HighlandAxe a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Single-sided axe used by the warriors of the highlands. Brave combatants begin battle by crying out their names. Roars are enhanced by this weapon." .
 
 er:HighwayLookoutTowerAltusPlateau a er:Location ;
@@ -10116,6 +10265,7 @@ er:Hookclaws a er:Claw,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Weapon worn on the fist comprised of sharp parallel blades favored by those who lurk in the dark. Lacerations cause blood loss with great effect. Claw weapons come in pairs, and two-handing this weapon will equip it to both hands." .
 
 er:HornBow a er:Bow,
@@ -10130,6 +10280,7 @@ er:HornBow a er:Bow,
     er:requiresDexterity 14 ;
     er:requiresIntelligence 12 ;
     er:requiresStrength 10 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Longbow made from animal horn. Wielded by the master hunters of the ancestral followers. Imbues arrows fired with magic damage.Reveals its true worth when used with magic-infused arrows." .
 
 er:HornStrewnExcrement a er:CraftingMaterial ;
@@ -10187,6 +10338,7 @@ er:HornedWarriorsGreatsword a er:CurvedGreatsword,
     er:requiresDexterity 16 ;
     er:requiresFaith 13 ;
     er:requiresStrength 19 ;
+    er:weight "13.0"^^xsd:float ;
     rdfs:comment "Curved greatsword of the horned warriors, keepers of the tower. A heavy weapon made to bring the deft strength of the warriors to bear. The ornamental tangled horns allow the blade to serve as a medium for horn-calling." .
 
 er:HornedWarriorsSword a er:CurvedSword,
@@ -10200,6 +10352,7 @@ er:HornedWarriorsSword a er:CurvedSword,
     er:requiresDexterity 14 ;
     er:requiresFaith 14 ;
     er:requiresStrength 11 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Curved sword of the horned warriors, keepers of the tower. The ornamental tangled horns allow the blade to serve as a medium for horn-calling." .
 
 er:HornsentGrandam a er:NPC ;
@@ -10291,6 +10444,7 @@ er:HoslowsPetalWhip a er:Weapon,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Metal whip formed of razor-sharp chain-link blades that have theappearance of flower petals. This work of art is handed downthough the generations of the illustrious House Hoslow.High dexterity is required to wield this weapon, but it excels at inflicting devastation" .
 
 er:HostsTrickMirror a er:Consumable,
@@ -10356,6 +10510,7 @@ er:IcerindHatchet a er:Axe,
     er:mentions er:CastleSol ;
     er:requiresDexterity 16 ;
     er:requiresStrength 11 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "A hatchet with a frost-coated blade. One of several gifts given by Castle Sol in the distant north. Known as \"freezing fog,\" the blade is thought to be a dragon's scale. Inflicts a powerful frost effect." .
 
 er:IconShield a er:Shield ;
@@ -10422,6 +10577,7 @@ er:IgonsGreatbow a er:Greatbow,
     er:mentions er:Igon ;
     er:requiresDexterity 16 ;
     er:requiresStrength 23 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "Weapon of Igon, the broken drake warrior. A greatbow fashioned from two dragon bones bound with coarse rope. Covered in gashes left by claws. Imbued with Igon's obsession, enhancing the power of Igon's Harpoon." .
 
 er:IgonsHarpoon a er:Ammo ;
@@ -10630,6 +10786,7 @@ er:InseparableSword a er:Greatsword,
     er:requiresDexterity 18 ;
     er:requiresFaith 20 ;
     er:requiresStrength 18 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Sword forged by compounding silver and gold. A sacred weapon to hunt Those Who Live in Death. Deals holy damage. The inseparable twins found solace in the Golden Order, the only institution not to revile them as accursed beings." .
 
 er:IntelligenceKnotcrystalTear a er:CrystalTear ;
@@ -10719,6 +10876,7 @@ er:IronBall a er:Fist,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 11 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Iron manifer of spherical shape. Big Boggart the blackguard's weapon of choice. Not a weapon to be taken lightly, as its weighty blows shatter bones with ease." .
 
 er:IronCleaver a er:Axe,
@@ -10743,6 +10901,7 @@ er:IronCleaver a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 7 ;
     er:requiresStrength 15 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Fairly large iron cleaver, commonly used by the maltreated Misbegotten. Steeped in resentment, these weapons are swung wildly and relentlessly, often after rushing up to foes." .
 
 er:IronGauntlets a er:Armor,
@@ -10775,6 +10934,7 @@ er:IronGreatsword a er:Greatsword,
     er:mentions er:Greatsword ;
     er:requiresDexterity 10 ;
     er:requiresStrength 18 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Greatsword with a blade of unusually thick steel. A coarse weapon to which polishing is a foreign concept. Weighty even among others of its class, the impact of each strike is sure to be felt." .
 
 er:IronHelmet a er:Armor,
@@ -10858,6 +11018,7 @@ er:IronSpear a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 13 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Commonly used iron spear with no notable traits.The blade is severely rusted." .
 
 er:IronWhetblade a er:Whetblade ;
@@ -10914,6 +11075,7 @@ er:IvorySickle a er:Dagger,
     er:requiresDexterity 11 ;
     er:requiresIntelligence 13 ;
     er:requiresStrength 6 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Sickle fashioned form ivory. Weapon carried by aged Albunaurics. These weapons are evidence of their dedication to the Haligtree, despite never having entered its presence." .
 
 er:Jar a er:Armor,
@@ -10965,6 +11127,7 @@ er:JawboneAxe a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 14 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Axe made from a herbivore's skull. Weapon of the ancestral followers who disdain metal. This axe is more of a bludgeon; it forgoes a bladed edge, instead using the beast's molar teeth to buffet foes, dealing strike damage." .
 
 er:JellyfishShield a er:Shield ;
@@ -11073,6 +11236,7 @@ er:Katar a er:Fist,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Imported dagger design with a rather unique handle. The blade can be swung about as the extension of one's fist." .
 
 er:KeepWallKey a er:KeyItem ;
@@ -11178,6 +11342,7 @@ er:KnightsGreatsword a er:Greatsword,
     er:mentions er:Greatsword ;
     er:requiresDexterity 12 ;
     er:requiresStrength 16 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Greatsword bestowed upon skilled swordsmen in the demigods' service, and yet had no rank or title. Featuring a long grip enabling a dual-handed use, this weapon was designed to dispatch larger foes. Being charged with such a duty was undoubtedly a great honor." .
 
 er:KnightsLightningSpear a er:Incantation ;
@@ -11219,6 +11384,7 @@ er:LamentingVisage a er:Torch,
     er:isSomber true ;
     er:maxUpgradeLevel 10 ;
     er:requiresStrength 9 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "A stone lantern carved to resemble a lamenting human head, the eyes vacantly beaming out light. Can be raised up when equipped in the left hand, illuminating more of the surrounding area. The unusual expression somehow imparts a sense of contentment. The languid ease of one who needs not sight." .
 
 er:LanceTalisman a er:Talisman ;
@@ -11314,6 +11480,7 @@ er:LargeClub a er:GreatHammer,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 22 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "A thick, solid lump of wood. Wielding this striking weapon requires no skill. A simple, primitive weapon that requires only brute strength to swing about." .
 
 er:LargeGlintstoneScrap a er:Consumable ;
@@ -11383,6 +11550,7 @@ er:LazuliGlintstoneSword a er:StraightSword,
     er:requiresDexterity 9 ;
     er:requiresIntelligence 13 ;
     er:requiresStrength 8 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A sword with a glintstone in its handguards. Wielded by scholars of the Lazuli Conspectus who seek to master Carian sorcery. Deals magic damage. Apparently once used as a staff of sorcery, this sword is made of wood." .
 
 er:LazuliRobe a er:Armor,
@@ -11458,6 +11626,7 @@ er:LedasSword a er:LightGreatsword,
     er:requiresDexterity 22 ;
     er:requiresFaith 19 ;
     er:requiresStrength 11 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Light greatsword with gold inlaid. Weapon of Leda, the Needle Knight. Deals holy damage. Though polished to a mirror sheen, this blade still reeks with the stench of crusted blood that lingers from the cull of her knightly comrades." .
 
 er:LennesRise a er:Location ;
@@ -11602,6 +11771,7 @@ er:LightCrossbow a er:Crossbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Ranged weapon made from a bow fixed to a stock. Deals good damage and is simple to use, but requires reloading after firing. Bolts must be equipped to use a crossbow." .
 
 er:LightOfMiquella a er:Incantation ;
@@ -11637,6 +11807,7 @@ er:LightningPerfumeBottle a er:PerfumeBottle,
     er:requiresDexterity 16 ;
     er:requiresFaith 14 ;
     er:requiresStrength 3 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "Perfume bottle remade into a weapon by perfumers of the realm of shadow. Attacks release perfumed powder, producing lightning. From time to time, perfumers set out on journeys to pursue new aromatics and flower gardens." .
 
 er:LightningPot a er:Consumable ;
@@ -11704,6 +11875,7 @@ er:LionGreatbow a er:Greatbow,
         er:Spear ;
     er:requiresDexterity 18 ;
     er:requiresStrength 22 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "Greatbow of black iron wielded by General Radahn. Decorated with a lion mane motif. Imbued with gravitational power of the Starscourge, when used along with Radahn's Spear, it becomes a true weapon of a champion." .
 
 er:LionelsArmor a er:Armor,
@@ -11800,6 +11972,7 @@ er:LizardGreatsword a er:Greatsword,
     er:mentions er:Greatsword ;
     er:requiresDexterity 14 ;
     er:requiresStrength 12 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "A peculiar weapon carried by imps. Greatsword smithed in the shape of a fork-tongued lizard. Strong attacks allow the wielder to fire the forked tongue from the blade." .
 
 er:LoneWolf rdfs:label "Lone Wolf" ;
@@ -11832,6 +12005,7 @@ er:LonghaftAxe a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 24 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "Large iron axe with a long handle. Weapon of the maltreated Misbegotten. Making use of the force generated by its length, this weapon's resentment-charged blows are difficult to stop." .
 
 er:Longsword a er:StraightSword,
@@ -11856,6 +12030,7 @@ er:Longsword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A straight sword with a double-edged blade. In addition to its easily-inflicted standard damage, this well- balanced weapon can also perform powerful piercing attacks." .
 
 er:LongtailCatTalisman a er:Talisman ;
@@ -11934,6 +12109,7 @@ er:LordswornsGreatsword a er:Greatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 16 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Well-crafted straight sword with an illustrious design, wielded by regulars of a lord's army. Through blackened and damaged by years of use, it appears to have otherwise been kept in a serviceable condition, despite the soldiers having long since lost their minds." .
 
 er:LordswornsShield a er:Shield ;
@@ -11978,6 +12154,7 @@ er:LordswornsStraightSword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Well-crafted straight sword with an illustrious design, wielded by regulars of a lord's army. Though blackened and damaged by years of use, it appears to have otherwise been kept in a servicable condition, despite the soldiers having long since lost their minds." .
 
 er:LostAshesOfWar a er:AshOfWar,
@@ -12023,6 +12200,7 @@ er:Lucerne a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 15 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "This polearm features a hard, sharpened beak-like spike attached to its head, designed to pierce armor. Though designed mainly as a thrusting weapon, its long handle can be utilized to get around an enemy's guard with a sideward sweeping attack." .
 
 er:Lucidity a er:Sorcery ;
@@ -12062,6 +12240,7 @@ er:LusatsGlintstoneStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 10 ;
     er:requiresIntelligence 52 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Staff of the primeval glintstone sorcerer Lusat. Only those who have glimpsed what lies beyond the wisdom of stone may wield it. Enhances power of all sorceries, but consumes additional FP." .
 
 er:LusatsManchettes a er:Armor,
@@ -12115,6 +12294,7 @@ er:MaddingHand a er:Fist,
     er:requiresFaith 20 ;
     er:requiresIntelligence 13 ;
     er:requiresStrength 8 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "A glove stitched together from the flayed skin of the victims of a butcherous bloodbath. Afflicts target with madness. Raises attack power when madness is triggered in the vicinity. Forged of an unyielding, black impulse toward revenge fostered in those who were hunted down as heretics by their own brethren, these are the weapons of the utterly downtrodden." .
 
 er:MagicDownpour a er:Sorcery ;
@@ -12170,6 +12350,7 @@ er:MagmaBlade a er:CurvedSword,
     er:requiresDexterity 15 ;
     er:requiresFaith 16 ;
     er:requiresStrength 9 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Curved sword with a blade fashioned from the lava of Mt. Gelmir. An armament of the man-serpents, impossible for a human to have made. Deals fire damage." .
 
 er:MagmaBreath a er:Incantation ;
@@ -12193,6 +12374,7 @@ er:MagmaWhipCandlestick a er:Weapon,
     er:requiresDexterity 16 ;
     er:requiresFaith 18 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "This ritual implement is a three pronged candlestick with solidflames formed of the magma of Mt. Gelmir. When wielded as a weapon, the flames become supple whips oflava." .
 
 er:MagnusTheBeastClaw rdfs:label "Magnus the Beast Claw" ;
@@ -12221,6 +12403,7 @@ er:MainGauche a er:Dagger,
     er:mentions er:Dagger ;
     er:requiresDexterity 15 ;
     er:requiresStrength 7 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Dagger with a large hand guard. Intended to be used in the left hand, thereby complementing a piercing sword or identical blade held in the right to enable a distinctive style of fighting." .
 
 er:MaleighMaraisShadedCastleCastellan rdfs:label "Maleigh Marais, Shaded Castle Castellan" ;
@@ -12332,6 +12515,7 @@ er:MalikethsBlackBlade a er:ColossalSword,
     er:requiresDexterity 12 ;
     er:requiresFaith 20 ;
     er:requiresStrength 34 ;
+    er:weight "22.0"^^xsd:float ;
     rdfs:comment "Maliketh's black blade which once harbored the power of theRune of Death. A sad shadow of its former glory. After a fragment of Death was stolen on that fateful night,Maliketh bound the blade within his own flesh, such that nonemight ever rob Death again." .
 
 er:MalikethsGauntlets a er:Armor,
@@ -12434,6 +12618,7 @@ er:MantisBlade a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "A curved sword with a blade at both ends wielded by the Cemetery Shades, the insect-ridden grave keepers. The blade is thin and sharp, and strong attack unleashes a far-reaching slash." .
 
 er:MantleOfThorns a er:Sorcery ;
@@ -12604,6 +12789,7 @@ er:MarikasHammer a er:Hammer,
     er:requiresDexterity 12 ;
     er:requiresFaith 19 ;
     er:requiresStrength 20 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Stone hammer made in the lands of the Numen, outside the Lands Between. The tool with which Queen Marika shattered the Elden Ring and Radagon attempted to repair it. The hammer partially broke upon shattering the Ring, becoming splintered with rune fragments." .
 
 er:MarikasScarseal a er:Talisman ;
@@ -12870,6 +13056,7 @@ er:MessmerSoldiersAxe a er:Axe,
     er:mentions er:MessmerTheImpaler ;
     er:requiresDexterity 10 ;
     er:requiresStrength 14 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Weapon used by the soldiers who serve Messmer the Impaler. A steel axe, worn from use. A favorite of those who lost themselves utterly in their lord's war. Capable of performing powerful charge attacks." .
 
 er:MessmerSoldiersSpear a er:GreatSpear,
@@ -12895,6 +13082,7 @@ er:MessmerSoldiersSpear a er:GreatSpear,
     er:mentions er:MessmerTheImpaler ;
     er:requiresDexterity 16 ;
     er:requiresStrength 19 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Weapon used by the soldiers who serve Messmer the Impaler. A greatspear with a steel blade worn from use. Being made for overwhelming onslaughts, attacks with this weapon can be charged to unleash consecutive strikes." .
 
 er:MessmerfireGrease a er:Consumable ;
@@ -12965,6 +13153,7 @@ er:MeteoricOreBlade a er:Katana,
     er:requiresDexterity 14 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 15 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Katana forged from meteoric ore to dispatch lifeforms born of falling stars.Deals magic damage.The blade is weighty, known to deliver slashes of such ferocity that the impact is said to resemble the crash of a falling meteor." .
 
 er:MeteoriteStaff a er:GlintstoneStaff,
@@ -12974,6 +13163,7 @@ er:MeteoriteStaff a er:GlintstoneStaff,
     er:hasSkill er:NoSkill ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 6 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Staff embedded with a dark purple glintstone, said to be the fragment of a meteorite. Boasts high sorcery scaling and boosts gravity sorceries as well.However, this staff cannot be strengthened in any way." .
 
 er:MidrasFlameOfFrenzy a er:Incantation ;
@@ -13004,6 +13194,7 @@ er:Milady a er:LightGreatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 12 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "A light greatsword; that is, a sword whose blade matches the length of a greatsword, while being constrained to a minimal weight. Nicknamed after ladies of noble status for its refined appearance. With cultivated form, one can wield this weapon as swiftly as one might a straight sword." .
 
 er:MillicentsBoots a er:Armor,
@@ -13109,6 +13300,7 @@ er:MiquellanKnightsSword a er:StraightSword,
     er:requiresDexterity 11 ;
     er:requiresFaith 16 ;
     er:requiresStrength 11 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Sword forged by servants of Miquella of the Haligtree, with a design modeled after those carried by Carian knights. Instead of glintstone however, amber from the Haligtree is embedded in the blade. A sumptuous piece, yet it has never been offered to any knight an ill-starred sword with no master. Skill: Sacred Blade" .
 
 er:MiquellasLily a er:CraftingMaterial ;
@@ -13178,6 +13370,7 @@ er:MisbegottenShortbow a er:LightBow,
     er:mentions er:Shortbow ;
     er:requiresDexterity 8 ;
     er:requiresStrength 16 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Shortbow wielded by Winged Misbegotten. Fine fur clings to it.Designed to inflict additional damage by sacrificing range." .
 
 er:Misericorde a er:Dagger,
@@ -13188,6 +13381,7 @@ er:Misericorde a er:Dagger,
     er:mentions er:Dagger ;
     er:requiresDexterity 12 ;
     er:requiresStrength 7 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Dagger favored by military physicians in white. The pointed blade is hard and sharp, making critical hits especially potent. Medicine is mercy. and mercy upon the battlefield is ruthless. Beware the killers clothed as men of compassion" .
 
 er:MissionarysCookbook1 a er:Cookbook ;
@@ -13242,6 +13436,7 @@ er:MohgwynsSacredSpear a er:GreatSpear,
     er:requiresArcane 27 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 24 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Trident of Mohg, Lord of Blood. A sacred spear that will come to symbolize his dynasty. As well as serving as a weapon, it is an instrument of communion with an outer god who bestows power upon accursed blood. The mother of truth desires a wound." .
 
 er:MoldmongersBellBearing a er:BellBearing ;
@@ -13273,6 +13468,7 @@ er:MonksFlameblade a er:CurvedGreatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 18 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Curved sword with a flickering flame motif. Wielded by the Fire Monks who came from the Mountaintops of the Giants. The monks came to the land of Liurnia in pursuit of a fugitive who stole their fire." .
 
 er:MonksFlamemace a er:Hammer,
@@ -13297,6 +13493,7 @@ er:MonksFlamemace a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 13 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Battle hammer made to resemble flickering flames. Signature weapon of the Fire Monks, who hail from the Mountaintops of the Giants. The unique strong attack rouses fiery combative spirit." .
 
 er:MonstrousCrow rdfs:label "Monstrous Crow" ;
@@ -13331,6 +13528,7 @@ er:MoonrithyllsKnightSword a er:ColossalSword,
     er:requiresDexterity 14 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 20 ;
+    er:weight "18.0"^^xsd:float ;
     rdfs:comment "Greatsword embedded with a blue glintstone. The favored weapon of the steadfast Carian knight, Moonrithyll. Moonrithyll was the Twin Moon Knight's chamberlain. She was also a friend to the trolls, who served the royal family, and proudly wielded their weapons as she fought arm in arm with her gargantuan comrades." .
 
 er:MooresBellBearing a er:BellBearing ;
@@ -13355,6 +13553,7 @@ er:MorgottsCursedSword a er:CurvedGreatsword,
     er:requiresArcane 17 ;
     er:requiresDexterity 35 ;
     er:requiresStrength 14 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Warped blade of shifting hue used by Morgott, the Omen King. The accused blood that Morgott recanted and sealed away reformed into this blade." .
 
 er:MorneSpirit a er:NPC ;
@@ -13386,6 +13585,7 @@ er:MorningStar a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Battle hammer comprised of a globe attached to a handle. Though a bludgeon dealing strike damage, the appellative star is covered in spikes which cause blood loss. Ironic given its graceful name, this weapon often reeks of blood." .
 
 er:MottledNecklace a er:Talisman ;
@@ -13491,6 +13691,7 @@ er:Nagakiba a er:Katana,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 18 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "Katana with a ferociously long blade.Signature weapon of Yura, hunter of Bloody Fingers. Reminiscent of a reinforced spear, its imposing length can be put to good use with powerful thrusting attacks." .
 
 er:Nailstone a er:CraftingMaterial ;
@@ -13515,6 +13716,7 @@ er:NanayasTorch a er:Torch,
     er:requiresFaith 16 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A torch made by attaching a dying flame of frenzy to a small spinal column. In a distant land, in an age long past, was born a man who failed to become the Lord of Frenzied Flame. All that remains of him is cradled gently by Nanaya." .
 
 er:NascentButterfly a er:CraftingMaterial ;
@@ -13625,6 +13827,7 @@ er:NightriderGlaive a er:Halberd,
     er:mentions er:NightsCavalry ;
     er:requiresDexterity 10 ;
     er:requiresStrength 26 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "A jet-black glaive with a blade as weighty as a bludgeon. Weapon of the Night's Cavalry who ride funeral steeds. This glaive excels at weighty slash attacks that crash into foes, making it a powerful weapon even on horse back." .
 
 er:NightsCavalryArmor a er:Armor,
@@ -13712,6 +13915,7 @@ er:NoblesEstoc a er:ThrustingSword,
     er:mentions er:Estoc ;
     er:requiresDexterity 10 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Estoc carried by wandering nobles. Made to be easy to wield. Daubed with gold from tip to tail, it should fetch a good sum." .
 
 er:NoblesGloves a er:Armor,
@@ -13742,6 +13946,7 @@ er:NoblesSlenderSword a er:StraightSword,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 8 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Narrow blade carried by wandering nobles.Made to be easy to wield. Daubed with gold from tip to tail, it should fetch a good sum." .
 
 er:NoblesTravelingGarb a er:Armor,
@@ -14020,6 +14225,7 @@ er:NoxFlowingHammer a er:Hammer,
     er:mentions er:Mace ;
     er:requiresDexterity 7 ;
     er:requiresStrength 17 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Mace shaped like a suspended metal droplet wielded by monks of the Eternal City. Forged from liquid metal from a Silver Tear, it is thoroughly tempered until hardened." .
 
 er:NoxGreaves a er:Armor,
@@ -14142,6 +14348,7 @@ er:ObsidianLamina a er:Reaper,
     er:requiresArcane 17 ;
     er:requiresDexterity 25 ;
     er:requiresStrength 12 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Signature weapon of the Pureblood Knight Ansbach. A viciously keen and slender scythe made for combat. The obsidian edge relies not upon trickery to fulfil its violent purposethrough skill alone the wielder can rip and rend through foes, sowing blossoms of red upon the battlefield." .
 
 er:OctopusHead a er:Armor,
@@ -14259,6 +14466,7 @@ er:OmenCleaver a er:CurvedGreatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 19 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Heavy-bladed curved sword of colossal size awarded to Omen as a tool of war. This weapon is made to take advantage of brute strength. The pattern etched upon the blade is the remnant of a deteriorating malediction. Indeed, when bestowing a weapon, preparations must be made for taking it away." .
 
 er:OmenGauntlets a er:Armor,
@@ -14433,6 +14641,7 @@ er:ParryingDagger a er:Dagger,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 5 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "A knife with curved handguards. Designed to parry, turning foes' attacks against them. For master of combat who anticipate every enemy strike and counter accordingly, this weapon is all they need." .
 
 er:Partisan a er:Spear,
@@ -14458,6 +14667,7 @@ er:Partisan a er:Spear,
     er:mentions er:Spear ;
     er:requiresDexterity 12 ;
     er:requiresStrength 15 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Spear with a wide tip. In addition to its thrusting attacks, this highly versatile weapon can be swung to sweep through foes." .
 
 er:Pata a er:Fist,
@@ -14482,6 +14692,7 @@ er:Pata a er:Fist,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 11 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "A weapon comprised of a linear, double-sided blade attached to a substantial guard. Wielded by the Oathseeker Knights. This versatile armament can be swung about like a fist or used in the manner of a straight sword." .
 
 er:PaupersRune a er:Consumable ;
@@ -14681,6 +14892,7 @@ er:PestsGlaive a er:Halberd,
         er:SwampOfAeonia ;
     er:requiresDexterity 13 ;
     er:requiresStrength 13 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "Glaive made from a hard, sharpened shell. Wielded by the pests who emerged from the Swamp of Aeonia. Slightly increases non-physical damage negation. Though men might recognize the keen intellect of the pests evidenced by this spear's uncanny design, it will never be understood by them." .
 
 er:PhantomBloodyFinger rdfs:label "Phantom Bloody Finger" ;
@@ -14712,6 +14924,7 @@ er:Pickaxe a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 22 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Large pickaxe designed to crack thick bedrock. Tool of sturdy miners. Not originally designed as a weapon, but very adept at piercing armor. \"Little wretches, do you think your armor harder than stone?\"" .
 
 er:PickledTurtleNeck a er:Consumable ;
@@ -14759,6 +14972,7 @@ er:Pike a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 20 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "A longspear featuring an especially lengthy handle. Specialized for use from long distances, it boasts the longest reach of any melee weapon. Incredibly useful even against foes on horseback, but hard to wield in cramped spaces." .
 
 er:PilloryShield a er:Shield ;
@@ -14863,6 +15077,7 @@ er:PoisonedHand a er:Fist,
     er:requiresArcane 28 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 8 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "A glove stitched together from the flayed skin of the victims of a butcherous bloodbath. Afflicts target with deadly poison. Raises attack power when poisoning occurs in the vicinity. Forged of an unyielding, black impulse toward revenge fostered in those who have had everything burned or stolen from them, these are the weapons of the utterly downtrodden." .
 
 er:PoisonedStone a er:Consumable ;
@@ -14892,6 +15107,7 @@ er:PolebladeOfTheBud a er:Halberd,
     er:requiresArcane 20 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 14 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Weapon of Romina, Saint of the Bud. A scarlet glaive with a dangling bud-like blade. Attacks cause buildup of rot. Once, in the crumbling, burning church, Romina held the bud in speechless silence. That bud would become her blade." .
 
 er:PolterStone a er:Consumable ;
@@ -15023,6 +15239,7 @@ er:PrelatesInfernoCrozier a er:Weapon ;
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 45 ;
+    er:weight "23.5"^^xsd:float ;
     rdfs:comment "Colossal hammer with the appearance of roiling flames. Weapon of the Prelates who lead the Fire Monks.Its heft represents the weight of their guardianship. The hammer's head is unusually substantial, and strong attacks' will fling foes into the air." .
 
 er:PreservingBoluses a er:Consumable ;
@@ -15071,6 +15288,7 @@ er:PrinceOfDeathsStaff a er:GlintstoneStaff,
     er:requiresFaith 18 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 6 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Staff embedded with sullied amber, said to be a very part of the Prince of Death. Enhances death sorceries. One of the staves deemed heretical by the academy for its ability to allow sorceries to be augmented through faith in addition to intelligence." .
 
 er:PrisonerClothing a er:Armor,
@@ -15149,6 +15367,7 @@ er:PulleyBow a er:Bow,
     er:mentions er:Longbow ;
     er:requiresDexterity 11 ;
     er:requiresStrength 11 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Longbow which utilizes a series of pulleys and strings. The complex mechanism, which required advanced mathematical and mechanical understanding to craft, was likely made by a certain genius who learned Golden Order Fundamentalism. Enhances precision while shooting, enabling arrows to fly much further distances." .
 
 er:PulleyCrossbow a er:Crossbow,
@@ -15161,6 +15380,7 @@ er:PulleyCrossbow a er:Crossbow,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 16 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Crossbow made with pulleys and power springs. The complex mechanism, which required advanced mathematical and mechanical understanding to craft, was likely made by a certain genius who learned Golden Order fundamentalism. One touch fires a volley of bolts. Be warned; large stores of bolts can be quickly spent." .
 
 er:PumpkinHelm a er:Armor,
@@ -15202,6 +15422,7 @@ er:PutrescenceCleaver a er:Greataxe,
     er:requiresArcane 15 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 28 ;
+    er:weight "13.5"^^xsd:float ;
     rdfs:comment "Weapon wielded by the Putrescent Knight. A great cleaver of hardened putrescence affixed to an arch fashioned from human bones. Gains power from the wielder's arcane attribute." .
 
 er:PutrescenceSorcerer rdfs:label "Putrescence Sorcerer" ;
@@ -15235,6 +15456,7 @@ er:QueelignsGreatsword a er:HeavyThrustingSword,
     er:requiresDexterity 18 ;
     er:requiresFaith 12 ;
     er:requiresStrength 14 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Greatsword of the Fire Knight Queelign. A weighty piercing sword with a blade that undulates like fire. Queelign devoted his all to the crusade, and remade his greatsword in the shape of the lance wielded by his liegeaspiring to become a second Impaler." .
 
 er:QueensBracelets a er:Armor,
@@ -15278,6 +15500,7 @@ er:RabbathsCannon a er:Weapon ;
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 28 ;
+    er:weight "15.0"^^xsd:float ;
     rdfs:comment "A type of jar cannon used to fire greatbolts. A masterwork of Spellmachinist Rabbath. The power of the glintstones that encircle the barrel imbues bolts with magic damage and guides shots toward their targets." .
 
 er:RabbathsGreatbolt a er:Ammo ;
@@ -15576,6 +15799,7 @@ er:Rapier a er:ThrustingSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 7 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "A piercing sword with a sharp, slender blade.In addition to this weapon's thrusting attack prowess, it also boasts the ability to be used while guarding with a shield. As one of the smaller piercing swords, quick successive thrust area easy to perform, but without a cutting edge, it cannot be used for slashing attacks." .
 
 er:RaptorOfTheMists rdfs:label "Raptor of the Mists" ;
@@ -15603,6 +15827,7 @@ er:RaptorTalons a er:Claw,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 6 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Claw comprised of two sharp, thin blades, wielded by the assassins of Ravenmount, this weapon allows them to imitate the attacks of Deathbirds. Besides excelling at airborne attacks, its charge attack mimics the vicious swoop of a bird of prey." .
 
 er:RaptorsBlackFeathers a er:Armor,
@@ -15684,6 +15909,7 @@ er:RedBranchShortbow a er:LightBow,
     er:mentions er:Shortbow ;
     er:requiresDexterity 16 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Shortbow of polished red wood. Fashioned by a master craftsman and wielded by pages. A bow which requires dexterity rather than strength to master." .
 
 er:RedCrestHeaterShield a er:Shield ;
@@ -15832,6 +16058,7 @@ er:Reduvia a er:Dagger,
     er:requiresArcane 13 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 5 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Jagged dagger with a distinctive curled blade.Carried by the noble servants of the Lord of Blood. This dagger rips the flesh as it enters, inflicting blood loss with sickening efficacy. A proud testament to the success of its vicious design, this weapon is perpetually coated in blood." .
 
 er:RegalOmenBairn a er:Tool ;
@@ -15850,6 +16077,7 @@ er:RegaliaOfEochaid a er:StraightSword,
     er:requiresArcane 15 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 12 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Treasured sword of Eochaid, a lesser, long-vanished domain. The copper coloration is not to be confused for rust, but is a conduit for its wielder to move it by their will alone. Swords of Eochaid dance through the skies" .
 
 er:Rejection a er:Incantation ;
@@ -15909,6 +16137,7 @@ er:RellanasTwinBlades a er:LightGreatsword,
     er:requiresFaith 16 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 13 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Carian light greatsword embedded with blue glintstone. Weapon of Rellana, the Twin Moon Knight. Two swords as a single armament. When two-handing, a straight sword engraved with golden flame will be carried in the left hand. Here, and here alone, were moon and fire ever together." .
 
 er:RellanasTwinMoons a er:Sorcery ;
@@ -15976,6 +16205,7 @@ er:RepeatingCrossbow a er:Crossbow,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 13 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "A mechanized crossbow that has been fitted with a fan-shaped contraption. This metallic piece adds a reloading system used in the execution of a unique battle art." .
 
 er:RetaliatoryCrossedTree a er:Talisman ;
@@ -16066,6 +16296,7 @@ er:RingedFinger a er:Hammer,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 15 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Bludgeon made of an enormous finger sheathed in several heavy rings. Thought to have been cut from an ancestor of the Fingercreeper. Some life yet remains in this legacy of an ancient act of blasphemy, as evidenced by the barely perceptible warmth it still exudes." .
 
 er:RingsOfSpectralLight a er:Sorcery ;
@@ -16084,6 +16315,7 @@ er:RippleBlade a er:Axe,
     er:requiresArcane 20 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 11 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Unique weapon wielded by young Albinaurics, this sword is modelled after the ripples that are thought to be the origin of their species. Its attack power is greatly enhanced with one's arcane attribute." .
 
 er:RippleCrescentHalberd a er:Halberd,
@@ -16097,6 +16329,7 @@ er:RippleCrescentHalberd a er:Halberd,
     er:requiresArcane 20 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 12 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Weapon wielded by young Albinaurics. The blade is said to resemble a partial image of a ripple, and its attack power scales with one's arcane attribute." .
 
 er:RitualPot a er:KeyItem ;
@@ -16127,6 +16360,7 @@ er:RiversOfBlood a er:Katana,
     er:requiresArcane 20 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 12 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Weapon of Okina, swordsman from the Land of Reeds.A cursed weapon that has felled countless men. When Mohg, the Lord of Blood, first felt Okina's sword, and madness, upon his flesh, he had a proposal, to offer Okina the life of a demon, whose thirst would never go unsated." ;
     owl:sameAs wd:Q111175022 .
 
@@ -16197,6 +16431,7 @@ er:RogiersRapier a er:ThrustingSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 8 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Piercing sword of superior quality, featuring intricate ornamentation. Signature weapon of the sorcerer Rogier. High dexterity is required to wield the blade to its full potential, but mastery is a sight to behold, characterized by a flowing style which excels in successive attacks." .
 
 er:RoilingMagma a er:Sorcery ;
@@ -16318,6 +16553,7 @@ er:RosusAxe a er:Axe,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 18 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Usher of Death, Rosus, who shows the path to the catacombs throughout the Lands Between, is depicted on this ritual axe. The dead easily lose their way, and have always been in sore need of a guiding hand." .
 
 er:RotGrease a er:Consumable ;
@@ -16370,6 +16606,7 @@ er:RottenBattleHammer a er:GreatHammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 26 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Large iron great hammer designed for gladiatorial combat, now festering with scarlet rot. Weighty enough to crush armor and its wearer alike. Skill: Braggart's Roar Declare your presence with a boastful roar. Raises attack power, defense, and stamina recovery speed." .
 
 er:RottenBreath a er:Incantation ;
@@ -16397,6 +16634,7 @@ er:RottenCrystalSpear a er:Spear,
     er:requiresDexterity 16 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 10 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Spear fashioned from pure crystal; a deed impossible for a human. It festers with scarlet rot.Enwreathed with powerful magic, its attack scales with intelligence." .
 
 er:RottenCrystalStaff a er:GlintstoneStaff,
@@ -16412,6 +16650,7 @@ er:RottenCrystalStaff a er:GlintstoneStaff,
     er:mentions er:Crystalian ;
     er:requiresIntelligence 48 ;
     er:requiresStrength 8 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Staff fashioned from pure crystal; a deed impossible for a human. It festers with scarlet rot. Enhances Crystalian sorceries." .
 
 er:RottenCrystalSword a er:StraightSword,
@@ -16427,6 +16666,7 @@ er:RottenCrystalSword a er:StraightSword,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 13 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Sword fashioned from pure crystal; a deed impossible for a human.It festers with scarlet rot. Enwreathed with powerful magic, its attack scales with intelligence." .
 
 er:RottenDuelist rdfs:label "Rotten Duelist" ;
@@ -16477,6 +16717,7 @@ er:RottenGreataxe a er:Weapon ;
     er:mentions er:Greataxe ;
     er:requiresDexterity 10 ;
     er:requiresStrength 30 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Greataxe designed for gladiatorial combat, now festering with scarlet rot. Used by duelists who were exiled from the colosseum." .
 
 er:RottenStaff a er:Weapon ;
@@ -16490,6 +16731,7 @@ er:RottenStaff a er:Weapon ;
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 34 ;
+    er:weight "18.0"^^xsd:float ;
     rdfs:comment "Ceremonial staff depicting the Erdtree in its historic radiance. It festers with scarlet rot. Wielded by the avatars who protect the Minor Erdtrees." .
 
 er:RottenStrayAshes a er:SpiritAsh ;
@@ -16552,6 +16794,7 @@ er:RoyalGreatsword a er:ColossalSword,
     er:requiresDexterity 18 ;
     er:requiresIntelligence 22 ;
     er:requiresStrength 26 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Greatsword decorated in royal Carian Style. Favored weapon of Blaidd the Half-Wolf. In defiance of the fate he was born to, Blaidd swore to serve no master but Ranni. As proof. the sword was imbued with a cold magic at the moment oath was sworn." .
 
 er:RoyalHouseScroll a er:KeyItem ;
@@ -16759,6 +17002,7 @@ er:SacredRelicSword a er:Greatsword,
     er:requiresDexterity 24 ;
     er:requiresFaith 22 ;
     er:requiresStrength 14 ;
+    er:weight "11.0"^^xsd:float ;
     rdfs:comment "Sword wrought from the remains of a god who should have lived a life eternal. Thoughts on what the weapon portends are many and varied. Some consider it the mark of a great sin, or a sign of great devastation. Some think of it as the end of an age, while others; the beginning." .
 
 er:SacredRingOfLight rdfs:label "Sacred Ring of Light" ;
@@ -16952,6 +17196,7 @@ er:ScavengersCurvedSword a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Unique curved sword, notched like shark's teeth. Weapon carried by corpse pillagers who prowl the sites of old battles. The blade is tacky with blood and covered in hefty nicks, making it totally uneven. Life can be sinister indeed." .
 
 er:ScholarsArmament a er:Sorcery ;
@@ -16989,6 +17234,7 @@ er:Scimitar a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 7 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "A curved sword with a single-sided blade. Delivers slashing attacks with its sharp blade, but is ineffective against armor and hides covered in tough scales. Smaller in size than most curved swords, it carves into enemies with quick, sharp cuts." .
 
 er:ScorchedRuins a er:Location ;
@@ -17044,6 +17290,7 @@ er:ScorpionsStinger a er:Dagger,
     er:mentions er:Dagger ;
     er:requiresDexterity 12 ;
     er:requiresStrength 6 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Dagger fashioned from a great scorpion's tail, glistening with scarlet rot. A ceremonial tool used by heretics, crafted from the relic of a sealed outer god." .
 
 er:Scriptstone a er:Consumable ;
@@ -17093,6 +17340,7 @@ er:Scythe a er:Reaper,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 14 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Large scythe featuring a long, slender blade. Designed to reap, this weapon is capable of rapidly inflicting blood loss while also slipping through an enemy's guard. In the hands of a highly dexterous wielder it is capable of striking fear into the heart of any foe." .
 
 er:SellensBellBearing a er:BellBearing ;
@@ -17157,6 +17405,7 @@ er:SentrysTorch a er:Torch,
     er:requiresDexterity 8 ;
     er:requiresFaith 15 ;
     er:requiresStrength 15 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Torch Given to protectors of the Erdtree. Its flames are bestowed with a special incantation which allows the bearer to see assassins cloaked in veils. Furnished on behalf of the Erdtree and the Grace-Given Lord such that a Night of Black Knives will never come again." .
 
 er:Seppuku rdfs:label "Seppuku" ;
@@ -17199,6 +17448,7 @@ er:SerpentFlail a er:Flail,
     er:requiresDexterity 24 ;
     er:requiresFaith 21 ;
     er:requiresStrength 10 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "A flail with coiled snakes for bludgeoning heads. Fire roars within the snakes' bodies, inflicting horrible burns. Some of Messmer's army used these flails to burn hornsentto brand them with agony and fear." .
 
 er:SerpentGodsCurvedSword a er:CurvedSword,
@@ -17223,6 +17473,7 @@ er:SerpentGodsCurvedSword a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 13 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Curved sword fashioned in the image of an ancient serpent deity and tool of a forgotten religion practiced on Mt. Gelmir. Formerly used to offer up sacrifices, this sword restores HP upon slaying an enemy." .
 
 er:SerpentSnail rdfs:label "Serpent Snail" ;
@@ -17240,6 +17491,7 @@ er:SerpentboneBlade a er:Katana,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 11 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Sinister katana modeled after a serpent bone. The densely packed row of spines that jut away from the cutting edge are coated in a lethal poison." .
 
 er:ServantOfRot rdfs:label "Servant of Rot" ;
@@ -17329,6 +17581,7 @@ er:ShadowSunflowerBlossom a er:Weapon ;
     er:requiresDexterity 8 ;
     er:requiresFaith 25 ;
     er:requiresStrength 24 ;
+    er:weight "16.0"^^xsd:float ;
     rdfs:comment "The head of a monstrous shadow sunflower manifestation of the Scadutree. Then again, it might be just a flower, wielded as a weapon. Much like the Scadutree itself in appearance, a second stalk winds tightly around the first, almost as if in a tender embrace." .
 
 er:ShadowUndead rdfs:label "Shadow Undead" ;
@@ -17378,6 +17631,7 @@ er:Shamshir a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 7 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Curved sword with a thin blade of ample length. Light of weight despite its larger size, its slicing attacks come in rapid succession. A devastatingly powerful weapon in the hands of a skilled swordsman." .
 
 er:ShardOfAlexander a er:Talisman ;
@@ -17502,6 +17756,7 @@ er:ShortSpear a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "An exceedingly plain spear of modest weight. Simple to wield compared to many of its peers, its strong attack unleashes a series of successive piercing thrusts." .
 
 er:ShortSword a er:StraightSword,
@@ -17526,6 +17781,7 @@ er:ShortSword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 8 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "A short straight sword with a short blade. In addition to its reliable standard damage, this weapon also boasts powerful piercing attacks. Lightweight amongst straight swords, this weapon is easy to wield, requiring only humble attributes." .
 
 er:Shotel a er:CurvedSword,
@@ -17550,6 +17806,7 @@ er:Shotel a er:CurvedSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 19 ;
     er:requiresStrength 9 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Curved sword with a severely hooked blade. Its attacks can slip through an enemy's guard. Made to hunt down humans, this weapon requires high dexterity to wield efficiently." .
 
 er:ShriekOfSorrow rdfs:label "Shriek of Sorrow" ;
@@ -17768,6 +18025,7 @@ er:SmithscriptAxe a er:Axe,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 13 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Axe engraved with a smithscript. A throwing weapon created through the smithing arts. Execute a strong attack or jumping strong attack to throw the axe." .
 
 er:SmithscriptCirque a er:BackhandBlade,
@@ -17794,6 +18052,7 @@ er:SmithscriptCirque a er:BackhandBlade,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 9 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Circular backhand blade engraved with a smithscript. A throwing weapon created through the smithing arts. Execute a strong attack to throw the backhand blade, causing it to fly in a curved trajectory." .
 
 er:SmithscriptDagger a er:ThrowingBlade,
@@ -17821,6 +18080,7 @@ er:SmithscriptDagger a er:ThrowingBlade,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 5 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Dagger engraved with a smithscript. Reduced mass enhances the effects of the smithing arts, allowing this weapon to function as a throwing dagger for all attacks. Once thrown, the dagger instantly reappears in the wielder's hand." .
 
 er:SmithscriptGreathammer a er:GreatHammer,
@@ -17847,6 +18107,7 @@ er:SmithscriptGreathammer a er:GreatHammer,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 20 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Greathammer engraved with a smithscript. A throwing weapon created through the smithing arts. Execute a strong attack or dashing strong attack to spin and fling the greathammer." .
 
 er:SmithscriptShield a er:Shield ;
@@ -17882,6 +18143,7 @@ er:SmithscriptSpear a er:Spear,
     er:requiresFaith 11 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 9 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Spear engraved with a smithscript. A throwing weapon created through the smithing arts. Execute a strong attack, a dashing strong attack, or a mounted strong attack to throw the spear." .
 
 er:SmolderingChurch a er:Location ;
@@ -17952,6 +18214,7 @@ er:SoldiersCrossbow a er:Crossbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 10 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A crossbow of simple make, usable by anyone, but lacking in both power and accuracy. Bolts must be equipped to use a crossbow." .
 
 er:SomberSmithingStone2 a er:UpgradeMaterial ;
@@ -18049,6 +18312,7 @@ er:SpearOfTheImpaler a er:GreatSpear,
     er:requiresDexterity 35 ;
     er:requiresFaith 18 ;
     er:requiresStrength 14 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "Weapon of Messmer the Impaler. A greatspear with a warped blade in the shape of undulating flame. Remade by the forging arts of the realm of shadow, this weapon can be thrown by executing a strong attack, dashing strong attack, or mounted strong attack. Charge the attack to produce flame on impact." .
 
 er:SpearTalisman a er:Talisman ;
@@ -18166,6 +18430,7 @@ er:SpikedCaestus a er:Fist,
     er:mentions er:Caestus ;
     er:requiresDexterity 10 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "A Caestus with the rivets replaced by blood loss-inducing spikes. Fists weapons come in pairs, and two-handing this weapon will equip it to both hands." .
 
 er:SpikedClub a er:Hammer,
@@ -18190,6 +18455,7 @@ er:SpikedClub a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 7 ;
     er:requiresStrength 12 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "A club with beast fangs wrapped around the striking end. The uneven spread of fangs causes blood loss. Given only to the toughest of demi-humans, this weapon is a badge of honor. Or so the demi-humans believe." .
 
 er:SpikedCrackedTear a er:CrystalTear ;
@@ -18238,6 +18504,7 @@ er:SpikedSpear a er:Spear,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 14 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Weapon comprised of a spiked cylinder attached to a long pole. Capable of dealing strike damage when swung. The spikes induce blood loss. Weapon of the Marionette Soldiers employed by sorcerers." .
 
 er:SpinningGravityThrust rdfs:label "Spinning Gravity Thrust" ;
@@ -18281,6 +18548,7 @@ er:SpiraltreeSeal a er:SacredSeal,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 17 ;
     er:requiresStrength 8 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "Sacred seal of soiled amber engraved with a spiral tree design. Enhances spiral incantations. The majesty of the white tower, stretching to reach the gods, even inspired a secret faith in the invaders, the people of the Erdtree." .
 
 er:SpiritCalculus a er:CraftingMaterial ;
@@ -18304,6 +18572,7 @@ er:SpiritGlaive a er:Halberd,
     er:requiresDexterity 17 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 14 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Sharp blade sculpted into a twisted shape. A glaive that has seen many years of use in the gravesite. Said to serve as a medium for communion with spirits." .
 
 er:SpiritJellyfish rdfs:label "Spirit Jellyfish" ;
@@ -18330,6 +18599,7 @@ er:SpiritSword a er:CurvedSword,
     er:requiresDexterity 16 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Sharp blade sculpted into a twisted shape. A sword that has seen many years of use in the gravesite. Said to serve as a medium for communion with spirits." .
 
 er:SpiritcallerCave a er:Location ;
@@ -18357,6 +18627,7 @@ er:SpreadCrossbow a er:Crossbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 11 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "A modified crossbow made by combining two crossbows into one. Capable of loading multiple bolts and firing them simultaneously, enabling a spread of fire." .
 
 er:Springhare rdfs:label "Springhare" ;
@@ -18414,6 +18685,7 @@ er:StaffOfLoss a er:GlintstoneStaff,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 6 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Staff missing its glintstone. Wielded by sorcerers who believe that discovery comes through acts of asceticism. This staff only distinguishes itself when casting invisibility sorceries, but that is reason enough for some to wield it." .
 
 er:StaffOfTheGreatBeyond a er:Weapon ;
@@ -18426,6 +18698,7 @@ er:StaffOfTheGreatBeyond a er:Weapon ;
     er:requiresFaith 25 ;
     er:requiresIntelligence 25 ;
     er:requiresStrength 7 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Staff fashioned from the tail-fingers of Metyr, the Mother of Fingers, and the microcosm raised aloft over the crux they form. Catalyst for casting both sorceries and incantations. The Mother received signs from the Greater Will from the beyond of the microcosm. Despite being broken and abandoned, she kept waiting for another message to come." .
 
 er:StaffOfTheGuilty a er:GlintstoneStaff,
@@ -18438,6 +18711,7 @@ er:StaffOfTheGuilty a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresFaith 12 ;
     er:requiresStrength 8 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "A heretical staff fashioned from a smoldering, withered sapling that turns the blood of sacrifices pierced by it into glintstone. Similar to hex magic. Sorceries are scaled with faith rather than intelligence when wielding this staff which enhances Thorn sorceries in particular." .
 
 er:StalwartHornCharm a er:Talisman ;
@@ -18488,6 +18762,7 @@ er:StarFist a er:Fist,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 12 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Spherical iron manifer covered in spikes which induce blood loss. Used in brutal games of pugilism." .
 
 er:StarShower a er:Sorcery ;
@@ -18540,6 +18815,7 @@ er:StarscourgeGreatsword a er:ColossalSword,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 38 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Curved greatswords of black steel wielded by General Radahn. A pair of weapons decorated with a lion mane motif. Radahn earned considerable renown as the Starscourge in his youth, and it is said that it was during this time he engraved the gravity crest upon these blades." .
 
 er:StarscourgeHeirloom a er:Talisman ;
@@ -18559,6 +18835,7 @@ er:SteelWireTorch a er:Torch,
     er:mentions er:Torch ;
     er:requiresDexterity 8 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Torch wound with metal wire. The flame can illuminate dark locales, or be used to attack enemies. Heavier than a normal torch, but the heated filament boosts fire damage dealt." .
 
 er:StimulatingBoluses a er:Consumable ;
@@ -18588,6 +18865,7 @@ er:StoneClub a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 16 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "Signature weapon of battlemages, hewn from hard glintstone. This club is much heavier than its size suggests, but has no magic power. So that they not lose sight of the true essence of combat, battlemages prefer to feel the impact of their blows, fighting their opponents hand to hand." .
 
 er:StoneOfGurranq a er:Incantation ;
@@ -18605,6 +18883,7 @@ er:StoneSheathedSword a er:StraightSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 16 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "A sword that none can pull from its scabbard of cracked stone. Relic of a lost civilization from a time long past, said to have served a ritual purpose at altars of light and darkness." .
 
 er:StoneswordKey a er:KeyItem ;
@@ -18784,6 +19063,7 @@ er:SwiftSpear a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 26 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "A metal-bodied spear of extremely lightweight make, being the result of a sophisticated molding technique. Capable of swift consecutive attacks." .
 
 er:SwollenGrape a er:CraftingMaterial ;
@@ -18818,6 +19098,7 @@ er:SwordLance a er:HeavyThrustingSword,
     er:mentions er:CommanderGaius ;
     er:requiresDexterity 11 ;
     er:requiresStrength 21 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Weapon once wielded by Commander Gaius. A combination of greatsword and lance. Weighty and capable of being brought to bear with great force, this armament shows its true potential when used astride a mount. Gaius himself was never without his boar." .
 
 er:SwordOfDarkness a er:StraightSword,
@@ -18831,6 +19112,7 @@ er:SwordOfDarkness a er:StraightSword,
     er:requiresDexterity 11 ;
     er:requiresFaith 24 ;
     er:requiresStrength 14 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Sword of darkness, pulled from its stone scabbard at an altar. From the quick of the root, wandering coils of darkness coalesce and release, their eddies and vortices giving form to the dark blade." .
 
 er:SwordOfLight a er:StraightSword,
@@ -18844,6 +19126,7 @@ er:SwordOfLight a er:StraightSword,
     er:requiresDexterity 11 ;
     er:requiresFaith 24 ;
     er:requiresStrength 14 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Sword of light, pulled from its stone scabbard at an altar. From the quick of the root, unswerving rays of light intersect and reflect to give the silver blade form." .
 
 er:SwordOfMilos a er:Greatsword,
@@ -18856,6 +19139,7 @@ er:SwordOfMilos a er:Greatsword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 19 ;
     er:requiresStrength 15 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Sinister greatsword fashioned from a giant's backbone. Metes out wounds like a lopsided saw-blade, and restores some FP upon defeating an enemy. Milos was undersized for a giant, and was viewed as sullied and terribly grotesque." .
 
 er:SwordOfNight a er:Katana,
@@ -18869,6 +19153,7 @@ er:SwordOfNight a er:Katana,
     er:mentions er:Jolan ;
     er:requiresDexterity 20 ;
     er:requiresStrength 11 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Sword of an all-consuming, bottomless black that devours even the light that shines upon it. Wielded by Jolan, Swordhand of Night. The blade of the sword is only semicorporeal, and thus cannot be guarded against completely." .
 
 er:SwordOfNightAndFlame a er:StraightSword,
@@ -18884,6 +19169,7 @@ er:SwordOfNightAndFlame a er:StraightSword,
     er:requiresFaith 24 ;
     er:requiresIntelligence 24 ;
     er:requiresStrength 12 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Storied sword and treasure of Caria Manor.One of the legendary armaments. Astrologers, who preceded the sorcerers, established themselves in mountaintops that nearly touched the sky, and considered the Fire Giants their neighbors." .
 
 er:SwordOfStTrina a er:StraightSword,
@@ -18900,6 +19186,7 @@ er:SwordOfStTrina a er:StraightSword,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Silver sword carried by clerics of St. Trina. Inflicts sleep ailment upon foes. St. Trina is an enigmatic figure. Some say she is a comely young girl, others are sure he is a boy. The only certainty is that their appearance was as sudden as their disappearance." .
 
 er:SwordhandOfNightJolan a er:SpiritAsh ;
@@ -19092,6 +19379,7 @@ er:ThiolliersHiddenNeedle a er:Fist,
     er:requiresDexterity 22 ;
     er:requiresIntelligence 15 ;
     er:requiresStrength 10 ;
+    er:weight "0.5"^^xsd:float ;
     rdfs:comment "Concealed weapon used by Thiollier, of a design generally favored by poison-wielders for dark and subtle purposes. Like St. Trina, who blossomed in the deep-purple garden, a rich poison is secreted from within which sends its victims into an eternal sleep." .
 
 er:ThiolliersMask a er:Armor,
@@ -19156,6 +19444,7 @@ er:ThornedWhip a er:Weapon,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Hefty whip coverd in crimson thorns. Weapon of the Prelates who lead the Fire Monks. A device of fearsome religious encouragement, it is fashioned in the image of the briars of sin. Very effective at inflicting blood loss." .
 
 er:ThrowingDagger a er:Consumable ;
@@ -19193,6 +19482,7 @@ er:ToothWhip a er:Weapon,
     er:mentions er:Whip ;
     er:requiresDexterity 24 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Whip bestrewn with rotting, misshapen teeth. Filthy and seething with disease, the teeth are embedded in the whip and dose the victim with deadly poison upon each strike. As the wounds ripen they grow inflamed and ooze pus. The flesh of shamans was said to meld harmoniously with others." .
 
 er:Torches a er:Tool ;
@@ -19211,6 +19501,7 @@ er:Torchpole a er:Spear,
     er:mentions er:Torch ;
     er:requiresDexterity 15 ;
     er:requiresStrength 14 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Torch fastened to a long pole. Lights up dark areas, but cannot be raised overhead. Used by soldiers on watch, its attacks set foes aflame." .
 
 er:TowerOfReturnSpirit a er:NPC ;
@@ -19369,6 +19660,7 @@ er:Treespear a er:GreatSpear,
     er:requiresDexterity 22 ;
     er:requiresFaith 18 ;
     er:requiresStrength 15 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "Golden spear with tree-like design. Wielded by knights employed as palace guards in the Royal Capital of Leyndell. Deals holy damage. Requiring superior dexterity to wield, this greatspear can perform consecutive thrust attacks despite its larger size." .
 
 er:TrinasLily a er:CraftingMaterial ;
@@ -19401,6 +19693,7 @@ er:TrollKnightsSword a er:ColossalSword,
     er:requiresDexterity 14 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 20 ;
+    er:weight "18.0"^^xsd:float ;
     rdfs:comment "Greatsword embedded with a blue glintstone.Weapon of the trolls in service to the royal family of Caria. Called into service when the Queen invoked an oath they swore, the trolls are treated as true knights of Caria, and fight arm in arm with their human comrades." .
 
 er:TrollsGoldenSword a er:ColossalSword,
@@ -19425,6 +19718,7 @@ er:TrollsGoldenSword a er:ColossalSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 29 ;
+    er:weight "19.0"^^xsd:float ;
     rdfs:comment "Sword given to the lesser giants who fought for the Erdtree during the War against the Giants long ago. Though the giants have lost their minds, they stay inseparable from their swords that are in sad shapesuch that the gold plating had flaked away." .
 
 er:TrollsHammer a er:Weapon ;
@@ -19437,6 +19731,7 @@ er:TrollsHammer a er:Weapon ;
     er:requiresDexterity 8 ;
     er:requiresFaith 10 ;
     er:requiresStrength 28 ;
+    er:weight "16.0"^^xsd:float ;
     rdfs:comment "Mining tool of stonedigger trolls used to crack bedrock. Trolls are descended from the giants, and these were supposedly once used as ceremonial smithing tools. In the distant past, smithing was considered divine." .
 
 er:Turtle rdfs:label "Turtle" ;
@@ -19515,6 +19810,7 @@ er:TwinnedKnightSwords a er:Twinblade,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 16 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "An attractive twinblade of fine make that prizes the chivalric way. Can be wielded with a single hand, but its true strength is unlocked with dual-handed spinning attacks." .
 
 er:TwinsageGlintstoneCrown a er:Armor,
@@ -19574,6 +19870,7 @@ er:Uchigatana a er:Katana,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 11 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "A katana with a long single-edged curved blade. A unique weapon wielded by the samurai from the Land of Reeds. The blade, with its undulating design, boasts extraordinary sharpness, and its slash attacks cause blood loss." .
 
 er:UhlPalaceRuins a er:Location ;
@@ -19640,6 +19937,7 @@ er:Urumi a er:Weapon,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 19 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "This weapon made of extremely thin, flexible blades of metal is wielded like a whip by Nightfolk warriors. Though in essence a whip with a cutting edge, it can also be used as a spear to pierce foes." .
 
 er:VagabondKnightArmor a er:Armor,
@@ -19699,6 +19997,7 @@ er:VarresBouquet a er:Hammer,
     er:requiresArcane 24 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "A steel mace resembling a charming bouquet of roses. Each petal has a sharpened edge, leaving the roses perpetually colored with blood. This weapon reflects White Mask Varre's manner of speech rather well, enticing in its splendor, but full of deadly consequence." .
 
 er:VelvetSwordOfStTrina a er:StraightSword,
@@ -19715,6 +20014,7 @@ er:VelvetSwordOfStTrina a er:StraightSword,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 10 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Silver sword of St. Trina, now stained the color of velvet. Inflicts eternal sleep. When St. Trina was abandoned, the faint, light-purple mists coalesced into an intoxicating deep-purple cloud." .
 
 er:VenomousFang a er:Claw,
@@ -19741,6 +20041,7 @@ er:VenomousFang a er:Claw,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 9 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "One of the weapons designed for gladiatorial combat. Used by duelists who were exiled from the colosseum. The black fang protruding from the bronze snake head is coated in deadly poison." .
 
 er:VerdigrisArmor a er:Armor,
@@ -19943,6 +20244,7 @@ er:VulgarMilitiaSaw a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 15 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "A weapon comprised of a saw blade attached to a long grip. Brandished by the vulgar militia, its serrated edge is very effective at inflicting blood loss. The saw is said to also be used to cut up bodies to feed the militia, but there are no firsthand witnesses to confirm the dire rumor." .
 
 er:VulgarMilitiaShotel a er:Halberd,
@@ -19967,6 +20269,7 @@ er:VulgarMilitiaShotel a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 14 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "A hooked blade attached to a long handle. Wielded by the vulgar militia, its attacks can slip through an enemy's guard. The vulgar militia are the undecorated stewards of rancid, scorched battlefields that none dare approach, and forbidden domains better forgotten by the rest of the world" .
 
 er:VulgarMilitiamen rdfs:label "Vulgar Militiamen" ;
@@ -19992,6 +20295,7 @@ er:VykesWarSpear a er:GreatSpear,
     er:requiresDexterity 20 ;
     er:requiresFaith 18 ;
     er:requiresStrength 16 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "War spear singed and blistered by fingers, used by Vyke, Knight of the Roundtable Hold. Like Vyke himself, it has been tormented by the yellow flame of frenzy from within." .
 
 er:WailingDunes a er:Location ;
@@ -20021,6 +20325,7 @@ er:Wakizashi a er:Dagger,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 9 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Short sword with a tempering pattern on the blade. A weapon unique to warriors of the Land of Reeds. Afflicts targets with blood loss. These swords are considered auxiliary weapons. Yet, one man is known to wield this weapon in his left hand while using a full-sized katana in his right. A demonic swordsman known only as Okina." .
 
 er:WallOfSparks rdfs:label "Wall of Sparks" ;
@@ -20099,6 +20404,7 @@ er:WarhawksTalon a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 16 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Talon-swords are affixed to the legs of the Stormveil's warhawks, but this one has been repurposed for human use. The blade is thin and lightweight so as not to obstruct the hawk's mobility." .
 
 er:WarmingStone a er:Consumable ;
@@ -20129,6 +20435,7 @@ er:WarpedAxe a er:Axe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 24 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Oversized double-headed axe with a bizarre, almost melted appearance. Brute strength is the only thing required to wield this weapon, which appears to have taken quite the beating itself." .
 
 er:Warpick a er:Hammer,
@@ -20153,6 +20460,7 @@ er:Warpick a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 11 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Battle hammer with a hard protruding beak. A pickaxe designed for combat, in essence. A simple but highly effective weapon, the weighty piercing attack casually rips through metal armor." .
 
 er:WarriorGauntlets a er:Armor,
@@ -20197,6 +20505,7 @@ er:WatchdogsGreatsword a er:ColossalSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 30 ;
+    er:weight "22.0"^^xsd:float ;
     rdfs:comment "Stone greatsword wielded by Erdtree Burial Watchdogs. Though decorated with the watchman's eye, the pupil was taken by graverobbers and is now hollow, leaving this sword a mere lump of stone." .
 
 er:WatchdogsStaff a er:Weapon ;
@@ -20208,6 +20517,7 @@ er:WatchdogsStaff a er:Weapon ;
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 34 ;
+    er:weight "19.0"^^xsd:float ;
     rdfs:comment "Large stone staff embedded with glintstone. Wielded by Erdtree Burial Watchdogs who protect catacombs. The Watchdogs, battered and broken over their lengthy tenure, rule the catacombs and are even said to command the imps. Unique Skill: Sorcery of the Crozier Channel magic into the glintstone to activate an ancient sorcery, producing floating magic projectiles that chase enemies automatically." .
 
 er:WatchfulSpirit a er:Incantation ;
@@ -20246,6 +20556,7 @@ er:WeatheredStraightSword a er:StraightSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 7 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Straight sword with a rather short but wide blade. Simple to wield, it was known as the sword of the people. Though the Erdtree styling is still visible, time has not been kind to this sword, now merely a shadow of its former self." .
 
 er:WellDepthsKey a er:KeyItem ;
@@ -20347,6 +20658,7 @@ er:WingOfAstel a er:CurvedSword,
     er:requiresDexterity 17 ;
     er:requiresIntelligence 20 ;
     er:requiresStrength 7 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Sword fashioned from a delicate wing, suffused with the magic ofthe stars.Strong attack unleashes a wave of enchanted light. Crafted from a relic of the Naturalborn of the Void who is said tohave assailed the Eternal City." .
 
 er:WingStance rdfs:label "Wing Stance" ;
@@ -20367,6 +20679,7 @@ er:WingedGreathorn a er:Greataxe,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 30 ;
+    er:weight "11.0"^^xsd:float ;
     rdfs:comment "Distinctive horn suffused with the power of ancestral spirits. This large, wing-shaped specimen is wielded as a weapon of spirit worship.In the ancestral spirit-worshipping faith, these are considered envoys' wings, made to reap the lives of beings which experience no sprouting." .
 
 er:WingedMisbegottenAshes a er:SpiritAsh ;
@@ -20385,6 +20698,7 @@ er:WingedScythe a er:Reaper,
     er:requiresDexterity 16 ;
     er:requiresFaith 24 ;
     er:requiresStrength 16 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Sacred scythe resembling a pair of white wings. Deals holy damage. According to pagan belief, white-winged maidens are said to be Death's gentle envoys." .
 
 er:WingedSerpentHelm a er:Armor,
@@ -20584,6 +20898,7 @@ er:Zweihander a er:ColossalSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 11 ;
     er:requiresStrength 19 ;
+    er:weight "15.5"^^xsd:float ;
     rdfs:comment "Just about the largest sword a mere man is capable of swinging. True to its name, it is designed to be wielded in both hands, but those of merely ordinary strength will still struggle to do so.The long blade is heavy and sharp, sending foes reeling back with its broader strokes, while also capable of a devastating piercing thrust." .
 
 er:10500Ngplus1 a er:Item ;
@@ -22016,6 +22331,7 @@ er:BarbedStaffSpear a er:GreatSpear,
     er:requiresDexterity 18 ;
     er:requiresFaith 22 ;
     er:requiresStrength 14 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Greatstaff of Jori, elder inquisitor. The tip bristles with golden barbs symbolic of the inquisition's torture, allowing one to wield the staff as a greatspear. Attacks deal holy damage, and potency increases with faith." .
 
 er:BarbedStaffSpear_MaxStandard a er:WeaponStats ;
@@ -24371,6 +24687,7 @@ er:BloodhoundsFang a er:CurvedGreatsword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 18 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Curved greatsword with a gently undulating blade wielded by Bloodhound Knights. A fearsome blade capable of brutal airborne attacks." .
 
 er:BloodhoundsFang_MaxStandard a er:WeaponStats ;
@@ -25907,6 +26224,7 @@ er:Caestus a er:Fist,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 8 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "A weapon built for striking with the fists, made of tough leather inlaid with iron rivets. Fist weapons come in pairs, and two-handing this weapon will equip it to both hands." .
 
 er:Caestus_MaxBlood a er:WeaponStats ;
@@ -27791,6 +28109,7 @@ er:CleanrotKnightsSword a er:Item,
     er:mentions er:MaleniaBladeOfMiquella ;
     er:requiresDexterity 13 ;
     er:requiresStrength 11 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Piercing sword of the Cleanrot Knights who fought alongside Malenia, Blade of Miquella. Mainly used as a backup weapon, in combination with a long- handled armament." .
 
 er:CleanrotKnightsSword_MaxBlood a er:WeaponStats ;
@@ -28125,6 +28444,7 @@ er:CommandersStandard a er:Halberd,
     er:mentions er:CommanderOneil ;
     er:requiresDexterity 14 ;
     er:requiresStrength 24 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "A beaten red battle standard is furled around this time-worn halberd. Even after his lord was fled, Commander O'Neil continued to brandish this flag in the devastation of the rot-eaten field of battle, the sole veteran who remembers this battle with pride." .
 
 er:CommandersStandard_MaxStandard a er:WeaponStats ;
@@ -29330,6 +29650,7 @@ er:DancingBladeOfRanah a er:CurvedSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 9 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Decorative swords ablaze with impassioned red. A pair of weapons made to be wielded in both hands. Used by the dancers of Ranah. Strikes enemies with a dancing assault when executing a strong attack." .
 
 er:DancingBladeOfRanah_MaxStandard a er:WeaponStats ;
@@ -29544,6 +29865,7 @@ er:DeathKnightsLonghaftAxe a er:Greataxe,
     er:requiresDexterity 10 ;
     er:requiresFaith 18 ;
     er:requiresStrength 23 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "A long-hafted golden axe wielded by the Death Knight. Bears a representation of a decayed golden ring. Crackles with lightning, the power of the capital's ancient dragon cult. The knight, once the personal guard of Godwyn, was also the protector of the Prince of Death's cadaver surrogate." .
 
 er:DeathKnightsLonghaftAxe_MaxStandard a er:WeaponStats ;
@@ -29571,6 +29893,7 @@ er:DeathKnightsTwinAxes a er:Axe,
     er:requiresDexterity 12 ;
     er:requiresFaith 16 ;
     er:requiresStrength 14 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Golden war axes of the Death Knight. A pair of weapons made to be wielded in both hands. Crackles with lightning, the power of the capital's ancient dragon cult. The knight, once the personal guard of Godwyn, was also the protector of the Prince of Death's cadaver surrogate." .
 
 er:DeathKnightsTwinAxes_MaxStandard a er:WeaponStats ;
@@ -29597,6 +29920,7 @@ er:DeathRitualSpear a er:Item,
     er:requiresDexterity 20 ;
     er:requiresIntelligence 18 ;
     er:requiresStrength 14 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Ritual spear used by priests of old who were permitted to come among the Deathbirds. The priests became guardians of the birds through the rite of Death, which also serves as an oath sworn to their distant resurrection." .
 
 er:DeathRitualSpear_MaxStandard a er:WeaponStats ;
@@ -29625,6 +29949,7 @@ er:DeathsPoker a er:Greatsword,
     er:requiresDexterity 17 ;
     er:requiresIntelligence 11 ;
     er:requiresStrength 15 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Barbed rod carried by Deathbirds. The birds are graveyard fire keepers; it is said they rake out the ashen remains of the dead from their kilns." .
 
 er:DeathsPoker_MaxStandard a er:WeaponStats ;
@@ -29676,6 +30001,7 @@ er:DemiHumanQueensStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresIntelligence 10 ;
     er:requiresStrength 6 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Glintstone staff styled as a scepter. A gift once given to the demi-humans to foster peace, it can be wielded even by those of low intelligence. Sneered at by fools in the academy." .
 
 er:DemiHumanQueensStaff_MaxStandard a er:WeaponStats ;
@@ -30068,6 +30394,7 @@ er:DragonGreatclaw a er:Item,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 30 ;
+    er:weight "16.0"^^xsd:float ;
     rdfs:comment "Weapon said to have been whittled from the claw of a great, ancient dragon, wielded by grotesque Tree Sentinels who yet serve the Erdtree. The claw is enwreathed with lightning, and tears through the dragons' feeble descendants with ease." .
 
 er:DragonGreatclaw_MaxStandard a er:WeaponStats ;
@@ -30094,6 +30421,7 @@ er:DragonHalberd a er:Halberd,
     er:mentions er:Halberd ;
     er:requiresDexterity 10 ;
     er:requiresStrength 22 ;
+    er:weight "10.5"^^xsd:float ;
     rdfs:comment "Halberd shaped like a dragon, enwreathed with both ice and lightning. Alas, the Dragonkin Soldiers never attained immortality, and perished as decrepit, pale imitations of their skyborn kin." .
 
 er:DragonHalberd_MaxStandard a er:WeaponStats ;
@@ -30120,6 +30448,7 @@ er:DragonHuntersGreatKatana a er:GreatKatana,
         er:DragonsPit ;
     er:requiresDexterity 20 ;
     er:requiresStrength 15 ;
+    er:weight "10.5"^^xsd:float ;
     rdfs:comment "Great katana with spines of gravel stone along its blade, wielded by the Ancient Dragon-Man of the Dragon's Pit. Has an anti-dragon effect. Formerly a Dragon Communion warrior, the Ancient Dragon-Man was once arbiter of those worthy to devour the Dreaded One." .
 
 er:DragonHuntersGreatKatana_MaxStandard a er:WeaponStats ;
@@ -30326,6 +30655,7 @@ er:DragonscaleBlade a er:Item,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 12 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "A weapon made by sharpening a Gravel Stone scale, thought to be the source of ancient dragon immortality, into an unclouded blade. Alas, the Dragonkin Soldiers never attained immortality, and perished as decrepit, pale imitations of their skyborn kin." .
 
 er:DragonscaleBlade_MaxStandard a er:WeaponStats ;
@@ -30373,6 +30703,7 @@ er:DryleafArts a er:HandToHandArt,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 8 ;
+    er:weight "1.0"^^xsd:float ;
     rdfs:comment "A technique for hand-to-hand combat without the aid of a weapon. This martial art combines fist strikes and kicks. The teachings of a group of spiritual seekers known as the Dryleaf Sect, revealed only to those of worthy valor and character. The practice of this martial art marks the dawn of an ascetic's journey." .
 
 er:DryleafArts_MaxBlood a er:WeaponStats ;
@@ -31297,6 +31628,7 @@ er:ErdtreeBow a er:Bow,
     er:requiresDexterity 12 ;
     er:requiresFaith 14 ;
     er:requiresStrength 8 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Longbow featuring Erdtree styling. In times of old, when faith and battle went hand in hand, this weapon was created in tandem with the Golden Arrow. Scales all arrow damage with faith, revealing its true worth when used with holy-infused arrows." .
 
 er:ErdtreeBow_MaxStandard a er:WeaponStats ;
@@ -31322,6 +31654,7 @@ er:ErdtreeGreatbow a er:Greatbow,
     er:requiresDexterity 14 ;
     er:requiresFaith 14 ;
     er:requiresStrength 20 ;
+    er:weight "11.0"^^xsd:float ;
     rdfs:comment "Greatbow featuring Erdtree styling. In times of old, when faith and battle went hand in hand, this weapon was created in tandem with the Golden Great Arrow. Scales all arrow damage with faith, revealing its true worth when used with holy-infused arrows." .
 
 er:ErdtreeGreatbow_MaxStandard a er:WeaponStats ;
@@ -31400,6 +31733,7 @@ er:Estoc a er:ThrustingSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 11 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Large piercing sword with a long, hard bladed edge which is also capable of slashing attacks. For its large size, it can be wielded rather nimbly, leaving little opportunity for the enemy to counter." .
 
 er:Estoc_MaxBlood a er:WeaponStats ;
@@ -31844,6 +32178,7 @@ er:FallingstarBeastJaw a er:Item,
     er:requiresDexterity 12 ;
     er:requiresIntelligence 20 ;
     er:requiresStrength 34 ;
+    er:weight "21.5"^^xsd:float ;
     rdfs:comment "Part of a Falling star Beast's jaw, hard and shining black, fashioned into a weapon. With its sharp point, this colossal weapon can skewer foes." .
 
 er:FallingstarBeastJaw_MaxStandard a er:WeaponStats ;
@@ -31885,6 +32220,7 @@ er:FamilyHeads a er:Flail,
     er:requiresDexterity 18 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 8 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Three bludgeoning copper heads attached to a handle by chains. Signature weapon of Necromancer Garris, the heretical sage.The heads were made to resemble those of his wife and two children." .
 
 er:FamilyHeads_MaxStandard a er:WeaponStats ;
@@ -32861,6 +33197,7 @@ er:FlowerstoneGavel a er:Hammer,
     er:requiresArcane 15 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 14 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "Weapon of the Dragon Communion priestess. A dragonstone hammer resembling an ancient flower. The four petals and the flower's core are all sharp, ending in points, and are capable of dealing heavy damage to dragons." .
 
 er:FlowerstoneGavel_MaxStandard a er:WeaponStats ;
@@ -33523,6 +33860,7 @@ er:FullMoonCrossbow a er:Crossbow,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 14 ;
     er:requiresStrength 10 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "One-of-a-kind enchanted crossbow of exquisitely detailed craftsmanship. Made to celebrate the matrimonial union, and reconciliation, between the houses of the Erdtree and the Full Moon, Leyndell and Raya Lucaria. The two rings dance when reloading the weapon. Reveals true worth when used with holy- infused bolts." .
 
 er:FullMoonCrossbow_MaxStandard a er:WeaponStats ;
@@ -33564,6 +33902,7 @@ er:GargoylesBlackAxe a er:Greataxe,
     er:requiresDexterity 8 ;
     er:requiresFaith 22 ;
     er:requiresStrength 24 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Bronze greataxe wielded by Valiant Gargoyles, mended with blackened corpse wax. Deals holy damage. Such is the mark of those who serve Maliketh, the Black Blade." .
 
 er:GargoylesBlackAxe_MaxStandard a er:WeaponStats ;
@@ -33590,6 +33929,7 @@ er:GargoylesBlackBlades a er:Item,
     er:requiresDexterity 15 ;
     er:requiresFaith 22 ;
     er:requiresStrength 18 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Bronze twinblade wielded by Valiant Gargoyles, mended with blackened corpse wax. Deals holy damage. Such is the mark of those who serve Maliketh, the Black Blade." .
 
 er:GargoylesBlackBlades_MaxStandard a er:WeaponStats ;
@@ -33616,6 +33956,7 @@ er:GargoylesBlackHalberd a er:Halberd,
     er:requiresDexterity 10 ;
     er:requiresFaith 22 ;
     er:requiresStrength 26 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Bronze halberd wielded by Valiant Gargoyles, mended with blackened corpse wax. Deals holy damage. Such is the mark of those who serve Maliketh, the Black Blade." .
 
 er:GargoylesBlackHalberd_MaxStandard a er:WeaponStats ;
@@ -33642,6 +33983,7 @@ er:GargoylesBlackblade a er:Greatsword,
     er:requiresDexterity 10 ;
     er:requiresFaith 22 ;
     er:requiresStrength 18 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Bronze greatsword wielded by Valiant Gargoyles mended with blackened corpse wax. Deals holy damage. Such is the mark of those who serve Maliketh, the Black Blade." .
 
 er:GargoylesBlackblade_MaxStandard a er:WeaponStats ;
@@ -33815,6 +34157,7 @@ er:GargoylesGreatsword a er:Greatsword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 18 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Bronze greatsword wielded by Valiant Gargoyles. Just like the wielder, the missing parts have been mended with corpse wax; a patchwork of champions." .
 
 er:GargoylesGreatsword_MaxBlood a er:WeaponStats ;
@@ -33977,6 +34320,7 @@ er:GargoylesHalberd a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 26 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Bronze halberd wielded by Valiant Gargoyles. Just like the wielder, the missing parts have been mended with corpse wax; a patchwork of champions." .
 
 er:GargoylesHalberd_MaxBlood a er:WeaponStats ;
@@ -34139,6 +34483,7 @@ er:GargoylesTwinblade a er:Item,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 18 ;
+    er:weight "8.5"^^xsd:float ;
     rdfs:comment "Bronze twinblade wielded by Valiant Gargoyles. Just like the wielder, the missing parts have been mended with corpse wax; a patchwork of champions." .
 
 er:GargoylesTwinblade_MaxBlood a er:WeaponStats ;
@@ -34797,6 +35142,7 @@ er:Glaive a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 18 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Weapon comprised of a sharp blade affixed to a long grip. It is in fact a sickle repurposed to be a tool of war. This far-reaching weapon excels at slashing attacks." .
 
 er:Glaive_MaxBlood a er:WeaponStats ;
@@ -35041,6 +35387,7 @@ er:GodskinPeeler a er:Item,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 22 ;
     er:requiresStrength 17 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "Unique twinblade wielded by Godskin Apostles characterized by its disturbing design. One end features a sickle for slicing attacks while the other boasts a winding spike for boring into flesh. Much skill is required to wield this weapon due to its asymmetric nature." .
 
 er:GodskinPeeler_MaxBlood a er:WeaponStats ;
@@ -35203,6 +35550,7 @@ er:GodskinStitcher a er:HeavyThrustingSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 17 ;
     er:requiresStrength 14 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "Elegant piercing sword with a celadon colored blade wielded by Godskin Nobles. The nobles possess skill with the sword unmatched by any lowborn. Despite its size, successive attacks from this weapon are swifter than the eye can follow." .
 
 er:GodskinStitcher_MaxBlood a er:WeaponStats ;
@@ -35706,6 +36054,7 @@ er:GoldenHalberd a er:Halberd,
     er:requiresDexterity 14 ;
     er:requiresFaith 12 ;
     er:requiresStrength 30 ;
+    er:weight "13.5"^^xsd:float ;
     rdfs:comment "Weighty halberd forged of gold. Wielded by the Order of Tree Sentinels, heavily equipped knights. Deals holy damage. A masterfully crafted weapon that lives up to its heft, but is difficult for one mere human strength to wield." .
 
 er:GoldenHalberd_MaxStandard a er:WeaponStats ;
@@ -35753,6 +36102,7 @@ er:GoldenOrderGreatsword a er:Greatsword,
     er:requiresDexterity 21 ;
     er:requiresFaith 28 ;
     er:requiresStrength 16 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Greatsword made of light, modeled after the Elden Ring itself. Forged by King Consort Radagon to proudly symbolize the tenets of the Golden Order. One of the legendary armaments. Telltale signs betray that this was once the greatsword bequeathed to him by his first wife, Rennala." .
 
 er:GoldenOrderGreatsword_MaxStandard a er:WeaponStats ;
@@ -36093,6 +36443,7 @@ er:GraftedBladeGreatsword a er:ColossalSword,
     er:mentions er:CastleMorne ;
     er:requiresDexterity 14 ;
     er:requiresStrength 40 ;
+    er:weight "21.0"^^xsd:float ;
     rdfs:comment "The storied sword of Castle Morne. A revenger's weapon, it is burdened with oceans of anger and regret. One of the legendary armaments. A lone surviving champion from a country now vanished was so determined to continue fighting that he claimed the swords of an entire clan of warriors." .
 
 er:GraftedBladeGreatsword_MaxStandard a er:WeaponStats ;
@@ -36317,6 +36668,7 @@ er:GreatClub a er:Item,
     er:isSomber false ;
     er:maxUpgradeLevel 25 ;
     er:requiresStrength 35 ;
+    er:weight "17.0"^^xsd:float ;
     rdfs:comment "An enormous club of hardwood. Wildly hammering foes with this striking weapon requires no dexterity; only brute force. While it may seem sacrilegious, this weapon is said to be a withered branch of the Erdtree. Imbued with holy power, this weapon will never snap." .
 
 er:GreatClub_MaxStandard a er:WeaponStats ;
@@ -36337,6 +36689,7 @@ er:GreatEpee a er:HeavyThrustingSword,
     er:hasSkill er:ImpalingThrust ;
     er:requiresDexterity 16 ;
     er:requiresStrength 15 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Large rapier featuring a thin, sharp blade. Commonly used in life or death duels.Like its smaller counterparts, its made for thrusting attacks, and can be used while guarding with a shield." .
 
 er:GreatGraveGlovewortX2 a er:Item ;
@@ -37649,6 +38002,7 @@ er:GreatswordOfSolitude a er:Greatsword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 27 ;
+    er:weight "15.5"^^xsd:float ;
     rdfs:comment "Steel greatsword wielded by the Knights of the Solitary Gaol. Through a secret rite, they relinquished their hearts for heightened battle prowess. Next, they engraved their blades with two crests: one depicting the light of birth, and the other, solitude." .
 
 er:GreatswordOfSolitude_MaxStandard a er:WeaponStats ;
@@ -38643,6 +38997,7 @@ er:HandBallista a er:Weapon ;
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 30 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "An unconventional ballistic device modeled on a weapon used to besiege castles. Only capable of firing greatbolts. Perfect for reckless acts such as storming a castle or facing an entire army alone." .
 
 er:HandBallista_MaxStandard a er:WeaponStats ;
@@ -38980,6 +39335,7 @@ er:HelphensSteeple a er:Greatsword,
     er:requiresDexterity 10 ;
     er:requiresIntelligence 22 ;
     er:requiresStrength 19 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Greatsword patterned after the black steeple of the Helphen, the lampwood which guides the dead of the spirit world. The lamplight is similar to grace in appearance, only it is said that it can only be seen by those who met their death in battle." .
 
 er:HelphensSteeple_MaxStandard a er:WeaponStats ;
@@ -39803,6 +40159,7 @@ er:InquisitorsGirandole a er:Item,
     er:requiresDexterity 15 ;
     er:requiresFaith 16 ;
     er:requiresStrength 18 ;
+    er:weight "7.5"^^xsd:float ;
     rdfs:comment "Instrument of torture used on nobles behind the curtain at the Volcano Manor of Mt. Gelmir. Its numerous spikes pierce the flesh, then singe the wounds withflame. The smell of burnt blood induces despair in the victim. Acandlestick conveived by a thorough mind." .
 
 er:InquisitorsGirandole_MaxStandard a er:WeaponStats ;
@@ -40831,6 +41188,7 @@ er:JarCannon a er:Item,
     er:mentions er:VolcanoManor ;
     er:requiresDexterity 12 ;
     er:requiresStrength 34 ;
+    er:weight "15.0"^^xsd:float ;
     rdfs:comment "Jar cannon which uses explosives to fire greatbolts. Deals great damage but is slow to reload. Experimental firearm brought to the assault on Volcano Manor, where it was discovered that no one knew how to use it." .
 
 er:JarCannon_MaxStandard a er:WeaponStats ;
@@ -41494,6 +41852,7 @@ er:Lance a er:GreatSpear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 20 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Considered a type of greatspear, this weapon has no blade, but instead features a long, conical body designed to pierce.Though heavy and hard to wield, this weapon displays its worth in horseback combat whether mounted or even on foot." .
 
 er:Lance_MaxBlood a er:WeaponStats ;
@@ -42952,6 +43311,7 @@ er:LorettasWarSickle a er:Halberd,
     er:requiresDexterity 15 ;
     er:requiresIntelligence 20 ;
     er:requiresStrength 20 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Intricately crafted silver war sickle wielded by Loretta, Knight of the Haligtree. Originally given for service as a personal guard to Carian royalty, the weapon's blue glintstone has been replaced with unalloyed gold." .
 
 er:LorettasWarSickle_MaxStandard a er:WeaponStats ;
@@ -43137,6 +43497,7 @@ er:Mace a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 7 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "An iron bludgeon with sharp protrusions. Striking attacks have few drawbacks, potent as they are at breaking through guards and stances, Most suited to head on slugging matches." .
 
 er:Mace_MaxBlood a er:WeaponStats ;
@@ -43346,6 +43707,7 @@ er:MagmaWyrmsScalesword a er:CurvedGreatsword,
     er:requiresDexterity 15 ;
     er:requiresFaith 18 ;
     er:requiresStrength 24 ;
+    er:weight "15.0"^^xsd:float ;
     rdfs:comment "Curved greatsword wielded by Magma Wyrms. The shape resembles a dragon's jaw and is covered in hard scales. It's said these land-bound dragons were once human heroes who partook in dragon communion, a grave transgression for which they were cursed to crawl the earth upon their bellies, shadows of their former selves." .
 
 er:MagmaWyrmsScalesword_MaxStandard a er:WeaponStats ;
@@ -43946,6 +44308,7 @@ er:MaraisExecutionersSword a er:Greatsword,
     er:requiresArcane 23 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 24 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Storied sword of House Marais, the family of executioners who presided over the Shaded Castle. One of the legendary armaments. Elemer of the Briar, the Bell Bearing Hunter, snatched the sword from the site of his looming execution, and furnished it with battle skills from his home of Eochaid.." .
 
 er:MaraisExecutionersSword_MaxStandard a er:WeaponStats ;
@@ -44261,6 +44624,7 @@ er:MaternalStaff a er:Item,
     er:requiresArcane 21 ;
     er:requiresIntelligence 21 ;
     er:requiresStrength 7 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Staff of Count Ymir, who made himself a Mother of Fingers. Carried for want of tail-fingers of his own. Enhances finger sorceries. The crystal ball, though representative of a microcosm, would not receive any sign." .
 
 er:MaternalStaff_MaxStandard a er:WeaponStats ;
@@ -45467,6 +45831,7 @@ er:Moonveil a er:Item,
     er:requiresDexterity 18 ;
     er:requiresIntelligence 23 ;
     er:requiresStrength 12 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Katana forged of glintstone.Masterpiece of a Sellian swordsmith. Light enwreathes the blade when sheathed, explaining its Moonveil moniker." ;
     owl:sameAs wd:Q111174775 .
 
@@ -45855,6 +46220,7 @@ er:NightriderFlail a er:Flail,
     er:mentions er:NightsCavalry ;
     er:requiresDexterity 24 ;
     er:requiresStrength 10 ;
+    er:weight "6.0"^^xsd:float ;
     rdfs:comment "A flail with two additional bludgeoning heads. Weapon of the Night's Cavalry who ride funeral steeds. The large spikes make it highly effective at inducing blood loss, but also demand higher dexterity to wield." .
 
 er:NightriderFlail_MaxBlood a er:WeaponStats ;
@@ -46451,6 +46817,7 @@ er:NoxFlowingSword a er:CurvedSword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 8 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "A grim weapon wielded by swordsmen of the Eternal City, thisshotel has a blade as fine as a needle. Forged from the liquid metal of a Silver Tear, it is thoroughlytempered until hardened" .
 
 er:NoxFlowingSword_MaxStandard a er:WeaponStats ;
@@ -46665,6 +47032,7 @@ er:OnyxLordsGreatsword a er:CurvedGreatsword,
     er:requiresDexterity 16 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 20 ;
+    er:weight "11.5"^^xsd:float ;
     rdfs:comment "Greatsword forged from golden-hued meteoric ore. The blade conceals gravity-manipulating magic. A weapon unique to the Onyx Lords, a race of ancients with skin of stone who were said to have risen to life when a meteor struck long ago." .
 
 er:OnyxLordsGreatsword_MaxStandard a er:WeaponStats ;
@@ -46719,6 +47087,7 @@ er:OrdovissGreatsword a er:Greatsword,
     er:requiresDexterity 13 ;
     er:requiresFaith 15 ;
     er:requiresStrength 25 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Greatsword of Ordovis, one of the two honored as foremostamong the Crucible Knights. This sword is imbued with an ancient holy essence.Its red tint exemplifies the nature of primordial gold, said to beclose in nature to life itself." .
 
 er:OrdovissGreatsword_MaxStandard a er:WeaponStats ;
@@ -46748,6 +47117,7 @@ er:OrnamentalStraightSword a er:Item,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Slender straight sword patterned after an antique ornament.Superior swordsmen prefer to wield one in each hand. After falling from grace, the dregs of the golden lineage sought power and purpose in the past." .
 
 er:OrnamentalStraightSword_MaxStandard a er:WeaponStats ;
@@ -48327,6 +48697,7 @@ er:RakshasasGreatKatana a er:GreatKatana,
     er:mentions er:Rakshasa ;
     er:requiresDexterity 27 ;
     er:requiresStrength 12 ;
+    er:weight "9.5"^^xsd:float ;
     rdfs:comment "A great katana with the tempering pattern of its blade forever stained red with blood. Weapon of Rakshasa, who cuts down and devours. A berserker's weapon used to endure enemy attacks and reply with one's full fury. When attacking, the wielder is less likely to stagger from counterattacks, but will also take increased damage." .
 
 er:RakshasasGreatKatana_MaxStandard a er:WeaponStats ;
@@ -48657,6 +49028,7 @@ er:RedBearsClaw a er:BeastClaw,
     er:mentions er:RedBear ;
     er:requiresDexterity 10 ;
     er:requiresStrength 20 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Claw of a great red bear wielded without modification by Red Bear, whose name is lost to madness. After killing the great red bear in a blood-soaked bout, he became fascinated by the untainted glory of its naked strength. \"I wish to be a bear, no more, and no less" .
 
 er:RedBearsClaw_MaxStandard a er:WeaponStats ;
@@ -50514,6 +50886,7 @@ er:RuinsGreatsword a er:ColossalSword,
     er:maxUpgradeLevel 10 ;
     er:requiresIntelligence 16 ;
     er:requiresStrength 50 ;
+    er:weight "23.0"^^xsd:float ;
     rdfs:comment "Originally rubble from a ruin which fell from the sky, this surviving fragment was honed into a weapon.One of the legendary armaments. The ruin it came from crumbled when struck by a meteorite, as such this weapon harbors its destructive power." .
 
 er:RuinsGreatsword_MaxStandard a er:WeaponStats ;
@@ -50560,6 +50933,7 @@ er:RustedAnchor a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 26 ;
+    er:weight "12.5"^^xsd:float ;
     rdfs:comment "A rusty anchor wielded as a weapon. Each of its four flukes is thick and sharp, enabling piercing attacks. While the Tarnished left the Lands Between with their Lord, one boat alone was said to have been left behind." .
 
 er:RustedAnchor_MaxBlood a er:WeaponStats ;
@@ -50747,6 +51121,7 @@ er:SacrificialAxe a er:Axe,
     er:mentions er:Deathbird ;
     er:requiresDexterity 10 ;
     er:requiresStrength 16 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Hatchet used in ancient sacrificial rite. A Deathbird is depicted as a malevolent deity. The power of the rite yet lingers. A small amount of FP is restored upon slaying a foe." .
 
 er:SacrificialAxe_MaxBlood a er:WeaponStats ;
@@ -51085,6 +51460,7 @@ er:ScepterOfTheAllKnowing a er:Hammer,
     er:requiresDexterity 18 ;
     er:requiresIntelligence 21 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Scepter in the form of a hand grasping a pearl. Signature weaponof Sir Gideon Ofnir, the All-Knowing. The pearl stands for theworld, the heavens, and an eye, representing the many forms ofknowledge, never fully attainable. Even knowing that, the All-Knowing's hand grasps for it." .
 
 er:ScepterOfTheAllKnowing_MaxStandard a er:WeaponStats ;
@@ -51724,6 +52100,7 @@ er:SerpentBow a er:Bow,
     er:requiresArcane 11 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 8 ;
+    er:weight "3.5"^^xsd:float ;
     rdfs:comment "Malformed bow in the shape of a pair of poisonous snakes. Imbues arrows with poison through pagan magic, revealing its true worth when used with poison-infused arrows. Used by assassins known as the Formless Serpents." .
 
 er:SerpentBow_MaxStandard a er:WeaponStats ;
@@ -52027,6 +52404,7 @@ er:SerpentHunter a er:GreatSpear,
     er:hasSkill er:GreatSerpentHunt ;
     er:isSomber true ;
     er:maxUpgradeLevel 10 ;
+    er:weight "12.0"^^xsd:float ;
     rdfs:comment "Weapon that serves as both greatsword and spear. Thought to have been used to hunt an immortal great serpent in the distant past, it manifests a long blade of light when facing such a creature. When their master's heroic aspirations degenerated into mere greed, his men searched for a weapon with which they might halt their lord." .
 
 er:SerpentHunter_MaxStandard a er:WeaponStats ;
@@ -52797,6 +53175,7 @@ er:SiluriasTree a er:GreatSpear,
     er:requiresDexterity 13 ;
     er:requiresFaith 20 ;
     er:requiresStrength 27 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Siluria's Tree, weapon of one of the two honored as foremost among the Crucible Knights. The primordial form of the Erdtree is close in nature to life itself, and this spear, modeled on its crucible, is imbued with ancient holy essence." .
 
 er:SiluriasTree_MaxStandard a er:WeaponStats ;
@@ -54596,6 +54975,7 @@ er:StTrinasTorch a er:Torch,
     er:requiresDexterity 10 ;
     er:requiresFaith 14 ;
     er:requiresStrength 10 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Candlestand torch that burns with a light-purple flame. The carvings depict St. Trina, but in adult form, somewhat unnervingly. The light-purple flame induces sleep" .
 
 er:StTrinasTorch_MaxStandard a er:WeaponStats ;
@@ -54630,6 +55010,7 @@ er:StaffOfTheAvatar a er:Item,
     er:requiresDexterity 8 ;
     er:requiresFaith 24 ;
     er:requiresStrength 34 ;
+    er:weight "20.0"^^xsd:float ;
     rdfs:comment "Ceremonial staff depicting the Erdtree in its historic radiance. Wielded by the avatars who protect the Minor Erdtrees. The avatars, emerging in the wake of the Elden Ring's shattering, were determined to protect the withering Erdtree's offspring." .
 
 er:StaffOfTheAvatar_MaxStandard a er:WeaponStats ;
@@ -55011,6 +55392,7 @@ er:StormhawkAxe a er:Axe,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 19 ;
+    er:weight "5.5"^^xsd:float ;
     rdfs:comment "Battle axe designed to resemble a hawk, with its wings comprising the blade. Signature weapon of warriors who strive to remain one with the storm, despite being so far from their place of birth. Their hearts are proud, and thereby easily undone." .
 
 er:StormhawkAxe_MaxStandard a er:WeaponStats ;
@@ -56865,6 +57247,7 @@ er:VeteransProsthesis a er:Fist,
         er:CommanderNiall ;
     er:requiresDexterity 12 ;
     er:requiresStrength 15 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Bladed prosthetic leg enwreathed with the power of lightning, instead attached to the fist. Commander Niall, veteran of Castle Sol, offered this prosthesis in exchange for the lives of defeated knights held prisoner. He went on to lead these men as an army of no nation." .
 
 er:VeteransProsthesis_MaxStandard a er:WeaponStats ;
@@ -58578,6 +58961,7 @@ er:ZamorCurvedSword a er:CurvedGreatsword,
     er:maxUpgradeLevel 10 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 16 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Weapon wielded by the knights of Zamor who earned greatrenown during the War against the Giants. In apparent devotion to winter, the curved blade is styled after anicy wind and imbued with a powerful frost effect." .
 
 er:ZamorCurvedSword_MaxStandard a er:WeaponStats ;
@@ -59263,6 +59647,7 @@ er:Shortbow a er:LightBow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 10 ;
     er:requiresStrength 8 ;
+    er:weight "2.5"^^xsd:float ;
     rdfs:comment "Small bow made to fire arrows over great distances. Other than its ability to fire off arrows in rapid succession, it is also well-suited for use on horseback. To use a bow, arrows must also be equipped." .
 
 er:SirGideonOfnirTheAllKnowing a er:Boss ;
@@ -59291,6 +59676,7 @@ er:StarLinedSword a er:Item,
     er:requiresDexterity 23 ;
     er:requiresIntelligence 21 ;
     er:requiresStrength 10 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Sword encrusted with a line of stars fashioned from small pieces of crude glintstone. Weapon of the demi-human swordsmen. When bestowed with this weapon by their queen, the swordsmen swear to find the truth that lies at the end of the procession of stars." .
 
 er:StoneCoffinFissure a er:Location ;
@@ -59390,6 +59776,7 @@ er:BackhandBlade a er:BackhandBlade,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 13 ;
     er:requiresStrength 10 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Curved blade wielded with a backhand grip. A type of weapon wielded by hornsent for generations. The style of combat associated with this weapon is marked by spinning slashes and gouging thrust attacks." .
 
 er:BeluratTowerSettlement a er:Location ;
@@ -59558,6 +59945,7 @@ er:GreatKatana a er:GreatKatana,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 14 ;
+    er:weight "9.0"^^xsd:float ;
     rdfs:comment "Large katana with a long, heavy blade. A weapon unique to warriors of the Land of Reeds. Designed for aggression, this armament requires the wielder to throw their entire body into swinging it. The slashing attacks of its honed edge incite blood loss." .
 
 er:HermitVillage a er:Location ;
@@ -60175,6 +60563,7 @@ er:Longbow a er:Bow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 9 ;
+    er:weight "4.0"^^xsd:float ;
     rdfs:comment "Longbow made to fire arrows over great distances. Compared to a shortbow, arrows fired reach further and deal more damage. To use a bow, arrows must also be equipped." .
 
 er:LorettaKnightOfTheHaligtree a er:Boss ;
@@ -60241,6 +60630,7 @@ er:BlackKnife a er:Dagger,
     er:requiresDexterity 12 ;
     er:requiresFaith 18 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "Dagger once belonging to one of the assassins who murdered Godwyn the Golden on the Night of the Black Knives. A ritual performed on the oddly misshapen blade imbued it with the power of the stolen Rune of Death." .
 
 er:BonnyVillage a er:Location ;
@@ -60381,6 +60771,7 @@ er:Flail a er:Flail,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 10 ;
+    er:weight "5.0"^^xsd:float ;
     rdfs:comment "Weapon consisting of a bludgeoning head attached to a handle by chain. The iron ball is spiked and induces blood loss. Blows from this weapon cannot be parried. The charge attack whirls the iron ball around for increased force before striking." .
 
 er:GideonOfnir a er:NPC ;
@@ -60526,6 +60917,7 @@ er:Greatbow a er:Greatbow,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 20 ;
     er:requiresStrength 20 ;
+    er:weight "10.0"^^xsd:float ;
     rdfs:comment "Enormous greatbow larger than any man. Can not be drawn with any ordinary level of strength, but the force of its shots is extraordinary. A greatbow can only fire great arrows." .
 
 er:Moore a er:NPC ;
@@ -60582,6 +60974,7 @@ er:Whip a er:Weapon,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 14 ;
     er:requiresStrength 8 ;
+    er:weight "2.0"^^xsd:float ;
     rdfs:comment "A leather whip. Not originally used for combat, but as an instrument of pain. Through its supple attacks cannot be thwarted by parrying or even guarding, it is incapable of dealing critical hits." .
 
 er:ElemerOfTheBriar a er:Boss ;
@@ -60694,6 +61087,7 @@ er:Twinblade a er:Twinblade,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 10 ;
+    er:weight "7.0"^^xsd:float ;
     rdfs:comment "A sword with blades on both sides of the hilt.This weapon is difficult to wield, and requires high dexterity. Can be wielded with a single hand, but its true strength is enabled with dual-handed spinning attacks." .
 
 er:UlceratedTreeSpirit a er:Boss ;
@@ -60804,6 +61198,7 @@ er:Torch a er:Torch,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 5 ;
     er:requiresStrength 5 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "This torch's tip is wrapped in oil-soaked rags and set on fire. The flame can illuminate dark locales, or used to attack enemies. Can be raised up when equipped in the left hand, illuminating more of the surrounding area." .
 
 er:MiquellasHaligtree a er:Location ;
@@ -60907,6 +61302,7 @@ er:Hammer a er:Hammer,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 7 ;
     er:requiresStrength 14 ;
+    er:weight "6.5"^^xsd:float ;
     rdfs:comment "Hammer comprised of a large stone affixed to a metal handle.Originally a blacksmith's tool. The art of smithing is said to have originated among the giants.This weapon's striking attacks boast ample weight behind them." .
 
 er:MaleniaBladeOfMiquella a er:Boss ;
@@ -60931,6 +61327,7 @@ er:GlintstoneStaff a er:GlintstoneStaff,
     er:maxUpgradeLevel 25 ;
     er:requiresIntelligence 10 ;
     er:requiresStrength 6 ;
+    er:weight "3.0"^^xsd:float ;
     rdfs:comment "Staff with a glintstone embedded at the tip. A catalyst for casting sorceries. Sorceries must be memorized first at a site of lost grace, and a staff must be equipped to cast them." .
 
 er:Greataxe a er:Greataxe,
@@ -60955,6 +61352,7 @@ er:Greataxe a er:Greataxe,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 8 ;
     er:requiresStrength 30 ;
+    er:weight "13.0"^^xsd:float ;
     rdfs:comment "Greataxe akin to a huge lump of iron. Recognized as the weapon of choice of badland chieftains.Too heavy to be wielded by those of merely ordinary strength, blows from this axe will flatten enemies, and the force of its charged attack is a sight to behold." .
 
 er:StTrina a er:NPC ;
@@ -60990,6 +61388,7 @@ er:Halberd a er:Halberd,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 14 ;
+    er:weight "8.0"^^xsd:float ;
     rdfs:comment "A long-handled polearm that combines the functions of both axe and spear. Can be used to press a single enemy with continuous thrusting attacks or swept at groups, taking advantage of its great reach and cleaving blade. A versatile weapon for any situation." .
 
 er:RayaLucariaAcademy a er:Location ;
@@ -61052,6 +61451,7 @@ er:Dagger a er:Dagger,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 9 ;
     er:requiresStrength 5 ;
+    er:weight "1.5"^^xsd:float ;
     rdfs:comment "A standard dagger with a straight blade. Though modest in reach and capacity for harm, this weapon is light enough to jab in rapid succession and delivers devastating critical hits." .
 
 er:NightsCavalry a er:Boss ;
@@ -61105,6 +61505,7 @@ er:Spear a er:Spear,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 15 ;
     er:requiresStrength 12 ;
+    er:weight "4.5"^^xsd:float ;
     rdfs:comment "Weapon comprised of a blade attached to a long haft. A far-reaching piercing weapon, it can be wielded from behind the safety of a raised shield. Very effective against mounted foes." .
 
 er:NoSkill a er:Skill ;
@@ -61153,6 +61554,7 @@ er:Greatsword a er:ColossalSword,
     er:maxUpgradeLevel 25 ;
     er:requiresDexterity 12 ;
     er:requiresStrength 31 ;
+    er:weight "23.0"^^xsd:float ;
     rdfs:comment "A coarse iron lump of an ultra greatsword. Mows down foes by utilizing its incredible weight. Though handling it likely requires the wielder to have surpassed the realm of the merely human, it is precisely for this reason the weapon is used to slaughter even inhuman foes." .
 
 er:Miquella a er:NPC ;

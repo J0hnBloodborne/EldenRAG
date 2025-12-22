@@ -11,7 +11,7 @@ from pydantic import BaseModel
 # --- AI & DATA IMPORTS ---
 from rdflib import Graph, URIRef, Literal
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
-from rapidfuzz import process, fuzz # pip install rapidfuzz
+from rapidfuzz import process, fuzz
 
 # --- CONFIGURATION ---
 GRAPH_FILE = "rdf/elden_ring_optimized.ttl"
@@ -27,7 +27,8 @@ state = {
     "graph": None,
     "pipe": None,
     "entity_map": {},    # Map: "moonveil" -> "full text description"
-    "entity_names": []   # List: ["moonveil", "malenia", ...] for fuzzy search
+    "entity_names": [],   # List: ["moonveil", "malenia", ...] for fuzzy search
+    "property_index": {}  # NEW: Maps "arcane" -> ["Rivers of Blood", "Reduvia"]
 }
 
 def _device(): return "cuda" if torch.cuda.is_available() else "cpu"
@@ -35,10 +36,9 @@ def _device(): return "cuda" if torch.cuda.is_available() else "cpu"
 # --- CORE LOGIC: GRAPH TO TEXT ---
 def build_cheat_sheets(g: Graph):
     """
-    Converts the RDF Graph into pre-calculated text blocks for every entity.
-    This runs ONCE at startup so retrieval is instant.
+    Converts the RDF Graph into pre-calculated text blocks and builds a property index.
     """
-    print("   [Indexer] building cheat sheets for all entities...")
+    print("   [Indexer] building enhanced cheat sheets and property index...")
     cheat_sheet = {}
     
     # Iterate over every entity that has a label
@@ -64,13 +64,28 @@ def build_cheat_sheets(g: Graph):
                 if stat_name not in ["type", "upgradePath"]:
                     info.append(f"  - {stat_name}: {so}")
 
-        # 3. Requirements
+        # 3. Requirements & Scaling (Also populates Property Index)
         for req in ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"]:
-            val = g.value(s, URIRef(NS["er"] + f"requires{req}"))
-            if val: info.append(f"Requires {req}: {val}")
+            # Check Requirements
+            req_val = g.value(s, URIRef(NS["er"] + f"requires{req}"))
+            if req_val: 
+                info.append(f"Requires {req}: {req_val}")
+            
+            # Check Scaling (and index it)
+            # This allows "What scales with Arcane?" to find this item
+            scaling_uri = URIRef(NS["er"] + f"scaling{req}")
+            # Note: Scaling is often on the stats_node, but we check the main entity too
+            scaling_val = g.value(s, scaling_uri) or (g.value(stats_node, scaling_uri) if stats_node else None)
+            
+            if scaling_val:
+                info.append(f"Scaling {req}: {scaling_val}")
+                # Add to Property Index
+                attr_key = req.lower()
+                if attr_key not in state["property_index"]:
+                    state["property_index"][attr_key] = []
+                state["property_index"][attr_key].append(name)
 
         # 4. Drops / Location Chain
-        # "Who drops this?"
         sources = list(g.subjects(URIRef(NS["er"] + "drops"), s))
         sources += list(g.objects(s, URIRef(NS["er"] + "droppedBy")))
         
@@ -79,7 +94,6 @@ def build_cheat_sheets(g: Graph):
             for boss in sources:
                 b_name = g.value(boss, URIRef(NS["rdfs"] + "label"))
                 if b_name:
-                    # Deep dive: Where is this boss?
                     locs = list(g.objects(boss, URIRef(NS["er"] + "locatedIn")))
                     loc_names = [str(g.value(l, URIRef(NS["rdfs"] + "label"))) for l in locs]
                     loc_str = f" (Location: {', '.join(loc_names)})" if loc_names else ""
@@ -103,29 +117,40 @@ def build_cheat_sheets(g: Graph):
         
     return cheat_sheet
 
-def fuzzy_retrieve(query: str):
+def hybrid_retrieve(query: str):
     """
-    Uses RapidFuzz to find relevant entities even with typos.
+    NEW: Checks Property Index first (for attributes), then falls back to Fuzzy Search.
     """
-    context = []
-    found_keys = set()
-    
-    # 1. Exact Substring Match (Fast)
+    found_entities = set()
     q_lower = query.lower()
+    
+    # 1. Property Keyword Match (e.g., "arcane", "intelligence")
+    for attr in state["property_index"]:
+        if attr in q_lower:
+            # Add top 5 items associated with this attribute to context
+            found_entities.update(state["property_index"][attr][:5])
+            
+    # 2. Exact Substring Match (Names)
     for key in state["entity_names"]:
         if key in q_lower and len(key) > 3:
-            found_keys.add(key)
+            # Recover the original display name from the map keys
+            # (In a real app, you might map key -> proper_name)
+            found_entities.add(key)
             
-    # 2. Fuzzy Match (Smart)
-    # Extracts top 3 matches that resemble words in the query
+    # 3. Fuzzy Match (Smart)
     matches = process.extract(q_lower, state["entity_names"], scorer=fuzz.partial_ratio, limit=5)
     for key, score, idx in matches:
-        if score > 85: # High confidence threshold
-            found_keys.add(key)
+        if score > 85:
+            found_entities.add(key)
             
-    # 3. Retrieve Text
-    for key in list(found_keys)[:4]: # Limit context to top 4 entities
-        context.append(state["entity_map"][key])
+    # 4. Final Compilation
+    context = []
+    # Limit to 6 entities to avoid context overflow
+    for entity_key in list(found_entities)[:6]:
+        # Entity keys are lowercase in our map
+        lookup_key = entity_key.lower()
+        if lookup_key in state["entity_map"]:
+            context.append(state["entity_map"][lookup_key])
         
     return "\n\n".join(context)
 
@@ -134,19 +159,19 @@ def fuzzy_retrieve(query: str):
 async def lifespan(app: FastAPI):
     print("--- SYSTEM STARTUP ---")
     
-    # 1. Load Graph & Build Index
+    # 1. Load Optimized Graph
     if os.path.exists(GRAPH_FILE):
-        print("1. Loading Knowledge Graph...")
+        print(f"1. Loading Knowledge Graph: {GRAPH_FILE}...")
         state["graph"] = Graph()
         state["graph"].parse(GRAPH_FILE, format="turtle")
         print(f"   [Graph] Loaded {len(state['graph'])} triples.")
         
-        # Build the fast lookup maps
         state["entity_map"] = build_cheat_sheets(state["graph"])
         state["entity_names"] = list(state["entity_map"].keys())
         print(f"   [Index] Ready with {len(state['entity_names'])} entities.")
+        print(f"   [Property Index] Mapped {len(state['property_index'])} attributes.")
     else:
-        print("   [CRITICAL] Graph file not found!")
+        print(f"   [CRITICAL] {GRAPH_FILE} not found! Run optimize.py first.")
 
     # 2. Load LLM
     print("2. Loading Model (4-bit)...")
@@ -159,7 +184,7 @@ async def lifespan(app: FastAPI):
         model=model, 
         tokenizer=tokenizer, 
         max_new_tokens=600, 
-        temperature=0.1, # Low temp for factual reasoning
+        temperature=0.1,
         do_sample=True
     )
     
@@ -182,13 +207,13 @@ async def chat(request: ChatRequest):
     q = request.query
     print(f"\n--- USER QUERY: {q} ---")
     
-    # 1. RETRIEVE
-    context_text = fuzzy_retrieve(q)
+    # 1. RETRIEVE (using new hybrid logic)
+    context_text = hybrid_retrieve(q)
     
     if not context_text:
         return {
             "context": "No relevant records found.",
-            "response": "I couldn't find any items or bosses in the archives matching your query. Please check the spelling."
+            "response": "I couldn't find any items, bosses, or scaling attributes in the archives matching your query."
         }
 
     # 2. PROMPT (Chain of Thought)
@@ -196,12 +221,12 @@ async def chat(request: ChatRequest):
     You are an Elden Ring Logical Assistant. Answer using ONLY the RECORDS below.
     
     INSTRUCTIONS:
-    1. Analyze the RECORDS.
+    1. Analyze the RECORDS provided.
     2. THINK STEP-BY-STEP:
-       - Identify the items/bosses involved.
-       - Extract specific numbers (Weight, Requirements, Stats).
-       - Compare them if the user asks for a comparison.
-    3. Provide a clear, final answer.
+       - Identify the entities involved.
+       - Extract values (Scaling, Requirements, Locations).
+       - Compare stats if the user asks for a comparison.
+    3. Be precise with names and numbers.
     
     RECORDS:
     {context_text}
@@ -218,7 +243,6 @@ async def chat(request: ChatRequest):
     outputs = state["pipe"](prompt)
     response = outputs[0]["generated_text"].split("<|im_start|>assistant")[-1].strip()
     
-    # Cleanup
     if "<|im_end|>" in response: response = response.split("<|im_end|>")[0]
 
     return {"context": context_text, "response": response}

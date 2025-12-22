@@ -6,3 +6,4 @@ __pycache__/
 rag_index/
 *.pt
 /data/chroma_db/
+/lib/

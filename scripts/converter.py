@@ -248,6 +248,9 @@ class EldenRingConverter:
         if row.get('skill'):
             skill_uri = self.get_uri(row['skill'], ER.Skill)
             if skill_uri: self.graph.add((uri, ER.hasSkill, skill_uri))
+        
+        if row.get('weight'):
+            self.graph.add((uri, ER.weight, Literal(float(row['weight']), datatype=XSD.float)))
 
     def process_shield(self, uri, row):
         self.graph.add((uri, RDF.type, ER.Shield))
