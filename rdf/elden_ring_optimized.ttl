@@ -5,6 +5,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix db: <https://dbpedia.org/page/> .
 
 er: a owl:Ontology ;
     rdfs:comment "Comprehensive Elden Ring Ontology: Production Gameplay & Full Lore"@en .
@@ -2608,7 +2609,7 @@ er:EldenRemembrance a er:Consumable,
 er:EldenRing a er:Concept ;
     rdfs:label "Elden Ring" ;
     owl:sameAs wd:Q64826862 ;
-    owl:sameAs https://dbpedia.org/page/Elden_Ring .
+    owl:sameAs db:Elden_Ring .
 
 er:EldenStars a er:Incantation,
         er:Spell ;
