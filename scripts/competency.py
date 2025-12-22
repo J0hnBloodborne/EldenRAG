@@ -1,147 +1,203 @@
-import os
-import torch
-import uvicorn
-from contextlib import asynccontextmanager
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.templating import Jinja2Templates
-from pydantic import BaseModel
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
-
-# Retrieval Imports (Using the Chroma index we built)
-from langchain_community.vectorstores import Chroma
-from langchain_huggingface import HuggingFaceEmbeddings
+import time
+from rdflib import Graph, Namespace
 
 # --- CONFIGURATION ---
-# 1. THE INDEX WE BUILT
-DB_DIR = "data/chroma_db"
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+GRAPH_FILE = "rdf/elden_ring_optimized.ttl"
+ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
 
-# 2. THE MODEL YOU ALREADY HAVE (Standard Transformers)
-# This matches the ID in your old script's logic
-MODEL_ID = "Qwen/Qwen2.5-7B-Instruct" 
+def main():
+    print(f"--- 1. LOADING KNOWLEDGE GRAPH: {GRAPH_FILE} ---")
+    g = Graph()
+    start_time = time.time()
+    g.parse(GRAPH_FILE, format="turtle")
+    print(f"   [Loaded] {len(g)} triples in {time.time() - start_time:.2f} seconds.\n")
 
-# --- GLOBAL STATE ---
-state = {
-    "db": None,
-    "pipe": None, # The HF Pipeline
-    "retriever": None
-}
-
-# --- LIFECYCLE MANAGER ---
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print("--- SYSTEM STARTUP ---")
-    
-    # 1. LOAD LLM (Transformers + 4-bit Quantization)
-    print(f"1. Loading Model: {MODEL_ID} (4-bit)...")
-    try:
-        # 4-Bit Config (Fits 7B in 8GB VRAM)
-        bnb_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16,
-            bnb_4bit_use_double_quant=True,
-        )
+    queries = [
+        # --- LEVEL 1: BASIC RETRIEVAL ---
+        {
+            "name": "1. Simple Lookup (Who is Malenia?)",
+            "desc": "Retrieves the label and description of a specific entity.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+                
+                SELECT ?label ?desc WHERE {
+                    er:MaleniaBladeOfMiquella rdfs:label ?label ;
+                                              rdfs:comment ?desc .
+                }
+            """
+        },
+        {
+            "name": "2. Stat Retrieval (The Shadow Node)",
+            "desc": "Navigates from a Weapon to its _MaxStats node to find attack power.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                
+                SELECT ?weapon ?phy ?mag WHERE {
+                    ?weapon er:hasMaxStats ?stats .
+                    ?stats er:attackPhysical ?phy .
+                    OPTIONAL { ?stats er:attackMagic ?mag }
+                    FILTER (?weapon = er:Moonveil)
+                }
+            """
+        },
         
-        tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-        model = AutoModelForCausalLM.from_pretrained(
-            MODEL_ID,
-            quantization_config=bnb_config,
-            device_map="auto",
-            trust_remote_code=True
-        )
-        
-        # Create Raw Pipeline
-        state["pipe"] = pipeline(
-            "text-generation",
-            model=model,
-            tokenizer=tokenizer,
-            max_new_tokens=512,
-            temperature=0.3,
-            repetition_penalty=1.1
-        )
-        print("   [OK] Model Loaded (Transformers).")
-    except Exception as e:
-        print(f"   [CRITICAL] LLM Load Failed: {e}")
-        print("   Did you install bitsandbytes? (pip install bitsandbytes accelerate)")
+        # --- LEVEL 2: INFERENCE & INVERSES ---
+        {
+            "name": "3. Inverse Logic (Who drops this?)",
+            "desc": "Tests if 'droppedBy' was inferred from 'drops' (Using Rykard as a clean test case).",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-    # 2. LOAD RETRIEVER
-    print(f"2. Loading Index: {DB_DIR}...")
-    embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
-    if os.path.exists(DB_DIR):
-        state["db"] = Chroma(persist_directory=DB_DIR, embedding_function=embeddings)
-        state["retriever"] = state["db"].as_retriever(search_kwargs={"k": 5})
-        print("   [OK] Database Loaded.")
-    else:
-        print("   [CRITICAL] Index not found. Run build_rag_index.py first.")
-    
-    yield
-    print("--- SYSTEM SHUTDOWN ---")
+                SELECT ?bossName WHERE {
+                    er:RemembranceOfTheBlasphemous er:droppedBy ?boss .
+                    ?boss rdfs:label ?bossName .
+                }
+            """
+        },
+        {
+            "name": "4. Semantic Linking (Lore Scanner)",
+            "desc": "Finds items that textually mention 'Miquella'.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-# --- APP SETUP ---
-app = FastAPI(title="Elden Ring RAG", lifespan=lifespan)
-app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"]
-)
-templates = Jinja2Templates(directory="templates")
+                SELECT ?itemLabel WHERE {
+                    ?item er:mentions ?target .
+                    ?target rdfs:label "Miquella" . 
+                    ?item rdfs:label ?itemLabel .
+                } LIMIT 5
+            """
+        },
 
-# --- DATA MODELS ---
-class ChatRequest(BaseModel):
-    message: str | None = None
-    query: str | None = None
+        # --- LEVEL 3: TRANSITIVITY & HIERARCHY ---
+        {
+            "name": "5. Transitive Geography (What is in Caelid?)",
+            "desc": "Finds entities located in Caelid OR any sub-location of Caelid.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-# --- ROUTES ---
-@app.get("/")
-def home(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+                SELECT ?entityName ?locationName WHERE {
+                    ?entity er:locatedIn+ er:Caelid .
+                    ?entity rdfs:label ?entityName .
+                    ?entity er:locatedIn ?directLoc .
+                    ?directLoc rdfs:label ?locationName .
+                } LIMIT 5
+            """
+        },
+        {
+            "name": "6. Class Hierarchy (Polymorphism)",
+            "desc": "Finds 'Great Runes' by querying for the parent class 'Item'.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-@app.post("/api/chat")
-async def chat_endpoint(request: ChatRequest):
-    user_input = request.message or request.query
-    print(f"\n--- QUERY: {user_input} ---")
+                SELECT ?name WHERE {
+                    ?x a er:GreatRune .
+                    ?x a er:Item .
+                    ?x rdfs:label ?name .
+                } LIMIT 5
+            """
+        },
 
-    if not state["pipe"]:
-        return JSONResponse({"response": "Model failed to load."}, status_code=500)
+        # --- LEVEL 4: COMPLEX FILTERING ---
+        {
+            "name": "7. The 'Int Build' Query",
+            "desc": "Finds weapons with 'S' Intelligence scaling.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-    # 1. RETRIEVE (Chroma)
-    docs = state["retriever"].invoke(user_input)
-    print(f"   [Retrieval] Found {len(docs)} cards.")
+                SELECT ?weaponName ?scaling WHERE {
+                    ?w er:hasMaxStats ?stats ;
+                       rdfs:label ?weaponName .
+                    ?stats er:scalingIntelligence ?scaling .
+                    FILTER (?scaling = "S")
+                }
+            """
+        },
+        {
+            "name": "8. Status Effect Search",
+            "desc": "Finds weapons that cause Bleed (Hemorrhage).",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-    # 2. FORMAT CONTEXT
-    context_text = ""
-    for i, doc in enumerate(docs):
-        name = doc.metadata.get('name', 'Unknown')
-        content = doc.page_content.replace('\n', ' ')
-        context_text += f"[Entity {i+1}: {name}] {content}\n"
+                SELECT ?weaponName WHERE {
+                    ?w er:causesEffect er:Hemorrhage ;
+                       rdfs:label ?weaponName .
+                } LIMIT 5
+            """
+        },
 
-    # 3. GENERATE (Raw Transformers)
-    # ChatML Format
-    messages = [
-        {"role": "system", "content": (
-            "You are Melina, the Kindling Maiden. Guide the Tarnished.\n"
-            "Answer using ONLY the Context below.\n"
-            "If the answer is missing, say 'The Golden Order is silent.'\n\n"
-            f"CONTEXT:\n{context_text}"
-        )},
-        {"role": "user", "content": user_input}
+        # --- LEVEL 5: MULTI-HOP REASONING ---
+        {
+            "name": "9. Pathfinding (Boss -> Drop -> Stats)",
+            "desc": "Find the Physical Damage of the weapon dropped by the Boss of 'Castle Sol'.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+                SELECT ?bossName ?weaponName ?physAtk WHERE {
+                    ?boss er:locatedIn er:CastleSol ;
+                          rdfs:label ?bossName ;
+                          er:drops ?weapon .
+                    
+                    ?weapon a er:Weapon ;
+                            rdfs:label ?weaponName ;
+                            er:hasMaxStats ?stats .
+                    
+                    ?stats er:attackPhysical ?physAtk .
+                }
+            """
+        },
+        {
+            "name": "10. The 'Scholar' Query (Linked Data)",
+            "desc": "Finds items mentioning an Entity that has a Wikidata Link.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+                SELECT ?itemLabel ?entityLabel ?wikiURI WHERE {
+                    ?item er:mentions ?entity .
+                    ?entity owl:sameAs ?wikiURI ;
+                            rdfs:label ?entityLabel .
+                    ?item rdfs:label ?itemLabel .
+                } LIMIT 5
+            """
+        }
     ]
-    
-    print("   [Inference] Generating...")
-    prompt = state["pipe"].tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
-    )
-    
-    outputs = state["pipe"](prompt)
-    generated = outputs[0]["generated_text"]
-    
-    # Strip prompt to get just the answer
-    if "<|im_start|>assistant" in generated:
-        response_text = generated.split("<|im_start|>assistant")[-1].strip()
-    else:
-        response_text = generated[len(prompt):].strip()
 
-    return {"response": response_text}
+    print(f"--- 2. EXECUTING {len(queries)} COMPETENCY QUERIES ---\n")
+    
+    for i, q in enumerate(queries):
+        print(f"Q{i+1}: {q['name']}")
+        print(f"   [{q['desc']}]")
+        
+        try:
+            results = g.query(q['sparql'])
+            count = 0
+            for row in results:
+                # Clean formatting for display
+                clean_row = []
+                for val in row:
+                    s_val = str(val)
+                    if "http" in s_val and "#" in s_val:
+                        clean_row.append(s_val.split("#")[-1])
+                    elif "http" in s_val and "/" in s_val:
+                        clean_row.append(s_val.split("/")[-1])
+                    else:
+                        clean_row.append(s_val)
+                print(f"   -> {clean_row}")
+                count += 1
+            if count == 0:
+                print("   [!] No results found.")
+        except Exception as e:
+            print(f"   [ERROR] {e}")
+        print("-" * 60)
 
 if __name__ == "__main__":
-    uvicorn.run("web_server:app", host="127.0.0.1", port=5000)
+    main()

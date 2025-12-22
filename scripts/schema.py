@@ -1,122 +1,139 @@
 from rdflib import Graph, Literal, RDF, RDFS, OWL, URIRef, Namespace, XSD
 
-# 1. SETUP
+# 1. NAMESPACES
 ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
 SCHEMA = Namespace("http://schema.org/")
 
-g = Graph()
-g.bind("er", ER)
-g.bind("owl", OWL)
-g.bind("schema", SCHEMA)
+def build_comprehensive_ontology():
+    g = Graph()
+    g.bind("er", ER)
+    g.bind("owl", OWL)
+    g.bind("schema", SCHEMA)
 
-ontology_uri = URIRef("http://www.semanticweb.org/fall2025/eldenring/")
-g.add((ontology_uri, RDF.type, OWL.Ontology))
-g.add((ontology_uri, RDFS.comment, Literal("The Official Elden Ring Knowledge Graph Ontology (DLC Updated)", lang="en")))
+    # 2. ONTOLOGY DEFINITION
+    ontology_uri = ER[""]
+    g.add((ontology_uri, RDF.type, OWL.Ontology))
+    g.add((ontology_uri, RDFS.comment, Literal("Comprehensive Elden Ring Ontology: Production Gameplay & Full Lore", lang="en")))
 
-# ==========================================
-# 2. CLASS HIERARCHY
-# ==========================================
+    # ==========================================
+    # 3. CLASS HIERARCHY
+    # ==========================================
+    
+    # --- Base Classes ---
+    base_classes = [
+        "Agent", "Item", "Location", "Skill", "StatusEffect", 
+        "Event", "Concept", "StatBlock", "Faction", "OuterGod", "Family"
+    ]
+    for c in base_classes:
+        g.add((ER[c], RDF.type, OWL.Class))
 
-# --- Base Classes ---
-base_classes = ["Agent", "Item", "Location", "Event", "Concept", "StatusEffect"]
-for c in base_classes:
-    g.add((ER[c], RDF.type, OWL.Class))
+    # --- Agent Subclasses ---
+    g.add((ER.Boss, RDFS.subClassOf, ER.Agent))
+    g.add((ER.NPC, RDFS.subClassOf, ER.Agent))
+    g.add((ER.Creature, RDFS.subClassOf, ER.Agent))
+    g.add((ER.Merchant, RDFS.subClassOf, ER.NPC))
+    g.add((ER.Demigod, RDFS.subClassOf, ER.Agent))
+    g.add((ER.Empyrean, RDFS.subClassOf, ER.Agent))
 
-# --- Agents (Bosses & NPCs) ---
-g.add((ER.Boss, RDFS.subClassOf, ER.Agent))
-g.add((ER.NPC, RDFS.subClassOf, ER.Agent))
-g.add((ER.Merchant, RDFS.subClassOf, ER.NPC))
+    # --- Item Subclasses ---
+    item_types = [
+        "Weapon", "Shield", "Armor", "Talisman", "Spell", "SpiritAsh", 
+        "Consumable", "Material", "KeyItem", "Ammo", "AshOfWar", "Tool", 
+        "Remembrance", "GreatRune", "CrystalTear", "Cookbook", "BellBearing", "Whetblade"
+    ]
+    for t in item_types:
+        g.add((ER[t], RDFS.subClassOf, ER.Item))
+    
+    g.add((ER.Sorcery, RDFS.subClassOf, ER.Spell))
+    g.add((ER.Incantation, RDFS.subClassOf, ER.Spell))
 
-# --- Items (The Big List) ---
-item_subclasses = [
-    "Weapon", "Shield", "Armor", "Talisman", "Consumable", 
-    "Material", "KeyItem", "Remembrance", "GreatRune", 
-    "SpiritAsh", "AshOfWar", "Sorcery", "Incantation", 
-    "BellBearing", "Cookbook", "Whetblade", "Ammo", "Tool"
-]
-for c in item_subclasses:
-    g.add((ER[c], RDFS.subClassOf, ER.Item))
+    # --- Location Subclasses ---
+    loc_types = [
+        "Region", "Dungeon", "SiteOfGrace", "Ruins", "Cave", 
+        "Catacombs", "Evergaol", "Tower", "Fort", "Castle"
+    ]
+    for t in loc_types:
+        g.add((ER[t], RDFS.subClassOf, ER.Location))
 
-# --- Magic Grouping ---
-g.add((ER.Magic, RDF.type, OWL.Class))
-g.add((ER.Sorcery, RDFS.subClassOf, ER.Magic))
-g.add((ER.Incantation, RDFS.subClassOf, ER.Magic))
+    # ==========================================
+    # 4. PROPERTIES
+    # ==========================================
 
-# --- Weapon Types (Including DLC) ---
-weapon_types = [
-    "Dagger", "StraightSword", "Greatsword", "ColossalSword", 
-    "ThrustingSword", "HeavyThrustingSword", "CurvedSword", "CurvedGreatsword", 
-    "Katana", "Twinblade", "Axe", "Greataxe", "Hammer", "GreatHammer", 
-    "Flail", "Spear", "GreatSpear", "Halberd", "Reaper", "Whip", 
-    "Fist", "Claw", "LightBow", "Bow", "Greatbow", "Crossbow", "Ballista", 
-    "GlintstoneStaff", "SacredSeal", "Torch", 
-    # DLC Types
-    "HandToHandArt", "PerfumeBottle", "ThrowingBlade", "BackhandBlade", 
-    "LightGreatsword", "GreatKatana", "BeastClaw"
-]
+    def define_prop(uri, p_type=OWL.ObjectProperty, domain=None, range=None, inverse=None, transitive=False, symmetric=False):
+        g.add((uri, RDF.type, p_type))
+        if domain: g.add((uri, RDFS.domain, domain))
+        if range: g.add((uri, RDFS.range, range))
+        if inverse: 
+            inv_uri = ER[inverse] if isinstance(inverse, str) else inverse
+            g.add((inv_uri, RDF.type, OWL.ObjectProperty))
+            g.add((uri, OWL.inverseOf, inv_uri))
+        if transitive: g.add((uri, RDF.type, OWL.TransitiveProperty))
+        if symmetric: g.add((uri, RDF.type, OWL.SymmetricProperty))
 
-for w in weapon_types:
-    g.add((ER[w], RDFS.subClassOf, ER.Weapon))
+    # --- Connections ---
+    define_prop(ER.locatedIn, transitive=True, range=ER.Location)
+    define_prop(ER.drops, domain=ER.Agent, range=ER.Item, inverse="droppedBy")
+    define_prop(ER.sells, domain=ER.Merchant, range=ER.Item, inverse="soldBy")
+    define_prop(ER.hasSkill, domain=ER.Weapon, range=ER.Skill, inverse="skillOf")
+    define_prop(ER.teaches, domain=ER.NPC, range=ER.Spell, inverse="taughtBy")
+    define_prop(ER.containsItem, domain=ER.Location, range=ER.Item, inverse="foundAt")
+    define_prop(ER.mentions, inverse="mentionedIn")
+    define_prop(ER.causesEffect, domain=ER.Weapon, range=ER.StatusEffect)
+    define_prop(ER.hasMaxStats, domain=ER.Weapon, range=ER.StatBlock)
 
-# --- Armor Types ---
-for a in ["Helm", "ChestArmor", "Gauntlets", "LegArmor"]:
-    g.add((ER[a], RDFS.subClassOf, ER.Armor))
+    # --- Lore Properties ---
+    define_prop(ER.childOf, domain=ER.Agent, range=ER.Agent, inverse="parentOf")
+    define_prop(ER.siblingOf, domain=ER.Agent, range=ER.Agent, symmetric=True)
+    define_prop(ER.spouseOf, domain=ER.Agent, range=ER.Agent, symmetric=True)
+    define_prop(ER.descendantOf, domain=ER.Agent, range=ER.Agent, transitive=True)
+    define_prop(ER.alliedWith, domain=ER.Agent, range=ER.Agent, symmetric=True)
+    define_prop(ER.enemyOf, domain=ER.Agent, range=ER.Agent, symmetric=True)
+    define_prop(ER.memberOf, domain=ER.Agent, range=ER.Faction, inverse="hasMember")
+    define_prop(ER.servantOf, domain=ER.Agent, range=ER.Agent, inverse="hasServant")
+    define_prop(ER.worships, domain=ER.Agent, range=ER.OuterGod, inverse="worshippedBy")
+    define_prop(ER.participatedIn, domain=ER.Agent, range=ER.Event, inverse="hasParticipant")
+    define_prop(ER.associatedWith, domain=ER.Item, range=ER.Concept)
 
-# --- The Shadow Node Class ---
-g.add((ER.WeaponStats, RDF.type, OWL.Class))
-g.add((ER.WeaponStats, RDFS.comment, Literal("A helper node containing the stats of a weapon at a specific upgrade level.")))
+    # ==========================================
+    # 5. DATATYPE PROPERTIES (Hard Stats)
+    # ==========================================
 
-# ==========================================
-# 3. PROPERTIES
-# ==========================================
+    # Generic Stats
+    stats = [
+        ("weight", XSD.float), ("hp", XSD.string), ("fpCost", XSD.integer), 
+        ("hpCost", XSD.integer), ("staminaCost", XSD.integer), ("value", XSD.integer)
+    ]
+    for name, dtype in stats:
+        uri = ER[name]
+        g.add((uri, RDF.type, OWL.DatatypeProperty))
+        g.add((uri, RDFS.range, dtype))
 
-def def_prop(uri, type_, domain=None, range_=None, comment=None):
-    g.add((uri, RDF.type, type_))
-    if domain: g.add((uri, RDFS.domain, domain))
-    if range_: g.add((uri, RDFS.range, range_))
-    if comment: g.add((uri, RDFS.comment, Literal(comment)))
+    # Attack Power Stats (Added for StatBlock)
+    dmg_types = ["Physical", "Magic", "Fire", "Lightning", "Holy"]
+    for dt in dmg_types:
+        uri = ER[f"attack{dt}"]
+        g.add((uri, RDF.type, OWL.DatatypeProperty))
+        g.add((uri, RDFS.range, XSD.float))
 
-# --- Object Properties (Linking Nodes) ---
-def_prop(ER.locatedIn, OWL.ObjectProperty, domain=ER.Agent, range_=ER.Location, comment="Where an entity can be found.")
-def_prop(ER.foundIn, OWL.ObjectProperty, domain=ER.Item, range_=ER.Location, comment="Where an item can be looted.")
-def_prop(ER.drops, OWL.ObjectProperty, domain=ER.Agent, range_=ER.Item, comment="What an agent drops on death.")
-def_prop(ER.droppedBy, OWL.ObjectProperty, domain=ER.Item, range_=ER.Agent, comment="Inverse of drops.")
-g.add((ER.drops, OWL.inverseOf, ER.droppedBy))
+    # Requirements & Scaling
+    for attr in ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"]:
+        g.add((ER[f"requires{attr}"], RDF.type, OWL.DatatypeProperty))
+        g.add((ER[f"requires{attr}"], RDFS.range, XSD.integer))
+        
+        g.add((ER[f"scaling{attr}"], RDF.type, OWL.DatatypeProperty))
+        g.add((ER[f"scaling{attr}"], RDFS.range, XSD.string))
 
-def_prop(ER.mentions, OWL.ObjectProperty, comment="Generic lore connection found in text descriptions.")
-def_prop(ER.unlocksReward, OWL.ObjectProperty, domain=ER.Remembrance, range_=ER.Item)
-def_prop(ER.sells, OWL.ObjectProperty, domain=ER.Merchant, range_=ER.Item)
-def_prop(ER.hasSkill, OWL.ObjectProperty, domain=ER.Weapon, range_=ER.Skill)
-def_prop(ER.causesEffect, OWL.ObjectProperty, domain=ER.Weapon, range_=ER.StatusEffect)
+    # ==========================================
+    # 6. LOGICAL AXIOMS
+    # ==========================================
+    members = [ER.Agent, ER.Item, ER.Location, ER.Event, ER.Faction, ER.Concept]
+    for i in range(len(members)):
+        for j in range(i + 1, len(members)):
+            g.add((members[i], OWL.disjointWith, members[j]))
 
-# --- The "Shadow Node" Property ---
-def_prop(ER.hasMaxStats, OWL.ObjectProperty, domain=ER.Weapon, range_=ER.WeaponStats, 
-         comment="Links a Weapon to its stats at Max Upgrade level.")
+    output_path = "rdf/elden_ring_schema.ttl"
+    g.serialize(output_path, format="turtle")
+    print(f"[SUCCESS] Ontology generated with {len(g)} triples.")
 
-# --- Datatype Properties (Values) ---
-
-# 1. Weapon Requirements (On the Weapon itself)
-for stat in ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"]:
-    def_prop(ER[f"requires{stat}"], OWL.DatatypeProperty, domain=ER.Weapon, range_=XSD.integer)
-
-# 2. Weapon Scaling (On the WeaponStats node) - These are Strings (e.g. "S", "A")
-for stat in ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"]:
-    def_prop(ER[f"scaling{stat}"], OWL.DatatypeProperty, domain=ER.WeaponStats, range_=XSD.string)
-
-# 3. Attack Power (On the WeaponStats node) - Floats
-dmg_types = ["Physical", "Magic", "Fire", "Lightning", "Holy", "Stamina"]
-for dt in dmg_types:
-    def_prop(ER[f"attack{dt}"], OWL.DatatypeProperty, domain=ER.WeaponStats, range_=XSD.float)
-
-# 4. General Stats
-def_prop(ER.weight, OWL.DatatypeProperty, domain=ER.Item, range_=XSD.float)
-def_prop(ER.healthPoints, OWL.DatatypeProperty, domain=ER.Agent, range_=XSD.integer)
-def_prop(ER.runesDropped, OWL.DatatypeProperty, domain=ER.Boss, range_=XSD.integer)
-def_prop(ER.description, OWL.DatatypeProperty, range_=XSD.string)
-
-# ==========================================
-# 4. SERIALIZATION
-# ==========================================
-outfile = "rdf/elden_ring_schema.ttl"
-g.serialize(destination=outfile, format="turtle")
-print(f"Generated new T-Box at {outfile} with {len(g)} triples.")
+if __name__ == "__main__":
+    build_comprehensive_ontology()
