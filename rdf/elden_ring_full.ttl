@@ -1,6 +1,7 @@
 @prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix ns1: <http://schema.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -4865,6 +4866,9 @@ er:EnvoysLongHorn a er:Weapon ;
     er:requiresStrength 23 ;
     rdfs:comment "Long golden horn of the Oracle Envoys. Profoundly weighty, its blows are sure to be felt. Originally an instrument, but one that cannot be sounded by a mere human. Or perhaps it is too early to sound the call." .
 
+er:Equippable a owl:Class ;
+    owl:unionOf ( er:Weapon er:Armor er:Talisman er:Shield ) .
+
 er:ErdleafFlower a er:Material ;
     rdfs:label "Erdleaf Flower" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/erdleaf_flower_elden_ring_wiki_guide_200px.png" ;
@@ -7928,6 +7932,11 @@ er:HoleladenNecklace a er:KeyItem ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/hole-laden_necklace_exploration_elden_ring_shadow_of_the_erdtree_dlc_wiki_guide_200px.png" ;
     er:mentions er:CountYmirHighPriest ;
     rdfs:comment "A pale-blue necklace made from a thin, elongated stone hollowed out from the inside. Use at a hallowed ruin to sound a hanging bell. It was a teaching of Count Ymir. The fate of the one who sounds the hanging bell will be guided by the stars. " .
+
+er:HolyWeapon a owl:Class ;
+    owl:intersectionOf ( er:Weapon [ a owl:Restriction ;
+                owl:onProperty er:requiresFaith ;
+                owl:someValuesFrom xsd:integer ] ) .
 
 er:Hookclaws a er:Weapon ;
     rdfs:label "Hookclaws" ;
@@ -11323,6 +11332,9 @@ er:PaupersRune a er:Consumable ;
     rdfs:label "Pauper's Rune" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/paupers_rune_consumables_elden_ring_wiki_guide_200px.png" ;
     rdfs:comment "Grace that dwells within the inhabitants of The Lands Between; the lingering residue of gold. Use to gain a few runes. For all that they may be feeble things, these runes will act as nourishment for the development of any Tarnished. Provided a Finger Maiden can be found..." .
+
+er:PeacefulEntity a owl:Class ;
+    owl:complementOf er:Boss .
 
 er:PearlShieldTalisman a er:Talisman ;
     rdfs:label "Pearl Shield Talisman" ;
@@ -15733,15 +15745,6 @@ er:Zweihander a er:Weapon ;
     er:requiresStrength 19 ;
     rdfs:comment "Just about the largest sword a mere man is capable of swinging. True to its name, it is designed to be wielded in both hands, but those of merely ordinary strength will still struggle to do so.The long blade is heavy and sharp, sending foes reeling back with its broader strokes, while also capable of a devastating piercing thrust." .
 
-er:alliedWith a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:associatedWith a owl:ObjectProperty ;
-    rdfs:domain er:Item ;
-    rdfs:range er:Concept .
-
 er:attackFire a owl:DatatypeProperty ;
     rdfs:range xsd:float .
 
@@ -15766,30 +15769,15 @@ er:childOf a owl:ObjectProperty ;
     rdfs:range er:Agent ;
     owl:inverseOf er:parentOf .
 
-er:containsItem a owl:ObjectProperty ;
-    rdfs:domain er:Location ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:foundAt .
-
-er:descendantOf a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:drops a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:droppedBy .
-
-er:enemyOf a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
 er:fpCost a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:hasMaxStats a owl:ObjectProperty ;
+er:gameId a owl:DatatypeProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:range xsd:string .
+
+er:hasMaxStats a owl:FunctionalProperty,
+        owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
     rdfs:range er:StatBlock .
 
@@ -15827,9 +15815,6 @@ er:requiresArcane a owl:DatatypeProperty ;
 er:requiresDexterity a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:requiresFaith a owl:DatatypeProperty ;
-    rdfs:range xsd:integer .
-
 er:requiresIntelligence a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
@@ -15856,11 +15841,6 @@ er:sells a owl:ObjectProperty ;
     rdfs:range er:Item ;
     owl:inverseOf er:soldBy .
 
-er:servantOf a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent ;
-    owl:inverseOf er:hasServant .
-
 er:siblingOf a owl:ObjectProperty,
         owl:SymmetricProperty ;
     rdfs:domain er:Agent ;
@@ -15882,7 +15862,8 @@ er:teaches a owl:ObjectProperty ;
 er:value a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:weight a owl:DatatypeProperty ;
+er:weight a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
     rdfs:range xsd:float .
 
 er:worships a owl:ObjectProperty ;
@@ -18304,6 +18285,9 @@ er:FingerprintNostrum a er:Consumable ;
 er:FingerprintStoneShield_MaxStats a er:StatBlock ;
     rdfs:label "Fingerprint Stone Shield (Stats)" .
 
+er:Fire a er:DamageType,
+        owl:NamedIndividual .
+
 er:FireArrow_MaxStats a er:StatBlock ;
     rdfs:label "Fire Arrow (Stats)" ;
     er:attackCrit "100.0"^^xsd:float ;
@@ -19677,6 +19661,9 @@ er:HighroadCave a er:Location ;
     er:locatedIn er:Limgrave ;
     rdfs:comment "A cave that houses a tomb, deep within. It is situated at the northmost part of Limgrave. It has been inhabited by a pack of Wolves, Land Octopuses, and Giant Bats." .
 
+er:Holy a er:DamageType,
+        owl:NamedIndividual .
+
 er:HolyGrease a er:Consumable ;
     rdfs:label "Holy Grease" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/holy_grease_elden_ring_wiki_guide_200px.png" ;
@@ -20094,6 +20081,9 @@ er:LightCrossbow_MaxStats a er:StatBlock ;
     er:attackPhysical "260.0"^^xsd:float ;
     er:attackSta "60.0"^^xsd:float .
 
+er:Lightning a er:DamageType,
+        owl:NamedIndividual .
+
 er:LightningGrease a er:Consumable ;
     rdfs:label "Lightning Grease" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/lightning_grease_elden_ring_wiki_guide_200px.png" ;
@@ -20348,6 +20338,9 @@ er:MaddingHand_MaxStats a er:StatBlock ;
     er:scalingFaith "D"^^xsd:string ;
     er:scalingIntelligence "D"^^xsd:string ;
     er:scalingStrength "D"^^xsd:string .
+
+er:Magic a er:DamageType,
+        owl:NamedIndividual .
 
 er:MagicGrease a er:Consumable ;
     rdfs:label "Magic Grease" ;
@@ -21133,6 +21126,9 @@ er:PhantomGreatRune a er:GreatRune ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/phantom_great_rune_elden_ring_wiki_guide.png" ;
     er:mentions er:MohgsGreatRune ;
     rdfs:comment "Item for online play.  Obtained after using the Mohg's Great Rune and invading another world.  Consumed upon use. Enemies inside the invaded world receive a blessing of blood, which boosts their attack power when blood loss occurs nearby. Also, your HP recovers when blessed enemies defeat a player. " .
+
+er:Physical a er:DamageType,
+        owl:NamedIndividual .
 
 er:Pickaxe_MaxStats a er:StatBlock ;
     rdfs:label "Pickaxe (Stats)" ;
@@ -23554,17 +23550,21 @@ er:Zweihander_MaxStats a er:StatBlock ;
 
 er:droppedBy a owl:ObjectProperty .
 
-er:foundAt a owl:ObjectProperty .
+er:drops a owl:ObjectProperty ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Item ;
+    owl:inverseOf er:droppedBy .
 
 er:hasMember a owl:ObjectProperty .
 
 er:hasParticipant a owl:ObjectProperty .
 
-er:hasServant a owl:ObjectProperty .
-
 er:mentionedIn a owl:ObjectProperty .
 
 er:parentOf a owl:ObjectProperty .
+
+er:requiresFaith a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
 
 er:skillOf a owl:ObjectProperty .
 
@@ -24411,6 +24411,11 @@ er:CathedralOfManusMetyr a er:Location ;
     er:mentions er:CountYmirHighPriest ;
     rdfs:comment "Large cathedral in Scadu Altus, where Count Ymir awaits your arrival." .
 
+er:Concept a owl:Class .
+
+er:DamageType a owl:Class ;
+    owl:oneOf ( er:Physical er:Magic er:Fire er:Lightning er:Holy ) .
+
 er:Deathbird a er:Boss ;
     rdfs:label "Deathbird" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/deathbird_elden_ring_wiki_300px.jpg" ;
@@ -24524,8 +24529,6 @@ er:BonnyVillage a er:Location ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/bonny-village-sote-location-elden-ring-wiki-guide-300px.jpg" ;
     er:locatedIn er:ScaduAltus ;
     rdfs:comment "A dilapidated village in Scadu Altus, full of Jars." .
-
-er:Concept a owl:Class .
 
 er:GideonOfnir a er:NPC ;
     rdfs:label "Gideon Ofnir" ;
@@ -24818,6 +24821,13 @@ er:CrucibleKnights a er:Boss,
     rdfs:label "Crucible Knights" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/crucible-knight-stormhill-3-min.jpg" .
 
+er:Agent a owl:Class ;
+    owl:disjointWith er:Concept,
+        er:Event,
+        er:Faction,
+        er:Item,
+        er:Location .
+
 er:Bolt a er:Ammo ;
     rdfs:label "Bolt" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/bolt_elden_ring_wiki_guide_200px.png" ;
@@ -24891,6 +24901,12 @@ er:RayaLucariaAcademy a er:Location ;
     er:locatedIn er:LegacyDungeons ;
     rdfs:comment "A towering ivory tower where scholars come to study the art of sorcery. The gates have been sealed to prevent trespassers from entering the institute. It is heavily guarded by sorcerers, wardens, and reanimated beings imbued with magical properties." .
 
+er:Item a owl:Class ;
+    owl:disjointWith er:Concept,
+        er:Event,
+        er:Faction,
+        er:Location .
+
 er:MountaintopsOfTheGiants a er:Location ;
     rdfs:label "Mountaintops of the Giants" .
 
@@ -24902,19 +24918,6 @@ er:SelliaTownOfSorcery a er:Location ;
 
 er:WeepingPeninsula a er:Location ;
     rdfs:label "Weeping Peninsula" .
-
-er:Agent a owl:Class ;
-    owl:disjointWith er:Concept,
-        er:Event,
-        er:Faction,
-        er:Item,
-        er:Location .
-
-er:Item a owl:Class ;
-    owl:disjointWith er:Concept,
-        er:Event,
-        er:Faction,
-        er:Location .
 
 er:FlameProtectMe a er:Incantation ;
     rdfs:label "Flame, Protect Me" ;
@@ -25066,7 +25069,10 @@ er:Incantation rdfs:subClassOf er:Spell .
 
 er:Material rdfs:subClassOf er:Item .
 
-er:Boss rdfs:subClassOf er:Agent .
+er:Boss rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty er:drops ],
+        er:Agent .
 
 er:Talisman rdfs:subClassOf er:Item .
 

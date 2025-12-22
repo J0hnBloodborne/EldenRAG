@@ -1,5 +1,6 @@
 @prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -8,13 +9,9 @@ er: a owl:Ontology ;
 
 er:Ammo rdfs:subClassOf er:Item .
 
-er:Armor rdfs:subClassOf er:Item .
-
 er:AshOfWar rdfs:subClassOf er:Item .
 
 er:BellBearing rdfs:subClassOf er:Item .
-
-er:Boss rdfs:subClassOf er:Agent .
 
 er:Castle rdfs:subClassOf er:Location .
 
@@ -36,6 +33,9 @@ er:Dungeon rdfs:subClassOf er:Location .
 
 er:Empyrean rdfs:subClassOf er:Agent .
 
+er:Equippable a owl:Class ;
+    owl:unionOf ( er:Weapon er:Armor er:Talisman er:Shield ) .
+
 er:Evergaol rdfs:subClassOf er:Location .
 
 er:Family a owl:Class .
@@ -44,11 +44,19 @@ er:Fort rdfs:subClassOf er:Location .
 
 er:GreatRune rdfs:subClassOf er:Item .
 
+er:HolyWeapon a owl:Class ;
+    owl:intersectionOf ( er:Weapon [ a owl:Restriction ;
+                owl:onProperty er:requiresFaith ;
+                owl:someValuesFrom xsd:integer ] ) .
+
 er:Incantation rdfs:subClassOf er:Spell .
 
 er:KeyItem rdfs:subClassOf er:Item .
 
 er:Material rdfs:subClassOf er:Item .
+
+er:PeacefulEntity a owl:Class ;
+    owl:complementOf er:Boss .
 
 er:Region rdfs:subClassOf er:Location .
 
@@ -56,30 +64,17 @@ er:Remembrance rdfs:subClassOf er:Item .
 
 er:Ruins rdfs:subClassOf er:Location .
 
-er:Shield rdfs:subClassOf er:Item .
-
 er:SiteOfGrace rdfs:subClassOf er:Location .
 
 er:Sorcery rdfs:subClassOf er:Spell .
 
 er:SpiritAsh rdfs:subClassOf er:Item .
 
-er:Talisman rdfs:subClassOf er:Item .
-
 er:Tool rdfs:subClassOf er:Item .
 
 er:Tower rdfs:subClassOf er:Location .
 
 er:Whetblade rdfs:subClassOf er:Item .
-
-er:alliedWith a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:associatedWith a owl:ObjectProperty ;
-    rdfs:domain er:Item ;
-    rdfs:range er:Concept .
 
 er:attackFire a owl:DatatypeProperty ;
     rdfs:range xsd:float .
@@ -105,30 +100,15 @@ er:childOf a owl:ObjectProperty ;
     rdfs:range er:Agent ;
     owl:inverseOf er:parentOf .
 
-er:containsItem a owl:ObjectProperty ;
-    rdfs:domain er:Location ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:foundAt .
-
-er:descendantOf a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:drops a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:droppedBy .
-
-er:enemyOf a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
 er:fpCost a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:hasMaxStats a owl:ObjectProperty ;
+er:gameId a owl:DatatypeProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:range xsd:string .
+
+er:hasMaxStats a owl:FunctionalProperty,
+        owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
     rdfs:range er:StatBlock .
 
@@ -166,9 +146,6 @@ er:requiresArcane a owl:DatatypeProperty ;
 er:requiresDexterity a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:requiresFaith a owl:DatatypeProperty ;
-    rdfs:range xsd:integer .
-
 er:requiresIntelligence a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
@@ -195,11 +172,6 @@ er:sells a owl:ObjectProperty ;
     rdfs:range er:Item ;
     owl:inverseOf er:soldBy .
 
-er:servantOf a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent ;
-    owl:inverseOf er:hasServant .
-
 er:siblingOf a owl:ObjectProperty,
         owl:SymmetricProperty ;
     rdfs:domain er:Agent ;
@@ -221,7 +193,8 @@ er:teaches a owl:ObjectProperty ;
 er:value a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:weight a owl:DatatypeProperty ;
+er:weight a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
     rdfs:range xsd:float .
 
 er:worships a owl:ObjectProperty ;
@@ -229,9 +202,33 @@ er:worships a owl:ObjectProperty ;
     rdfs:range er:OuterGod ;
     owl:inverseOf er:worshippedBy .
 
+er:Armor rdfs:subClassOf er:Item .
+
+er:Boss rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty er:drops ],
+        er:Agent .
+
+er:Fire a er:DamageType,
+        owl:NamedIndividual .
+
+er:Holy a er:DamageType,
+        owl:NamedIndividual .
+
+er:Lightning a er:DamageType,
+        owl:NamedIndividual .
+
+er:Magic a er:DamageType,
+        owl:NamedIndividual .
+
 er:Merchant rdfs:subClassOf er:NPC .
 
 er:OuterGod a owl:Class .
+
+er:Physical a er:DamageType,
+        owl:NamedIndividual .
+
+er:Shield rdfs:subClassOf er:Item .
 
 er:Skill a owl:Class .
 
@@ -239,19 +236,25 @@ er:StatBlock a owl:Class .
 
 er:StatusEffect a owl:Class .
 
+er:Talisman rdfs:subClassOf er:Item .
+
 er:droppedBy a owl:ObjectProperty .
 
-er:foundAt a owl:ObjectProperty .
+er:drops a owl:ObjectProperty ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Item ;
+    owl:inverseOf er:droppedBy .
 
 er:hasMember a owl:ObjectProperty .
 
 er:hasParticipant a owl:ObjectProperty .
 
-er:hasServant a owl:ObjectProperty .
-
 er:mentionedIn a owl:ObjectProperty .
 
 er:parentOf a owl:ObjectProperty .
+
+er:requiresFaith a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
 
 er:skillOf a owl:ObjectProperty .
 
@@ -265,16 +268,19 @@ er:NPC rdfs:subClassOf er:Agent .
 
 er:Spell rdfs:subClassOf er:Item .
 
-er:Weapon rdfs:subClassOf er:Item .
-
 er:Event a owl:Class ;
     owl:disjointWith er:Concept,
         er:Faction .
 
+er:Concept a owl:Class .
+
+er:DamageType a owl:Class ;
+    owl:oneOf ( er:Physical er:Magic er:Fire er:Lightning er:Holy ) .
+
 er:Faction a owl:Class ;
     owl:disjointWith er:Concept .
 
-er:Concept a owl:Class .
+er:Weapon rdfs:subClassOf er:Item .
 
 er:Location a owl:Class ;
     owl:disjointWith er:Concept,

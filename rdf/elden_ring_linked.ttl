@@ -1,6 +1,7 @@
 @prefix er: <http://www.semanticweb.org/fall2025/eldenring/> .
 @prefix ns1: <http://schema.org/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -1479,6 +1480,10 @@ er:BallistaBolt a er:Ammo ;
     er:hasMaxStats er:BallistaBolt_MaxStats ;
     er:mentions er:HandBallista ;
     rdfs:comment "Greatbolt as large as a spear for use with Hand Ballista." .
+
+er:BandaiNamco a er:Faction ;
+    rdfs:label "Bandai Namco" ;
+    owl:sameAs wd:Q1194689 .
 
 er:BanditBoots a er:Armor ;
     rdfs:label "Bandit Boots" ;
@@ -3970,8 +3975,7 @@ er:DarkMoonGreatsword a er:Weapon ;
     er:requiresDexterity 11 ;
     er:requiresIntelligence 38 ;
     er:requiresStrength 16 ;
-    rdfs:comment "A Moon Greatsword, bestowed by a Carian queen upon herspouse to honor long-standing tradition.One of the legendary armaments. Ranni's sigil is a full moon, cold and leaden, and this sword is but a beam of its light." ;
-    owl:sameAs wd:Q111174245 .
+    rdfs:comment "A Moon Greatsword, bestowed by a Carian queen upon herspouse to honor long-standing tradition.One of the legendary armaments. Ranni's sigil is a full moon, cold and leaden, and this sword is but a beam of its light." .
 
 er:DarkMoonRing a er:KeyItem ;
     rdfs:label "Dark Moon Ring" ;
@@ -4774,6 +4778,10 @@ er:EldenRemembrance a er:Consumable,
     rdfs:comment "Remembrance of the Elden Beast, hewn into the Erdtree. The power of its namesake can be unlocked by the Finger Reader. Alternatively, it can be used to gain a great bounty of runes. It was the vassal beast of the Greater Will and living incarnation of the concept of Order.",
         "Remembrance of the Elden Beast, hewn into the Erdtree. The power of its namesake can be unlocked by the Finger Reader. Alternatively, it can be used to gain a great bounty of runes. It was the vassal beast of the Greater Will and living incarnation of the concept of Order. " .
 
+er:EldenRing a er:Concept ;
+    rdfs:label "Elden Ring" ;
+    owl:sameAs wd:Q64826862 .
+
 er:EldenStars a er:Incantation ;
     rdfs:label "Elden Stars" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/elden_stars_incantation_elden_ring_wiki_guide_200px.png" ;
@@ -4866,6 +4874,9 @@ er:EnvoysLongHorn a er:Weapon ;
     er:requiresFaith 18 ;
     er:requiresStrength 23 ;
     rdfs:comment "Long golden horn of the Oracle Envoys. Profoundly weighty, its blows are sure to be felt. Originally an instrument, but one that cannot be sounded by a mere human. Or perhaps it is too early to sound the call." .
+
+er:Equippable a owl:Class ;
+    owl:unionOf ( er:Weapon er:Armor er:Talisman er:Shield ) .
 
 er:ErdleafFlower a er:Material ;
     rdfs:label "Erdleaf Flower" ;
@@ -5935,6 +5946,10 @@ er:FreyjasHelm a er:Armor ;
         er:RedmaneFreyja ;
     rdfs:comment "Golden helm of Redmane Freyja, member of General Radahn's most distinguished knights. A hideous scarlet wound was once hewn into the center of her face. Later, Miquella gently put his lips to it and the unfading scar became the compass that Freyja would thereafter follow." .
 
+er:FromSoftware a er:Faction ;
+    rdfs:label "FromSoftware" ;
+    owl:sameAs wd:Q2414469 .
+
 er:FrozenArmament a er:Sorcery ;
     rdfs:label "Frozen Armament" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/frozen_armament_sorcery_elden_ring_wiki_guide_200px.png" ;
@@ -6132,6 +6147,10 @@ er:GelmirsFury a er:Sorcery ;
     rdfs:label "Gelmir's Fury" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/gelmirs_fury_sorcery_elden_ring_wiki_guide_200px.png" ;
     rdfs:comment "One of the sorceries developed from the magma of Mt. Gelmir. Conjures a surge of magma from the earth, covering the area. Charging extends the surge of magma. This sorcery is held to represent the fury of the volcano, but the arrogance of attempting to harness it is solely that of men and serpents. Note:" .
+
+er:GeorgeRRMartin a er:Agent ;
+    rdfs:label "George R. R. Martin" ;
+    owl:sameAs wd:Q181677 .
 
 er:GhizasWheel a er:Weapon ;
     rdfs:label "Ghiza's Wheel" ;
@@ -7828,6 +7847,10 @@ er:HiddenPathToTheHaligtree a er:Location ;
     er:locatedIn er:ConsecratedSnowfield ;
     rdfs:comment "The secret passage leading to the Haligtree has been overrun by the Vulgar Militia, seeking to ambush any who try to cross." .
 
+er:HidetakaMiyazaki a er:Agent ;
+    rdfs:label "Hidetaka Miyazaki" ;
+    owl:sameAs wd:Q11454590 .
+
 er:HierodasGlintstoneCrown a er:Armor ;
     rdfs:label "Hierodas Glintstone Crown" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/hierodas_glintstone_crown_elden_ring_wiki_guide_200px.png" ;
@@ -7930,6 +7953,11 @@ er:HoleladenNecklace a er:KeyItem ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/hole-laden_necklace_exploration_elden_ring_shadow_of_the_erdtree_dlc_wiki_guide_200px.png" ;
     er:mentions er:CountYmirHighPriest ;
     rdfs:comment "A pale-blue necklace made from a thin, elongated stone hollowed out from the inside. Use at a hallowed ruin to sound a hanging bell. It was a teaching of Count Ymir. The fate of the one who sounds the hanging bell will be guided by the stars. " .
+
+er:HolyWeapon a owl:Class ;
+    owl:intersectionOf ( er:Weapon [ a owl:Restriction ;
+                owl:onProperty er:requiresFaith ;
+                owl:someValuesFrom xsd:integer ] ) .
 
 er:Hookclaws a er:Weapon ;
     rdfs:label "Hookclaws" ;
@@ -11326,6 +11354,9 @@ er:PaupersRune a er:Consumable ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/paupers_rune_consumables_elden_ring_wiki_guide_200px.png" ;
     rdfs:comment "Grace that dwells within the inhabitants of The Lands Between; the lingering residue of gold. Use to gain a few runes. For all that they may be feeble things, these runes will act as nourishment for the development of any Tarnished. Provided a Finger Maiden can be found..." .
 
+er:PeacefulEntity a owl:Class ;
+    owl:complementOf er:Boss .
+
 er:PearlShieldTalisman a er:Talisman ;
     rdfs:label "Pearl Shield Talisman" ;
     ns1:image "https://eldenring.wiki.fextralife.com//file/Elden-Ring/pearl_shield_talisman_talisman_elden_ring_shadow_of_the_erdtree_dlc_wiki_guide_200px.png" ;
@@ -11956,8 +11987,7 @@ er:RadagonOfTheGoldenOrder a er:Boss ;
         er:Na ;
     er:locatedIn er:StonePlatform ;
     er:mentions er:RennalaQueenOfTheFullMoon ;
-    rdfs:comment "As the husband of Rennala of Caria, the red-haired Radagon studied sorcery, and as the husband of Queen Marika, he studied incantations. Thus did the hero aspire to be complete. " ;
-    owl:sameAs wd:Q111174955 .
+    rdfs:comment "As the husband of Rennala of Caria, the red-haired Radagon studied sorcery, and as the husband of Queen Marika, he studied incantations. Thus did the hero aspire to be complete. " .
 
 er:RadagonsSoreseal a er:Talisman ;
     rdfs:label "Radagon's Soreseal" ;
@@ -12151,7 +12181,8 @@ er:RakshasaHelm a er:Armor ;
 er:RanniWitchCarianLunarPrincess a er:NPC ;
     rdfs:label "Ranni Witch Carian Lunar Princess" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/ranni-the-witch-npc-elden-ring-wiki-guide-300px.jpg" ;
-    er:locatedIn er:RannisRiseThreeSisters .
+    er:locatedIn er:RannisRiseThreeSisters ;
+    owl:sameAs wd:Q113454563 .
 
 er:RannisDarkMoon a er:Sorcery ;
     rdfs:label "Ranni's Dark Moon" ;
@@ -12577,8 +12608,7 @@ er:RiversOfBlood a er:Weapon ;
     er:requiresArcane 20 ;
     er:requiresDexterity 18 ;
     er:requiresStrength 12 ;
-    rdfs:comment "Weapon of Okina, swordsman from the Land of Reeds.A cursed weapon that has felled countless men. When Mohg, the Lord of Blood, first felt Okina's sword, and madness, upon his flesh, he had a proposal, to offer Okina the life of a demon, whose thirst would never go unsated." ;
-    owl:sameAs wd:Q111175022 .
+    rdfs:comment "Weapon of Okina, swordsman from the Land of Reeds.A cursed weapon that has felled countless men. When Mohg, the Lord of Blood, first felt Okina's sword, and madness, upon his flesh, he had a proposal, to offer Okina the life of a demon, whose thirst would never go unsated." .
 
 er:RivetedWoodenShield a er:Shield ;
     rdfs:label "Riveted Wooden Shield" ;
@@ -13600,8 +13630,7 @@ er:SiofraRiverSpirit a er:NPC ;
     er:mentions er:MohgwynDynastyMausoleum ;
     rdfs:comment "The Siofra River Spirit is an NPC in Elden Ring. He can be seen worshipping the Mohgwyn Dynasty Mausoleum." .
 
-er:SiteOfGrace rdfs:subClassOf er:Location ;
-    owl:sameAs wd:Q111175058 .
+er:SiteOfGrace rdfs:subClassOf er:Location .
 
 er:SkeletalBandit a er:Creature ;
     rdfs:label "Skeletal Bandit" ;
@@ -15738,15 +15767,6 @@ er:Zweihander a er:Weapon ;
     er:requiresStrength 19 ;
     rdfs:comment "Just about the largest sword a mere man is capable of swinging. True to its name, it is designed to be wielded in both hands, but those of merely ordinary strength will still struggle to do so.The long blade is heavy and sharp, sending foes reeling back with its broader strokes, while also capable of a devastating piercing thrust." .
 
-er:alliedWith a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:associatedWith a owl:ObjectProperty ;
-    rdfs:domain er:Item ;
-    rdfs:range er:Concept .
-
 er:attackFire a owl:DatatypeProperty ;
     rdfs:range xsd:float .
 
@@ -15771,30 +15791,15 @@ er:childOf a owl:ObjectProperty ;
     rdfs:range er:Agent ;
     owl:inverseOf er:parentOf .
 
-er:containsItem a owl:ObjectProperty ;
-    rdfs:domain er:Location ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:foundAt .
-
-er:descendantOf a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
-er:drops a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Item ;
-    owl:inverseOf er:droppedBy .
-
-er:enemyOf a owl:ObjectProperty,
-        owl:SymmetricProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent .
-
 er:fpCost a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:hasMaxStats a owl:ObjectProperty ;
+er:gameId a owl:DatatypeProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:range xsd:string .
+
+er:hasMaxStats a owl:FunctionalProperty,
+        owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
     rdfs:range er:StatBlock .
 
@@ -15832,9 +15837,6 @@ er:requiresArcane a owl:DatatypeProperty ;
 er:requiresDexterity a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:requiresFaith a owl:DatatypeProperty ;
-    rdfs:range xsd:integer .
-
 er:requiresIntelligence a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
@@ -15861,11 +15863,6 @@ er:sells a owl:ObjectProperty ;
     rdfs:range er:Item ;
     owl:inverseOf er:soldBy .
 
-er:servantOf a owl:ObjectProperty ;
-    rdfs:domain er:Agent ;
-    rdfs:range er:Agent ;
-    owl:inverseOf er:hasServant .
-
 er:siblingOf a owl:ObjectProperty,
         owl:SymmetricProperty ;
     rdfs:domain er:Agent ;
@@ -15887,7 +15884,8 @@ er:teaches a owl:ObjectProperty ;
 er:value a owl:DatatypeProperty ;
     rdfs:range xsd:integer .
 
-er:weight a owl:DatatypeProperty ;
+er:weight a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
     rdfs:range xsd:float .
 
 er:worships a owl:ObjectProperty ;
@@ -18309,6 +18307,9 @@ er:FingerprintNostrum a er:Consumable ;
 er:FingerprintStoneShield_MaxStats a er:StatBlock ;
     rdfs:label "Fingerprint Stone Shield (Stats)" .
 
+er:Fire a er:DamageType,
+        owl:NamedIndividual .
+
 er:FireArrow_MaxStats a er:StatBlock ;
     rdfs:label "Fire Arrow (Stats)" ;
     er:attackCrit "100.0"^^xsd:float ;
@@ -19682,6 +19683,9 @@ er:HighroadCave a er:Location ;
     er:locatedIn er:Limgrave ;
     rdfs:comment "A cave that houses a tomb, deep within. It is situated at the northmost part of Limgrave. It has been inhabited by a pack of Wolves, Land Octopuses, and Giant Bats." .
 
+er:Holy a er:DamageType,
+        owl:NamedIndividual .
+
 er:HolyGrease a er:Consumable ;
     rdfs:label "Holy Grease" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/holy_grease_elden_ring_wiki_guide_200px.png" ;
@@ -19868,8 +19872,7 @@ er:IronCleaver_MaxStats a er:StatBlock ;
 
 er:IronFistAlexander a er:NPC ;
     rdfs:label "Iron Fist Alexander" ;
-    ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/alexander_npc_elden_ring_wiki_guide_300px.jpg" ;
-    owl:sameAs wd:Q111174102 .
+    ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/alexander_npc_elden_ring_wiki_guide_300px.jpg" .
 
 er:IronGreatsword_MaxStats a er:StatBlock ;
     rdfs:label "Iron Greatsword (Stats)" ;
@@ -20099,6 +20102,9 @@ er:LightCrossbow_MaxStats a er:StatBlock ;
     rdfs:label "Light Crossbow (Stats)" ;
     er:attackPhysical "260.0"^^xsd:float ;
     er:attackSta "60.0"^^xsd:float .
+
+er:Lightning a er:DamageType,
+        owl:NamedIndividual .
 
 er:LightningGrease a er:Consumable ;
     rdfs:label "Lightning Grease" ;
@@ -20355,6 +20361,9 @@ er:MaddingHand_MaxStats a er:StatBlock ;
     er:scalingIntelligence "D"^^xsd:string ;
     er:scalingStrength "D"^^xsd:string .
 
+er:Magic a er:DamageType,
+        owl:NamedIndividual .
+
 er:MagicGrease a er:Consumable ;
     rdfs:label "Magic Grease" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/magic_grease_elden_ring_wiki_guide_200px.png" ;
@@ -20575,8 +20584,7 @@ er:MedicinePeddlersBellBearing a er:BellBearing ;
 er:Melina a er:NPC ;
     rdfs:label "Melina" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/melina_1.jpg" ;
-    er:locatedIn er:TheBeginningOfTheTarnishedsJourney ;
-    owl:sameAs wd:Q111174720 .
+    er:locatedIn er:TheBeginningOfTheTarnishedsJourney .
 
 er:Merchant rdfs:subClassOf er:NPC .
 
@@ -20788,8 +20796,7 @@ er:Moonveil a er:Weapon ;
     er:requiresDexterity 18 ;
     er:requiresIntelligence 23 ;
     er:requiresStrength 12 ;
-    rdfs:comment "Katana forged of glintstone.Masterpiece of a Sellian swordsmith. Light enwreathes the blade when sheathed, explaining its Moonveil moniker." ;
-    owl:sameAs wd:Q111174775 .
+    rdfs:comment "Katana forged of glintstone.Masterpiece of a Sellian swordsmith. Light enwreathes the blade when sheathed, explaining its Moonveil moniker." .
 
 er:Moonveil_MaxStats a er:StatBlock ;
     rdfs:label "Moonveil (Stats)" ;
@@ -21141,6 +21148,9 @@ er:PhantomGreatRune a er:GreatRune ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/phantom_great_rune_elden_ring_wiki_guide.png" ;
     er:mentions er:MohgsGreatRune ;
     rdfs:comment "Item for online play.  Obtained after using the Mohg's Great Rune and invading another world.  Consumed upon use. Enemies inside the invaded world receive a blessing of blood, which boosts their attack power when blood loss occurs nearby. Also, your HP recovers when blessed enemies defeat a player. " .
+
+er:Physical a er:DamageType,
+        owl:NamedIndividual .
 
 er:Pickaxe_MaxStats a er:StatBlock ;
     rdfs:label "Pickaxe (Stats)" ;
@@ -23562,17 +23572,21 @@ er:Zweihander_MaxStats a er:StatBlock ;
 
 er:droppedBy a owl:ObjectProperty .
 
-er:foundAt a owl:ObjectProperty .
+er:drops a owl:ObjectProperty ;
+    rdfs:domain er:Agent ;
+    rdfs:range er:Item ;
+    owl:inverseOf er:droppedBy .
 
 er:hasMember a owl:ObjectProperty .
 
 er:hasParticipant a owl:ObjectProperty .
 
-er:hasServant a owl:ObjectProperty .
-
 er:mentionedIn a owl:ObjectProperty .
 
 er:parentOf a owl:ObjectProperty .
+
+er:requiresFaith a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
 
 er:skillOf a owl:ObjectProperty .
 
@@ -23868,8 +23882,7 @@ er:Patches a er:Boss,
         er:MurkwaterCaveLimgraveliurniamtGelmirvolcanoManortheShadedCastle ;
     er:mentions er:MurkwaterCave ;
     rdfs:comment "Patches the Untethered is a Merchant, NPC, and Field Boss in Elden Ring. Patches is a recurring character in From Software games, usually playing the part of a trickster. He can be found in Murkwater Cave. This is an optional boss as players do not need to defeat him to advance.",
-        "Well, well, well? Thought you'd just help yourself to a man's personal belongings? " ;
-    owl:sameAs wd:Q111174865 .
+        "Well, well, well? Thought you'd just help yourself to a man's personal belongings? " .
 
 er:RauhBurrow a er:Material ;
     rdfs:label "Rauh Burrow" ;
@@ -23960,8 +23973,7 @@ er:StarscourgeRadahn a er:Boss ;
         er:RemembranceOfTheStarscourge ;
     er:locatedIn er:RedmaneCastle ;
     er:mentions er:SelliaTownOfSorcery ;
-    rdfs:comment "The Red Lion General wielded gravitational powers which he learned in Sellia during his younger days. All so he would never have to abandon his beloved but scrawny steed. " ;
-    owl:sameAs wd:Q111174828 .
+    rdfs:comment "The Red Lion General wielded gravitational powers which he learned in Sellia during his younger days. All so he would never have to abandon his beloved but scrawny steed. " .
 
 er:StimulatingBoluses a er:Consumable ;
     rdfs:label "Stimulating Boluses" ;
@@ -24096,8 +24108,7 @@ er:FireGiant a er:Boss ;
     er:drops er:180000,
         er:RemembranceOfTheFireGiant ;
     er:locatedIn er:FlamePeak ;
-    rdfs:comment "The Fire Giant is a survivor of the War against the Giants. Upon realizing the flames of their forge would never die, Queen Marika marked him with a curse. " ;
-    owl:sameAs wd:Q111174308 .
+    rdfs:comment "The Fire Giant is a survivor of the War against the Giants. Upon realizing the flames of their forge would never die, Queen Marika marked him with a curse. " .
 
 er:FireKnight a er:Creature ;
     rdfs:label "Fire Knight" ;
@@ -24125,8 +24136,7 @@ er:GodfreyFirstEldenLord a er:Boss ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/godfrey_first_elden_lord_bosses_elden_ring_wiki_600px1-min.jpg" ;
     er:drops er:300000,
         er:RemembranceOfHoarahLoux ;
-    er:locatedIn er:LeyndellAshenCapital ;
-    owl:sameAs wd:Q111174345 .
+    er:locatedIn er:LeyndellAshenCapital .
 
 er:GrandCloister a er:Location ;
     rdfs:label "Grand Cloister" ;
@@ -24349,8 +24359,7 @@ er:LakeOfRot a er:Location ;
     rdfs:label "Lake of Rot" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/lake-of-rot-a-locations-elden-ring-wiki-guide-300px.jpg" ;
     er:locatedIn er:Underground ;
-    rdfs:comment "Lake of Rot Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" ;
-    owl:sameAs wd:Q111174600 .
+    rdfs:comment "Lake of Rot Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" .
 
 er:LeyndellAshenCapital a er:Location ;
     rdfs:label "Leyndell, Ashen Capital" ;
@@ -24373,8 +24382,7 @@ er:RedmaneCastle a er:Location ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/castle-redmane-small.jpg" ;
     er:locatedIn er:Caelid ;
     er:mentions er:RadahnConsortOfMiquella ;
-    rdfs:comment "A small castle that is heavily guarded at the castle's outskirts by Radahn Knights and Soldiers. The Redmane Castle serves as the gathering point for warriors alike who are wanting to participate in the Radahn Festival." ;
-    owl:sameAs wd:Q111174988 .
+    rdfs:comment "A small castle that is heavily guarded at the castle's outskirts by Radahn Knights and Soldiers. The Redmane Castle serves as the gathering point for warriors alike who are wanting to participate in the Radahn Festival." .
 
 er:SilverTear a er:Creature ;
     rdfs:label "Silver Tear" ;
@@ -24409,8 +24417,7 @@ er:AinselRiver a er:Location ;
     rdfs:label "Ainsel River" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/95b56d97-cb83-4ef1-869e-a639449252c9.png" ;
     er:locatedIn er:Underground ;
-    rdfs:comment "Ainsel River Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" ;
-    owl:sameAs wd:Q111174095 .
+    rdfs:comment "Ainsel River Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" .
 
 er:CastleSol a er:Location ;
     rdfs:label "Castle Sol" ;
@@ -24426,6 +24433,9 @@ er:CathedralOfManusMetyr a er:Location ;
     er:mentions er:CountYmirHighPriest ;
     rdfs:comment "Large cathedral in Scadu Altus, where Count Ymir awaits your arrival." .
 
+er:DamageType a owl:Class ;
+    owl:oneOf ( er:Physical er:Magic er:Fire er:Lightning er:Holy ) .
+
 er:Deathbird a er:Boss ;
     rdfs:label "Deathbird" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/deathbird_elden_ring_wiki_300px.jpg" ;
@@ -24440,9 +24450,6 @@ er:Deathbird a er:Boss ;
         er:WarmastersShack,
         er:WeepingPeninsula ;
     rdfs:comment "The Deathbirds are graveyard fire keepers; it is said they rake out the ashen remains of the dead from their kilns. " .
-
-er:Faction a owl:Class ;
-    owl:disjointWith er:Concept .
 
 er:Goldmask a er:NPC ;
     rdfs:label "Goldmask" ;
@@ -24547,8 +24554,7 @@ er:GideonOfnir a er:NPC ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/gidron-ofnir-roundtable-hold-npc-elden-ring-wiki-300px2-min.jpeg" ;
     er:locatedIn er:RoundtableHold ;
     er:mentions er:RoundtableHold ;
-    rdfs:comment "Gideon Ofnir is an NPC in Elden Ring. Gideon Ofnir is the leader of Roundtable Hold and a profound source of knowledge. He can be found most commonly at his office, absorbed by an endless amount of books." ;
-    owl:sameAs wd:Q111174335 .
+    rdfs:comment "Gideon Ofnir is an NPC in Elden Ring. Gideon Ofnir is the leader of Roundtable Hold and a profound source of knowledge. He can be found most commonly at his office, absorbed by an endless amount of books." .
 
 er:Gravebird a er:Creature ;
     rdfs:label "Gravebird" ;
@@ -24617,8 +24623,7 @@ er:DungEater a er:NPC ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/dung_eater_npcs_elden_ring_wiki_guide_300px.jpg" ;
     er:locatedIn er:RoundtableHoldSubteranneanShunninggrounds ;
     er:mentions er:RoundtableHold ;
-    rdfs:comment "Roundtable Hold" ;
-    owl:sameAs wd:Q111174268 .
+    rdfs:comment "Roundtable Hold" .
 
 er:ElemerOfTheBriar a er:Boss ;
     rdfs:label "Elemer of the Briar" ;
@@ -24628,6 +24633,9 @@ er:ElemerOfTheBriar a er:Boss ;
     er:locatedIn er:TheShadedCastle ;
     er:mentions er:BellBearingHunter ;
     rdfs:comment "Elemer of the Briar, the Bell Bearing Hunter, snatched the sword from the site of his looming execution, and furnished it with battle skills from his home of Eochaid " .
+
+er:Faction a owl:Class ;
+    owl:disjointWith er:Concept .
 
 er:FlaskOfCrimsonTears a er:Consumable ;
     rdfs:label "Flask of Crimson Tears" ;
@@ -24674,8 +24682,7 @@ er:MohgLordOfBlood a er:Boss ;
         er:MohgsGreatRune,
         er:RemembranceOfTheBloodLord ;
     er:locatedIn er:MohgwynPalace ;
-    rdfs:comment "Welcome, honored guest. To the birthplace of our Dynasty! " ;
-    owl:sameAs wd:Q111174765 .
+    rdfs:comment "Welcome, honored guest. To the birthplace of our Dynasty! " .
 
 er:MohgTheOmen a er:Boss ;
     rdfs:label "Mohg, the Omen" ;
@@ -24696,8 +24703,7 @@ er:SiofraRiver a er:Location ;
     rdfs:label "Siofra River" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/siofra-river-a-locations-elden-ring-wiki-guide-300px.jpg" ;
     er:locatedIn er:Underground ;
-    rdfs:comment "Siofra River Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" ;
-    owl:sameAs wd:Q111175055 .
+    rdfs:comment "Siofra River Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" .
 
 er:Dagger a er:Weapon ;
     rdfs:label "Dagger" ;
@@ -24720,8 +24726,7 @@ er:GodwynTheGolden a er:NPC ;
         er:StormveilCastle ;
     rdfs:comment "Godwyn the Golden was a demigod and son of Queen Marika the Eternal and Godfrey the First Elden Lord. In the \"Night of the Black Knives\" he was assassinated by assassins from the land of the Numen with the use of daggers imbued with the Rune of Death. Godwyn the Golden was the firstborn son of Queen Marika the Eternal and her consort Godfrey, the First Elden Lord. Godwyn was a scion of the so-called \"Golden Line\", of which Godrick the Grafted was the final descendant. Early in his mother's divine reign, the Erdtree came under assault by the Dragons, who had ruled the world before Marika's ascent. The forces of the Erdtree managed to triumph against the dragons, with Godwyn prevailing against the dreaded Fortissax, earning the mighty dragon's friendship in the process. Godwyn would eventually meet his end during the Night of Black Knives. Seeking to be free from her fate as a pawn of the Greater Will, Godwyn's step-sister Lunar Princess Ranni stole a fragment of the rune of death from Maliketh, imbuing the weapons of Numen assassins with the rune. Ranni wished to shed her Empyrean body but preserve her spirit, which meant that someone else's spirit would need to die. Nevertheless, when the assassins fell upon the Royal Capital and murdered Godwyn, his soul was destroyed and left only his soulless body behind. He was the first demigod in history to die since the ascension of Marika to the throne of the Lands Between. Godwyn's death would be the catalyst for the Shattering of the Elden Ring, plunging the kingdom into chaos without the guidance of the Greater Will. Due to Ranni's ritual, Godwyn's flesh was branded with half of the cursemark of death and he became the first of Those Who Live in Death. His body was laid to rest deep in the roots of the Erdtree, but it would eventually corrupt it, leading Deathroot to sprout across the Lands Between, causing others to also rise in undeath. These undead worshipped Godwyn as the Prince of Death, believing he would eventually return and lead them. An aspect of Godwyn's corpse appeared in the depths of Stormveil Castle and is responsible for the loss of Rogier's legs. Many figures, including his half-brother Miquella and his companion Fortissax, tried to cure him of his condition and allow him a proper death, but to no avail. The deathbed companion Fia would become a leading figure among Those Who Live in Death, eventually making her way to Godwyn's corpse. Having received the other half of the cursemark from Ranni's discarded body with help from a Tarnished champion, Fia lay with Godwyn to grant him a second life as the Prince of Death. As a result of their union, Fia conceived a rune, which a champion seeking to become Elden Lord might use to mend the Elden Ring, reimbuing the principle of death within the Golden Order." .
 
-er:GreatRune rdfs:subClassOf er:Item ;
-    owl:sameAs wd:Q111174415 .
+er:GreatRune rdfs:subClassOf er:Item .
 
 er:GurranqBeastClergyman a er:NPC ;
     rdfs:label "Gurranq, Beast Clergyman" ;
@@ -24793,8 +24798,7 @@ er:StormveilCastle a er:Location ;
     rdfs:label "Stormveil Castle" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/stormveil_elden_ring_wiki_guide_300px.jpg" ;
     er:locatedIn er:LegacyDungeons ;
-    rdfs:comment "Players entering Stormveil Castle should beware that it's a challenging dungeon with groups of numerous enemies with traps and ballistas as well as mini-bosses." ;
-    owl:sameAs wd:Q111175085 .
+    rdfs:comment "Players entering Stormveil Castle should beware that it's a challenging dungeon with groups of numerous enemies with traps and ballistas as well as mini-bosses." .
 
 er:ConsecratedSnowfield a er:Location ;
     rdfs:label "Consecrated Snowfield" .
@@ -24810,8 +24814,7 @@ er:GodrickTheGrafted a er:Boss ;
         er:GodricksGreatRune,
         er:RemembranceOfTheGrafted ;
     er:locatedIn er:StormveilCastle ;
-    rdfs:comment "I command thee, kneel! I am the lord of all that is golden! " ;
-    owl:sameAs wd:Q111174351 .
+    rdfs:comment "I command thee, kneel! I am the lord of all that is golden! " .
 
 er:MiquellasHaligtree a er:Location ;
     rdfs:label "Miquella's Haligtree" ;
@@ -24851,6 +24854,13 @@ er:ScaduAltus a er:Location ;
 
 er:Underground a er:Location ;
     rdfs:label "Underground" .
+
+er:Agent a owl:Class ;
+    owl:disjointWith er:Concept,
+        er:Event,
+        er:Faction,
+        er:Item,
+        er:Location .
 
 er:GravesitePlain a er:Location ;
     rdfs:label "Gravesite Plain" .
@@ -24905,8 +24915,7 @@ er:RykardLordOfBlasphemy a er:Boss,
         er:Serpenthunter,
         er:VolcanoManor ;
     rdfs:comment "God-Devouring Serpent and Rykard, Lord of Blasphemy is a two-phase Demigod Boss in Elden Ring. The God-Devouring Serpent is a massive coiled serpent found at the Volcano Manor in Mt. Gelmir, and Rykard, Lord of Blasphemy is its true form that's revealed after the first phase is defeated. When Rykard offered himself up to the serpent in a pursuit of immortality, most of his followers turned on him and sought to bring him down with the Serpent-Hunter.",
-        "Join the Serpent King, as family... Together, we will devour the very gods! " ;
-    owl:sameAs wd:Q111174808 .
+        "Join the Serpent King, as family... Together, we will devour the very gods! " .
 
 er:RayaLucariaAcademy a er:Location ;
     rdfs:label "Raya Lucaria Academy" ;
@@ -24914,9 +24923,14 @@ er:RayaLucariaAcademy a er:Location ;
     er:locatedIn er:LegacyDungeons ;
     rdfs:comment "A towering ivory tower where scholars come to study the art of sorcery. The gates have been sealed to prevent trespassers from entering the institute. It is heavily guarded by sorcerers, wardens, and reanimated beings imbued with magical properties." .
 
+er:Item a owl:Class ;
+    owl:disjointWith er:Concept,
+        er:Event,
+        er:Faction,
+        er:Location .
+
 er:MountaintopsOfTheGiants a er:Location ;
-    rdfs:label "Mountaintops of the Giants" ;
-    owl:sameAs wd:Q111174795 .
+    rdfs:label "Mountaintops of the Giants" .
 
 er:SelliaTownOfSorcery a er:Location ;
     rdfs:label "Sellia, Town of Sorcery" ;
@@ -24926,19 +24940,6 @@ er:SelliaTownOfSorcery a er:Location ;
 
 er:WeepingPeninsula a er:Location ;
     rdfs:label "Weeping Peninsula" .
-
-er:Agent a owl:Class ;
-    owl:disjointWith er:Concept,
-        er:Event,
-        er:Faction,
-        er:Item,
-        er:Location .
-
-er:Item a owl:Class ;
-    owl:disjointWith er:Concept,
-        er:Event,
-        er:Faction,
-        er:Location .
 
 er:FlameProtectMe a er:Incantation ;
     rdfs:label "Flame, Protect Me" ;
@@ -24952,33 +24953,28 @@ er:MalikethTheBlackBlade a er:Boss ;
         er:RemembranceOfTheBlackBlade ;
     er:locatedIn er:CrumblingFarumAzula ;
     er:mentions er:BlackBlade ;
-    rdfs:comment "Cower before Maliketh, Marika’s Black Blade. " ;
-    owl:sameAs wd:Q111174635 .
+    rdfs:comment "Cower before Maliketh, Marika’s Black Blade. " .
 
 er:VolcanoManor a er:Location ;
     rdfs:label "Volcano Manor" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/volcano-manor-location-elden-ring-wiki-guide-300px-min.jpeg" ;
     er:locatedIn er:LegacyDungeons ;
-    rdfs:comment "A fiery Legacy Dungeon encountered in Mt. Gelmir" ;
-    owl:sameAs wd:Q111175150 .
+    rdfs:comment "A fiery Legacy Dungeon encountered in Mt. Gelmir" .
 
 er:Remembrance rdfs:subClassOf er:Item .
 
 er:AltusPlateau a er:Location ;
-    rdfs:label "Altus Plateau" ;
-    owl:sameAs wd:Q111174105 .
+    rdfs:label "Altus Plateau" .
 
 er:Caelid a er:Location ;
-    rdfs:label "Caelid" ;
-    owl:sameAs wd:Q111174168 .
+    rdfs:label "Caelid" .
 
 er:RennalaQueenOfTheFullMoon a er:NPC ;
     rdfs:label "Rennala, Queen of the Full Moon" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/rennala-queen-of-the-moon-raya-lucaria-academy-walkthrough-elden-ring-wiki-guide-600px-min.jpg" ;
     er:locatedIn er:AcademyOfRayaLucaria ;
     er:mentions er:LarvalTear ;
-    rdfs:comment "Rennala, Queen of the Full Moon is an NPC in Elden Ring. Rennala gives access to the Rebirth function, allowing the player to reallocate their stats by using a Larval Tear (also called respeccing). She can also be used to change the player's appearance." ;
-    owl:sameAs wd:Q111175002 .
+    rdfs:comment "Rennala, Queen of the Full Moon is an NPC in Elden Ring. Rennala gives access to the Rebirth function, allowing the player to reallocate their stats by using a Larval Tear (also called respeccing). She can also be used to change the player's appearance." .
 
 er:Omen a er:Creature ;
     rdfs:label "Omen" ;
@@ -24992,7 +24988,7 @@ er:MaleniaBladeOfMiquella a er:Boss ;
     er:locatedIn er:ElphaelBraceOfTheHaligtree ;
     er:mentions er:Miquella ;
     rdfs:comment "...Heed my words. I am Malenia. Blade of Miquella. And I have never known defeat. " ;
-    owl:sameAs wd:Q111174620 .
+    owl:sameAs wd:Q111995972 .
 
 er:Arrow a er:Ammo ;
     rdfs:label "Arrow" ;
@@ -25019,8 +25015,7 @@ er:LeyndellRoyalCapital a er:Location ;
     rdfs:label "Leyndell, Royal Capital" ;
     ns1:image "http://eldenring.wiki.fextralife.com/file/Elden-Ring/leyndell_royal_capital_locations_elden_ring_wiki_guide_300px.jpg" ;
     er:locatedIn er:Leyndell ;
-    rdfs:comment "Leyndell, Royal Capital Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" ;
-    owl:sameAs wd:Q111174610 .
+    rdfs:comment "Leyndell, Royal Capital Map & FragmentsSites of Grace & Sub-LocationsAll NPCs & MerchantsAll Items, Equipment & MagicAll Enemies & Bosses" .
 
 er:Tool rdfs:subClassOf er:Item .
 
@@ -25039,8 +25034,7 @@ er:GodfreyFirstEldenLordGoldenShade a er:Boss ;
 er:CrystalTear rdfs:subClassOf er:Item .
 
 er:Limgrave a er:Location ;
-    rdfs:label "Limgrave" ;
-    owl:sameAs wd:Q111174615 .
+    rdfs:label "Limgrave" .
 
 er:Gauntlets a er:Armor ;
     rdfs:label "Gauntlets" ;
@@ -25055,8 +25049,7 @@ er:Miquella a er:NPC ;
     rdfs:comment "Miquella, also known as Miquella the Kind, is a background character in Elden Ring and a central character in Shadow of the Erdtree. One of the Empyrean children of Queen Marika, he is the twin brother of Malenia, Blade of Miquella, together known as the Twin Prodigies. It is revealed that Miquella has stripped himself of his flesh and Empyrean lineage in the Land of Shadow, a place obscured by the Erdtree and purged in an unsung war." .
 
 er:LiurniaOfTheLakes a er:Location ;
-    rdfs:label "Liurnia of the Lakes" ;
-    owl:sameAs wd:Q111174625 .
+    rdfs:label "Liurnia of the Lakes" .
 
 er:BellBearing rdfs:subClassOf er:Item .
 
@@ -25099,7 +25092,10 @@ er:Incantation rdfs:subClassOf er:Spell .
 
 er:Material rdfs:subClassOf er:Item .
 
-er:Boss rdfs:subClassOf er:Agent .
+er:Boss rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty er:drops ],
+        er:Agent .
 
 er:Talisman rdfs:subClassOf er:Item .
 

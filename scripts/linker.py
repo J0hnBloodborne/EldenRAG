@@ -1,76 +1,12 @@
 import time
-from rdflib import Graph, URIRef, Namespace, OWL
+from rdflib import Graph, URIRef, Namespace, OWL, RDF, RDFS, Literal
 
 # --- CONFIGURATION ---
 INPUT_FILE = "rdf/elden_ring_full.ttl"
 OUTPUT_FILE = "rdf/elden_ring_linked.ttl"
 
-# Namespaces
 ER = Namespace("http://www.semanticweb.org/fall2025/eldenring/")
 WD = Namespace("http://www.wikidata.org/entity/")
-
-# --- WIKIDATA MAPPINGS ---
-# Maps your local URIs (er:Name) to real-world Wikidata IDs (wd:Q...)
-links = {
-    # --- CREATORS & META ---
-    "er:EldenRing": "Q64525897",          # The Game Itself
-    "er:HidetakaMiyazaki": "Q3785465",    # Director
-    "er:GeorgeRRMartin": "Q181677",       # Worldbuilding
-    "er:FromSoftware": "Q2337775",        # Developer
-    "er:BandaiNamco": "Q1156294",         # Publisher
-
-    # --- KEY CONCEPTS ---
-    "er:TheLandsBetween": "Q111056538",   # The World
-    "er:GreatRune": "Q111174415",         # Concept
-    "er:SiteOfGrace": "Q111175058",       # Checkpoint
-    "er:Tarnished": "Q111175112",         # The Protagonist Class
-
-    # --- DEMIGODS & LEGENDS (Bosses) ---
-    "er:MaleniaBladeOfMiquella": "Q111174620",
-    "er:StarscourgeRadahn": "Q111174828",
-    "er:GodrickTheGrafted": "Q111174351",
-    "er:MorgottTheOmenKing": "Q111174783",
-    "er:RykardLordOfBlasphemy": "Q111174808",
-    "er:MohgLordOfBlood": "Q111174765",
-    "er:MalikethTheBlackBlade": "Q111174635",
-    "er:GodfreyFirstEldenLord": "Q111174345",
-    "er:RennalaQueenOfTheFullMoon": "Q111175002",
-    "er:RadagonOfTheGoldenOrder": "Q111174955",
-    "er:EldenBeast": "Q111174278",
-    "er:FireGiant": "Q111174308",
-
-    # --- KEY NPCS ---
-    "er:RanniTheWitch": "Q111174987",
-    "er:Melina": "Q111174720",
-    "er:Blaidd": "Q111174152",
-    "er:Fia": "Q111174305",
-    "er:DungEater": "Q111174268",
-    "er:IronFistAlexander": "Q111174102",
-    "er:Patches": "Q111174865",
-    "er:GideonOfnir": "Q111174335",
-    "er:Varre": "Q111175145",
-
-    # --- LOCATIONS ---
-    "er:Limgrave": "Q111174615",
-    "er:LiurniaOfTheLakes": "Q111174625",
-    "er:Caelid": "Q111174168",
-    "er:AltusPlateau": "Q111174105",
-    "er:LeyndellRoyalCapital": "Q111174610",
-    "er:MountaintopsOfTheGiants": "Q111174795",
-    "er:CrumblingFarumAzula": "Q111174235",
-    "er:SiofraRiver": "Q111175055",
-    "er:AinselRiver": "Q111174095",
-    "er:LakeOfRot": "Q111174600",
-    "er:VolcanoManor": "Q111175150",
-    "er:StormveilCastle": "Q111175085",
-    "er:AcademyOfRayaLucaria": "Q111174085",
-    "er:RedmaneCastle": "Q111174988",
-
-    # --- ITEMS / WEAPONS ---
-    "er:DarkMoonGreatsword": "Q111174245",
-    "er:RiversOfBlood": "Q111175022",
-    "er:Moonveil": "Q111174775"
-}
 
 def run_linker():
     print(f"Reading {INPUT_FILE}...")
@@ -81,33 +17,60 @@ def run_linker():
         print(f"Error: {INPUT_FILE} not found. Run converter.py first.")
         return
 
-    print(f"Injecting {len(links)} Wikidata links...")
+    # --- STEP 1: INJECT MISSING META ENTITIES ---
+    # These do not exist in the game data CSVs, so we must create them manually.
+    print("   [+] Injecting 'Meta' entities (Creators, Game Info)...")
     
-    # Bind prefixes for cleaner output
+    # Format: (Local URI, Label, Type, Wikidata ID)
+    meta_entities = [
+        ("er:EldenRing", "Elden Ring", "er:Concept", "Q64826862"),
+        ("er:HidetakaMiyazaki", "Hidetaka Miyazaki", "er:Agent", "Q11454590"),
+        ("er:GeorgeRRMartin", "George R. R. Martin", "er:Agent", "Q181677"),
+        ("er:FromSoftware", "FromSoftware", "er:Faction", "Q2414469"),
+        ("er:BandaiNamco", "Bandai Namco", "er:Faction", "Q1194689"),
+    ]
+
     g.bind("er", ER)
     g.bind("owl", OWL)
     g.bind("wd", WD)
 
+    for prefixed_uri, label, type_str, wd_id in meta_entities:
+        local_name = prefixed_uri.split(":")[1]
+        subj = ER[local_name]
+        type_uri = ER[type_str.split(":")[1]]
+        
+        # Create the node
+        g.add((subj, RDF.type, type_uri))
+        g.add((subj, RDFS.label, Literal(label)))
+        
+        # Link it
+        g.add((subj, OWL.sameAs, WD[wd_id]))
+
+    # --- STEP 2: LINK GAME DATA ---
+    print("   [+] Linking Game Data...")
+    
+    # Map: Local Graph URI -> Wikidata ID
+    # We use the EXACT URIs you found in the files
+    game_links = {
+        "er:MaleniaBladeOfMiquella": "Q111995972", 
+        "er:RanniWitchCarianLunarPrincess": "Q113454563" # <--- FIXED
+    }
+
     count = 0
-    for local_prefixed, wd_id in links.items():
-        # Remove 'er:' prefix to get the local name for the URIRef
+    for local_prefixed, wd_id in game_links.items():
         local_name = local_prefixed.split(":")[1]
+        subj = ER[local_name]
         
-        # We only link if the entity actually exists in our graph
-        subject_uri = ER[local_name]
-        
-        # Check if subject exists (optional, but good for verification)
-        if (subject_uri, None, None) in g:
-            object_uri = WD[wd_id]
-            # Add triple: <subject> owl:sameAs <wikidata_entity>
-            g.add((subject_uri, OWL.sameAs, object_uri))
+        # Only link if the entity actually exists in the graph
+        if (subj, None, None) in g:
+            g.add((subj, OWL.sameAs, WD[wd_id]))
+            print(f"      -> Linked {local_name} to {wd_id}")
             count += 1
         else:
-            # If the node doesn't exist (maybe spelling diff), we skip it
-            # print(f"Warning: Could not link {local_name} (Node not found in graph)")
-            pass
+            print(f"      [!] Warning: Entity '{local_name}' still not found in graph.")
 
-    print(f"Successfully linked {count} entities to Wikidata.")
+    total = count + len(meta_entities)
+    print(f"Successfully linked {total} entities to Wikidata.")
     
     print(f"Saving to {OUTPUT_FILE}...")
     g.serialize(destination=OUTPUT_FILE, format="turtle")

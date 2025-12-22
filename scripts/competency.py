@@ -168,6 +168,20 @@ def main():
                     ?item rdfs:label ?itemLabel .
                 } LIMIT 5
             """
+        },
+        {
+            "name": "11. Linked Data Verification (5-Star Check)",
+            "desc": "Verifies that entities have been successfully linked to external Wikidata URIs.",
+            "sparql": """
+                PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
+                PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+                SELECT ?entityLabel ?wikidataURI WHERE {
+                    ?entity owl:sameAs ?wikidataURI ;
+                            rdfs:label ?entityLabel .
+                } LIMIT 5
+            """
         }
     ]
 
