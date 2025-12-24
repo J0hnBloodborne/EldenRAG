@@ -42,3 +42,8 @@ er:EldenRingGame a er:Concept ;
 er:HandOfMalenia a er:Weapon ;
     rdfs:label "Hand of Malenia" ;
     er:scalesWith er:Dexterity .
+
+# 8. New Test Item
+er:MimicTear a er:SpiritAsh ;
+    rdfs:label "Mimic Tear Ashes" ;
+    er:fpCost 0 . # Uses HP instead

@@ -15,23 +15,30 @@ def build_index():
     try:
         g.parse(GRAPH_FILE, format="turtle")
     except Exception as e:
-        print(f"❌ ERROR: {e}")
+        print(f"ERROR: {e}")
         return
 
-    print("--- 2. EXTRACTING ONLY 'REAL' ENTITIES ---")
+    print("--- 2. EXTRACTING ENTITIES WITH TYPES ---")
     documents = []
     
-    # STRICT QUERY: Only grab items that act as "Main Pages"
-    # We explicitly exclude anything that looks like a StatBlock or generic node
+    # Renamed ?type -> ?category to avoid Python keyword conflicts
     query = """
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX er: <http://www.semanticweb.org/fall2025/eldenring/>
     
-    SELECT DISTINCT ?entity ?label ?comment WHERE {
+    SELECT DISTINCT ?entity ?label ?category ?comment WHERE {
         ?entity rdfs:label ?label .
+        ?entity a ?typeClass .
+        
+        # 1. Ensure we only look at YOUR ontology types (ignore owl:NamedIndividual, etc.)
+        FILTER(STRSTARTS(STR(?typeClass), "http://www.semanticweb.org/fall2025/eldenring/"))
+        
+        # 2. Extract the short name (e.g. "Katana")
+        BIND(STRAFTER(STR(?typeClass), "eldenring/") AS ?category)
+        
         OPTIONAL { ?entity rdfs:comment ?comment }
         
-        # Filter out the noise
+        # 3. Filter out StatBlocks/Effects
         FILTER (!regex(str(?entity), "StatBlock", "i"))
         FILTER (!regex(str(?entity), "Effect", "i"))
     }
@@ -40,8 +47,12 @@ def build_index():
     for row in g.query(query):
         uri = str(row.entity)
         label = str(row.label)
+        # Safely access the renamed variable
+        cls_type = str(row.category) if row.category else "Item"
         desc = str(row.comment) if row.comment else ""
-        text = f"{label}. {desc}"
+        
+        # Inject Type into search text: "Moonveil (Katana). A sword..."
+        text = f"{label} ({cls_type}). {desc}"
         
         documents.append({
             "uri": uri,
@@ -49,7 +60,7 @@ def build_index():
             "text": text
         })
     
-    print(f"   [+] Found {len(documents)} clean entities (No StatBlocks).")
+    print(f"   [+] Found {len(documents)} enhanced entities.")
 
     print(f"--- 3. EMBEDDING VECTORS ---")
     model = SentenceTransformer(MODEL_ID)
@@ -61,7 +72,7 @@ def build_index():
     with open(os.path.join(OUTPUT_DIR, "entities.json"), "w") as f:
         json.dump(documents, f)
     torch.save(embeddings, os.path.join(OUTPUT_DIR, "vectors.pt"))
-    print(f"--- SUCCESS: Clean Index saved to {OUTPUT_DIR}/ ---")
+    print(f"--- SUCCESS: Enhanced Index saved to {OUTPUT_DIR}/ ---")
 
 if __name__ == "__main__":
     build_index()

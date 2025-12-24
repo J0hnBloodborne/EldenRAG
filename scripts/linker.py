@@ -17,11 +17,8 @@ def run_linker():
         print(f"Error: {INPUT_FILE} not found. Run converter.py first.")
         return
 
-    # --- STEP 1: INJECT MISSING META ENTITIES ---
-    # These do not exist in the game data CSVs, so we must create them manually.
     print("   [+] Injecting 'Meta' entities (Creators, Game Info)...")
-    
-    # Format: (Local URI, Label, Type, Wikidata ID)
+
     meta_entities = [
         ("er:EldenRing", "Elden Ring", "er:Concept", "Q64826862"),
         ("er:HidetakaMiyazaki", "Hidetaka Miyazaki", "er:Agent", "Q11454590"),
@@ -39,21 +36,14 @@ def run_linker():
         subj = ER[local_name]
         type_uri = ER[type_str.split(":")[1]]
         
-        # Create the node
         g.add((subj, RDF.type, type_uri))
         g.add((subj, RDFS.label, Literal(label)))
-        
-        # Link it
         g.add((subj, OWL.sameAs, WD[wd_id]))
 
-    # --- STEP 2: LINK GAME DATA ---
     print("   [+] Linking Game Data...")
-    
-    # Map: Local Graph URI -> Wikidata ID
-    # We use the EXACT URIs you found in the files
     game_links = {
         "er:MaleniaBladeOfMiquella": "Q111995972", 
-        "er:RanniWitchCarianLunarPrincess": "Q113454563" # <--- FIXED
+        "er:RanniWitchCarianLunarPrincess": "Q113454563"
     }
 
     count = 0
@@ -61,7 +51,6 @@ def run_linker():
         local_name = local_prefixed.split(":")[1]
         subj = ER[local_name]
         
-        # Only link if the entity actually exists in the graph
         if (subj, None, None) in g:
             g.add((subj, OWL.sameAs, WD[wd_id]))
             print(f"      -> Linked {local_name} to {wd_id}")

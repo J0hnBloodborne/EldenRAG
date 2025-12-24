@@ -64,12 +64,12 @@ def retrieve_context(query):
     # 1. VECTOR SEARCH (Increased k=5 to catch Moonveil)
     query_vec = state["retriever"].encode(query, convert_to_tensor=True)
     scores = util.cos_sim(query_vec, state["vectors"])[0]
-    top_results = torch.topk(scores, k=5)
+    top_results = torch.topk(scores, k=16)
     
     context_blocks = []
     
     for idx, score in zip(top_results.indices, top_results.values):
-        if score < 0.35: continue 
+        if score < 0.1: continue 
         
         entity = state["entities"][int(idx)]
         uri = entity["uri"]
