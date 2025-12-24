@@ -56,7 +56,10 @@ er:KeyItem rdfs:subClassOf er:Item .
 er:Material rdfs:subClassOf er:Item .
 
 er:PeacefulEntity a owl:Class ;
-    owl:complementOf er:Boss .
+    owl:intersectionOf (
+        er:Agent
+        [ a owl:Class ; owl:complementOf er:Boss ]
+    ) .
 
 er:Region rdfs:subClassOf er:Location .
 
