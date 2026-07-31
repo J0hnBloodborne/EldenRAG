@@ -56,10 +56,7 @@ er:KeyItem rdfs:subClassOf er:Item .
 er:Material rdfs:subClassOf er:Item .
 
 er:PeacefulEntity a owl:Class ;
-    owl:intersectionOf (
-        er:Agent
-        [ a owl:Class ; owl:complementOf er:Boss ]
-    ) .
+    owl:complementOf er:Boss .
 
 er:Region rdfs:subClassOf er:Location .
 
@@ -80,19 +77,19 @@ er:Tower rdfs:subClassOf er:Location .
 er:Whetblade rdfs:subClassOf er:Item .
 
 er:attackFire a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:attackHoly a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:attackLightning a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:attackMagic a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:attackPhysical a owl:DatatypeProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:causesEffect a owl:ObjectProperty ;
     rdfs:domain er:Weapon ;
@@ -198,7 +195,7 @@ er:value a owl:DatatypeProperty ;
 
 er:weight a owl:DatatypeProperty,
         owl:FunctionalProperty ;
-    rdfs:range xsd:float .
+    rdfs:range xsd:decimal .
 
 er:worships a owl:ObjectProperty ;
     rdfs:domain er:Agent ;

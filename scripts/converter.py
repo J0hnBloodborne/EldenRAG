@@ -91,8 +91,27 @@ class EldenRingConverter:
                                     self.graph.add((subj, ER.drops, ER.MaleniasGreatRune))
                                     self.graph.add((subj, ER.drops, ER.RemembranceOfTheRotGoddess))
                                     continue
-                                
-                                if "Runes" not in item and item.strip():
+
+                                stripped = item.strip()
+
+                                # "Other Drops" / "Other Drops:" is a scraper separator
+                                # marker injected into the list, not a location or item.
+                                if stripped.rstrip(":").strip().lower() == "other drops":
+                                    continue
+
+                                # The scraper duplicates the location name into the drops
+                                # list with a trailing ':' (e.g. "Stormveil Castle :").
+                                # These are location headers, not items. Treat them as
+                                # locatedIn and never as drops, otherwise the drops range
+                                # (er:Item) forces a Location to also be an Item, which
+                                # violates the Item/Location disjointness axiom.
+                                if stripped.endswith(":"):
+                                    header_loc = self.clean_name(stripped.rstrip(":").strip())
+                                    if header_loc:
+                                        self.graph.add((subj, ER.locatedIn, ER[header_loc]))
+                                    continue
+
+                                if "Runes" not in item and stripped:
                                     self.graph.add((subj, ER.drops, ER[self.clean_name(item)]))
             except: pass
         
@@ -142,7 +161,7 @@ class EldenRingConverter:
             clean_k = self.clean_name(k)
             prop_suffix = map_dmg.get(k, clean_k)
             if val and val != '-':
-                try: self.graph.add((shadow_uri, ER[f"attack{prop_suffix}"], Literal(float(val), datatype=XSD.float)))
+                try: self.graph.add((shadow_uri, ER[f"attack{prop_suffix}"], Literal(str(float(val)), datatype=XSD.decimal)))
                 except: pass
 
     def location_logic(self, subj, row):
@@ -174,6 +193,41 @@ class EldenRingConverter:
             for name, (_, data) in temp_best.items():
                 self.upgrade_cache[name] = data
 
+    # Top-level disjoint families (mirrors the owl:disjointWith axioms in schema.py).
+    # If an individual is about to be typed into one family while already asserted in
+    # another, the two source rows describe different real entities that happen to share
+    # a name (e.g. the NPC "Fire Knight Queelign" vs. the summonable Spirit Ash of the
+    # same name). Merging them onto one URI creates a disjointness violation, so we mint
+    # a disambiguated URI for the second one instead.
+    DISJOINT_ROOTS = [ER.Agent, ER.Item, ER.Location, ER.Event, ER.Faction, ER.Concept]
+
+    def _root_family(self, cls):
+        # Walk subClassOf up to a top-level disjoint root.
+        seen = set()
+        frontier = [cls]
+        while frontier:
+            c = frontier.pop()
+            if c in self.DISJOINT_ROOTS:
+                return c
+            if c in seen: continue
+            seen.add(c)
+            frontier.extend(self.graph.objects(c, RDFS.subClassOf))
+        return None
+
+    def _disambiguated_subject(self, clean, target_class):
+        subj = ER[clean]
+        new_root = self._root_family(target_class)
+        if new_root is None:
+            return subj
+        # Find the root families this URI already belongs to.
+        for existing_type in self.graph.objects(subj, RDF.type):
+            existing_root = self._root_family(existing_type)
+            if existing_root is not None and existing_root != new_root:
+                # Collision across disjoint families: mint a distinct URI.
+                suffix = str(new_root).rsplit("/", 1)[-1]
+                return ER[f"{clean}_{suffix}"]
+        return subj
+
     def map_generic(self, file_path, target_class, extra_logic=None):
         full_path = os.path.join(self.data_dir, file_path)
         if not os.path.exists(full_path): return
@@ -184,8 +238,8 @@ class EldenRingConverter:
                 name = row.get('name') or row.get('title')
                 clean = self.clean_name(name)
                 if not clean: continue
-                
-                subj = ER[clean]
+
+                subj = self._disambiguated_subject(clean, target_class)
                 self.graph.add((subj, RDF.type, target_class))
                 self.graph.add((subj, RDFS.label, Literal(name)))
                 

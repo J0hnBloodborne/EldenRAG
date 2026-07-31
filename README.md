@@ -25,7 +25,9 @@ This repository contains the complete pipeline:
 | `rdf/manual_test.ttl` | Small dataset for manual reasoning validation. | **M3 Requirement** |
 | `scripts/schema.py` | Generates the T-Box (Ontology Schema) using Python/RDFLib. | **Rubric #7** |
 | `scripts/converter.py` | ETL script that maps raw CSVs to RDF triples (A-Box). | **Rubric #7** |
-| `scripts/optimize.py` | Applies reasoning rules to materialize the graph. | **Rubric #10** |
+| `scripts/optimize.py` | Fast pre-pass: materializes subclass types and inverse edges with hand-written rules. | **Rubric #10** |
+| `scripts/reasoner.py` | Full OWL 2 RL reasoner (owlrl): validates consistency and materializes DL inferences (union/intersection/transitive classes). | **Rubric #10** |
+| `rdf/elden_ring_reasoned.ttl` | Canonical graph after DL reasoning: consistent, with inferred class memberships materialized. | **Rubric #11** |
 | `scripts/competency.py` | Python script executing federated SPARQL queries. | **Rubric #13** |
 | `web_server.py` | FastAPI backend for the Graph-RAG Chatbot. | **Rubric #14 (Bonus)** |
 | `graph_agent.py` | Logic for the semantic agent. | **Rubric #14 (Bonus)** |
@@ -58,9 +60,13 @@ python scripts/converter.py
 # 3. Link entities to Wikidata (5-Star Linked Data)
 python scripts/linker.py
 
-# 4. Run Reasoner to materialize inferences (Final Optimization)
+# 4. Fast pre-pass: materialize subclass types and inverse edges
 python scripts/optimize.py
 Output: rdf/elden_ring_optimized.ttl
+
+# 5. Run the OWL 2 RL reasoner: validate consistency + materialize DL inferences
+python scripts/reasoner.py
+Output: rdf/elden_ring_reasoned.ttl
 ```
 
 ### 4. Validation & Usage

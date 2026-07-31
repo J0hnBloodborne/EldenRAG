@@ -151,7 +151,9 @@ def build_comprehensive_ontology():
     # Weight is unique per item.
     g.add((ER.weight, RDF.type, OWL.DatatypeProperty))
     g.add((ER.weight, RDF.type, OWL.FunctionalProperty))
-    g.add((ER.weight, RDFS.range, XSD.float))
+    # xsd:decimal, not xsd:float: game stats are exact values, and OWL RL's strict
+    # datatype checker rejects lexical forms like "0.0" as xsd:float.
+    g.add((ER.weight, RDFS.range, XSD.decimal))
 
     # Inverse Functional Property (Requirement: "At least one... inverse functional")
     # The Game ID uniquely identifies the item (if we had it), or we can treat the Name as a unique key.
@@ -175,7 +177,7 @@ def build_comprehensive_ontology():
     for dt in dmg_types:
         uri = ER[f"attack{dt}"]
         g.add((uri, RDF.type, OWL.DatatypeProperty))
-        g.add((uri, RDFS.range, XSD.float))
+        g.add((uri, RDFS.range, XSD.decimal))
 
     for attr in ["Strength", "Dexterity", "Intelligence", "Faith", "Arcane"]:
         g.add((ER[f"requires{attr}"], RDF.type, OWL.DatatypeProperty))
